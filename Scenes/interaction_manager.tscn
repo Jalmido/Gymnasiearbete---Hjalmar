@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://gfbnuq7cud6i"]
+
+[ext_resource type="Script" uid="uid://dlugr0ygqdb1u" path="res://Scripts/interaction_manager.gd" id="1_g12pu"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://ui/fonts/DungeonFont.ttf" id="2_m5ky0"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_g12pu")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_right = 60.0
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_m5ky0")
+theme_override_font_sizes/font_size = 32
+text = "[E] to interact"
+horizontal_alignment = 1
+vertical_alignment = 1

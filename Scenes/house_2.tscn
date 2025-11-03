@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://lwds1gg6rinm"]
+
+[ext_resource type="Script" uid="uid://bj6bkghob3cvj" path="res://Scripts/Objectscripts/house.gd" id="1_ltyln"]
+[ext_resource type="Texture2D" uid="uid://ptnaqrrjqet8" path="res://Assets/Houses/house2.png" id="1_t4ji5"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_ltyln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0via"]
+size = Vector2(89, 59)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mkqp"]
+radius = 14.0357
+
+[node name="House2" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_ltyln")
+house_number = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t4ji5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 39.5)
+shape = SubResource("RectangleShape2D_f0via")
+
+[node name="EnterHouseArea" parent="." instance=ExtResource("2_ltyln")]
+action_name = "Enter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouseArea"]
+position = Vector2(1, 56)
+shape = SubResource("CircleShape2D_7mkqp")
+debug_color = Color(0.54902, 0.564706, 0, 0.698039)
+
+[node name="EnterHouseTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="EnterHouseTimer" to="." method="_on_enter_house_timer_timeout"]

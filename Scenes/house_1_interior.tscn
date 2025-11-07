@@ -574,7 +574,6 @@ tile_set = SubResource("TileSet_cwu3w")
 [node name="Player" parent="." instance=ExtResource("3_vem02")]
 z_index = 1
 position = Vector2(75, 196)
-scale = Vector2(1.6, 1.6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(82, 115)

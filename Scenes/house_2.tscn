@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ea0m227q0th" path="res://Assets/Houses/House2Base.png" id="3_7mkqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0via"]
-size = Vector2(89, 59)
+size = Vector2(84.25, 61)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mkqp"]
 radius = 14.0357
@@ -23,13 +23,13 @@ position = Vector2(0, -32)
 texture = ExtResource("2_f0via")
 
 [node name="House2Base" type="Sprite2D" parent="."]
-z_index = -1
+z_index = -3
 y_sort_enabled = true
 position = Vector2(0, 34)
 texture = ExtResource("3_7mkqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 36)
+position = Vector2(-0.125, 31.5)
 shape = SubResource("RectangleShape2D_f0via")
 
 [node name="EnterHouseArea" parent="." instance=ExtResource("2_ltyln")]

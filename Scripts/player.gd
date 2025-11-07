@@ -1,14 +1,16 @@
 extends CharacterBody2D
 class_name Player
 
-const MAX_SPEED = 240
+const MAX_SPEED = 160
 const ACC = 1100
 
 enum { IDLE, WALK, DEAD }
 var state = IDLE
+var direction_name = "down"
 
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var AnimPlayer: AnimationPlayer = $AnimationPlayer
+
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -30,10 +32,21 @@ func _movement(delta: float, direction: Vector2) -> void:
 	move_and_slide()
 
 func _update_direction(direction: Vector2) -> void:
-	if direction.x > 0:
-		sprite.flip_h = false
-	elif direction.x < 0:
-		sprite.flip_h = true
+	if direction == Vector2.ZERO:
+		return
+	
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			direction_name = "right"
+		
+		else:
+			direction_name = "left"
+	
+	else:
+		if direction.y > 0:
+			direction_name = "down"
+		else:
+			direction_name = "up"
 
 # ------------------------------
 # State functions
@@ -42,30 +55,20 @@ func _idle_state(delta: float) -> void:
 	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
 	if input_vector != Vector2.ZERO:
 		_enter_walk_state()
-		
+	else:
+		anim.play("Idle_" + direction_name)
 	
-	_update_direction(Vector2.ZERO)
+	
 	_movement(delta, Vector2.ZERO)
 
 func _walk_state(delta: float) -> void:
 	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
-	
 	if input_vector == Vector2.ZERO:
-		anim.play("Idle")
-	
-	if abs(input_vector.x) > abs(input_vector.y):
-		# Rörelse horisontellt
-		if input_vector.x > 0:
-			anim.play("Walk_right")
-		else:
-			anim.play("Walk_left") #FINNS EJ
+		_enter_idle_state()
 	else:
-		# Rörelse vertikalt
-		if input_vector.y > 0:
-			anim.play("Walk_down")
-		else:
-			anim.play("Walk_up")
-	
+		_update_direction(input_vector)
+		anim.play("Walk_" + direction_name)
+		
 	_update_direction(input_vector)
 	_movement(delta, input_vector)
 """
@@ -73,17 +76,27 @@ func _dead_state(delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 """
+# ----------------------
+#Animation funktion
+# ----------------------
+
+func _Enter_underground():
+	AnimPlayer.play("Enter_underground")
+
+
+
 # ------------------------------
 # Enter state functions
 # ------------------------------
 func _enter_idle_state():
 	state = IDLE
-	anim.play("Idle")
+
 
 func _enter_walk_state():
 	state = WALK
 
-
+"
 func _enter_dead_state():
 	state = DEAD
-	anim.play("Dead")
+
+"

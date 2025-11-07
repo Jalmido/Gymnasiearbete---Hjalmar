@@ -358,7 +358,6 @@ tile_set = SubResource("TileSet_qiudu")
 [node name="Player" parent="." instance=ExtResource("1_fi8pp")]
 z_index = 2
 position = Vector2(73, -1.90735e-06)
-scale = Vector2(1.76, 1.76)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-0.56818, 10.2273)

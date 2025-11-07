@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://882ppmuvsrh3"]
 
-[ext_resource type="Texture2D" uid="uid://xcnh7ao26crj" path="res://Assets/mystic_woods_free_2/sprites/characters/player-ezgif.com-crop-2.png" id="1_f50pn"]
+[ext_resource type="Texture2D" uid="uid://xcnh7ao26crj" path="res://Assets/overworld/sprites/characters/player-ezgif.com-crop-2.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij6vw"]

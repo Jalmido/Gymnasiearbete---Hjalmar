@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8i7yrhysq8nm"]
+
+[ext_resource type="Script" uid="uid://cyjfwy2euj07e" path="res://node_2d.gd" id="1_ys0rn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b3qr"]
+size = Vector2(38, 34)
+
+[node name="ChangeLayerArea" type="Area2D"]
+script = ExtResource("1_ys0rn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2b3qr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://lwds1gg6rinm"]
+[gd_scene load_steps=7 format=3 uid="uid://lwds1gg6rinm"]
 
 [ext_resource type="Script" uid="uid://bj6bkghob3cvj" path="res://Scripts/Objectscripts/house.gd" id="1_ltyln"]
-[ext_resource type="Texture2D" uid="uid://ptnaqrrjqet8" path="res://Assets/Houses/house2.png" id="1_t4ji5"]
+[ext_resource type="Texture2D" uid="uid://bqfbq06x2tntc" path="res://Assets/Houses/House2Roof.png" id="2_f0via"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_ltyln"]
+[ext_resource type="Texture2D" uid="uid://c4ea0m227q0th" path="res://Assets/Houses/House2Base.png" id="3_7mkqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0via"]
 size = Vector2(89, 59)
@@ -15,11 +16,20 @@ collision_layer = 2
 script = ExtResource("1_ltyln")
 house_number = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_t4ji5")
+[node name="House2Roof" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -32)
+texture = ExtResource("2_f0via")
+
+[node name="House2Base" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 34)
+texture = ExtResource("3_7mkqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 39.5)
+position = Vector2(1, 36)
 shape = SubResource("RectangleShape2D_f0via")
 
 [node name="EnterHouseArea" parent="." instance=ExtResource("2_ltyln")]

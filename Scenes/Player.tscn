@@ -1,9 +1,10 @@
-[gd_scene load_steps=66 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=67 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="3_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://bo8uxj6u0jq40" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Walk.png" id="4_nn08x"]
+[ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="5_5ixxa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
 atlas = ExtResource("2_dewec")
@@ -544,3 +545,7 @@ debug_color = Color(0.992157, 0, 0, 0.419608)
 libraries = {
 &"": SubResource("AnimationLibrary_nn08x")
 }
+
+[node name="Handgun" parent="." instance=ExtResource("5_5ixxa")]
+position = Vector2(-4, -9)
+scale = Vector2(0.34, 0.34)

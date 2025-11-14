@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 InteractionManager="*res://Scenes/interaction_manager.tscn"
 LocationManager="*res://Scenes/location_manager.tscn"
+Globals="*res://Globals.gd"
 
 [display]
 
@@ -66,6 +67,7 @@ Shoot={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Attacks"
 2d_physics/size/mode=2
 2d_physics/size/viewport_height=1080
 2d_physics/size/viewport_width=1920

@@ -1,24 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkq7ogoq8jb6r"]
+[gd_scene load_steps=6 format=3 uid="uid://bkq7ogoq8jb6r"]
 
 [ext_resource type="Script" uid="uid://j8aawu8b85qi" path="res://Scenes/gun.gd" id="1_oqrbh"]
 [ext_resource type="Texture2D" uid="uid://pk8s8vw7uxtf" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sGun.png" id="2_t6ynv"]
 [ext_resource type="Texture2D" uid="uid://bx427cr7oybr7" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sBullet.png" id="3_t6ynv"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://ui/fonts/DungeonFont.ttf" id="4_k4teu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yjyf"]
+radius = 4.47214
+
 [node name="Handgun" type="Node2D"]
 script = ExtResource("1_oqrbh")
 
-[node name="Bullet" type="Sprite2D" parent="."]
-visible = false
+[node name="Bullet" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 7
+
+[node name="Bullet" type="Sprite2D" parent="Bullet"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_t6ynv")
 
-[node name="Label" type="Label" parent="Bullet"]
-offset_right = 33.0
-offset_bottom = 23.0
+[node name="Label" type="Label" parent="Bullet/Bullet"]
+offset_left = -52.0
+offset_top = -58.0
+offset_right = 107.0
+offset_bottom = 42.0
+scale = Vector2(0.689135, 1.11649)
 theme_override_fonts/font = ExtResource("4_k4teu")
 theme_override_font_sizes/font_size = 100
 text = "Pew"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+shape = SubResource("CircleShape2D_4yjyf")
+
 [node name="Gun" type="Sprite2D" parent="."]
 texture = ExtResource("2_t6ynv")
+
+[connection signal="body_entered" from="Bullet" to="." method="_on_bullet_body_entered"]

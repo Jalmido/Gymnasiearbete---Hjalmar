@@ -8,6 +8,7 @@ var bullet_direction = Vector2.ZERO
 
 
 @onready var bullet: Area2D = $Bullet
+@onready var handgun: Node2D = $"."
 
 func _process(delta: float) -> void:
 	mouseposition = get_global_mouse_position()
@@ -25,6 +26,8 @@ func _process(delta: float) -> void:
 
 func shoot(target_pos: Vector2) -> void:
 	bullet.global_position = $Gun.global_position
+	handgun.show()
+	$ShowGunTimer.start()
 	bullet.show()
 
 	bullet_direction = (target_pos - bullet.global_position).normalized()
@@ -35,6 +38,7 @@ func shoot(target_pos: Vector2) -> void:
 func _reset_bullet() -> void:
 	bullet.global_position = Vector2.ZERO
 	bullet.hide()
+
 	is_shooting = false
 	
 
@@ -42,3 +46,7 @@ func _reset_bullet() -> void:
 func _on_bullet_body_entered(body: Node2D) -> void:
 	_reset_bullet()
 	
+
+
+func _on_timer_timeout() -> void:
+	handgun.hide()

@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7lo0b32uwggv"]
+[gd_scene load_steps=7 format=3 uid="uid://c7lo0b32uwggv"]
 
-[ext_resource type="Texture2D" uid="uid://d2bgsgnybq8si" path="res://Assets/Houses/house3.png" id="1_80awk"]
 [ext_resource type="Script" uid="uid://bj6bkghob3cvj" path="res://Scripts/Objectscripts/house.gd" id="1_wrkkg"]
+[ext_resource type="Texture2D" uid="uid://bk6sfdffrnbbx" path="res://Assets/Houses/house3-ezgif.com-crop.png" id="2_cidul"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_wrkkg"]
+[ext_resource type="Texture2D" uid="uid://draciatrcco3u" path="res://Assets/Houses/house3-ezgif.com-crop-2.png" id="3_atj7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cidul"]
-size = Vector2(54.5, 60.5)
+size = Vector2(54.5, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atj7n"]
 radius = 17.0294
@@ -15,16 +16,20 @@ collision_layer = 2
 script = ExtResource("1_wrkkg")
 house_number = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_80awk")
+[node name="Roof" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_cidul")
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(0, 46)
+texture = ExtResource("3_atj7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.25, 17.25)
+position = Vector2(0.25, 19)
 shape = SubResource("RectangleShape2D_cidul")
 
 [node name="EnterHouseArea" parent="." instance=ExtResource("2_wrkkg")]
-visible = false
 action_name = "Enter"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouseArea"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cr7lasxqhaihf"]
+[gd_scene load_steps=24 format=4 uid="uid://cr7lasxqhaihf"]
 
 [ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scenes/level.gd" id="1_ienac"]
 [ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="1_tj5wv"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scenes/levelchange.gd" id="11_b10nm"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="11_esopp"]
 [ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="14_bktio"]
+[ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="15_nrlyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 resource_name = "Plains tileset"
@@ -829,7 +830,7 @@ script = ExtResource("1_ienac")
 [node name="Player" parent="." instance=ExtResource("6_esopp")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(145, 110)
+position = Vector2(202, 100)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.4, 3.4)
@@ -837,6 +838,9 @@ limit_left = -100
 limit_top = -150
 limit_right = 1620
 limit_bottom = 570
+
+[node name="Enemy" parent="." instance=ExtResource("15_nrlyp")]
+z_index = 1
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 

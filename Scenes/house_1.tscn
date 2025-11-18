@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxsennemopq4g"]
+[gd_scene load_steps=6 format=3 uid="uid://bxsennemopq4g"]
 
 [ext_resource type="Script" uid="uid://bj6bkghob3cvj" path="res://Scripts/Objectscripts/house.gd" id="1_mvaxn"]
-[ext_resource type="Texture2D" uid="uid://buw1grb4gwchw" path="res://Assets/Houses/house.png" id="2_wsnda"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="3_r5inp"]
+[ext_resource type="Texture2D" uid="uid://brrtmh4fblqeg" path="res://Assets/Houses/house-ezgif.com-crop.png" id="3_wsnda"]
+[ext_resource type="Texture2D" uid="uid://bit4exlyn2a3e" path="res://Assets/Houses/house-ezgif.com-crop-3.png" id="4_r5inp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qefm"]
 radius = 14.3178
@@ -10,9 +11,6 @@ radius = 14.3178
 [node name="House1" type="StaticBody2D"]
 collision_layer = 2
 script = ExtResource("1_mvaxn")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wsnda")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -1)
@@ -29,5 +27,15 @@ debug_color = Color(0.529412, 0.572549, 0.0627451, 0.654902)
 [node name="EnterHouseTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="Roof" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(4.5, -15)
+texture = ExtResource("3_wsnda")
+
+[node name="Base" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(4.5, 26)
+texture = ExtResource("4_r5inp")
 
 [connection signal="timeout" from="EnterHouseTimer" to="." method="_on_enter_house_timer_timeout"]

@@ -9,18 +9,19 @@
 radius = 4.47214
 
 [node name="Handgun" type="Node2D"]
-visible = false
 script = ExtResource("1_oqrbh")
 
 [node name="Bullet" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 7
+monitoring = false
 
 [node name="Bullet" type="Sprite2D" parent="Bullet"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_t6ynv")
 
 [node name="Label" type="Label" parent="Bullet/Bullet"]
+visible = false
 offset_left = -52.0
 offset_top = -58.0
 offset_right = 107.0
@@ -40,5 +41,9 @@ texture = ExtResource("2_t6ynv")
 wait_time = 0.4
 one_shot = true
 
+[node name="ResetBulletTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Bullet" to="." method="_on_bullet_body_entered"]
 [connection signal="timeout" from="ShowGunTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ResetBulletTimer" to="." method="_on_reset_bullet_timer_timeout"]

@@ -841,6 +841,7 @@ limit_bottom = 570
 
 [node name="Enemy" parent="." instance=ExtResource("15_nrlyp")]
 z_index = 1
+scale = Vector2(0.8, 0.8)
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 

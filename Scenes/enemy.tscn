@@ -1,6 +1,6 @@
-[gd_scene load_steps=50 format=3 uid="uid://beepnscn0oyw6"]
+[gd_scene load_steps=52 format=3 uid="uid://beepnscn0oyw6"]
 
-[ext_resource type="Script" uid="uid://c8kah0oky6xef" path="res://enemy.gd" id="1_1f0kj"]
+[ext_resource type="Script" uid="uid://c8kah0oky6xef" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://c8kjjfgox4cmf" path="res://Assets/Enemy/goblin.png" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://dlo1k2f3uj6in" path="res://Assets/Enemy/goblinsword.png" id="2_afpow"]
 
@@ -79,6 +79,10 @@ region = Rect2(192, 256, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jaer"]
 atlas = ExtResource("2_287tu")
 region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyrvc"]
+atlas = ExtResource("2_287tu")
+region = Rect2(64, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
 atlas = ExtResource("2_afpow")
@@ -234,16 +238,6 @@ animations = [{
 "name": &"Attack_up",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Idle_down",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Idle_left",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qqxsh")
@@ -265,14 +259,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6jaer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyrvc")
 }],
 "loop": true,
-"name": &"Idle_right",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Idle_up",
+"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -371,7 +363,10 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
-radius = 99.0808
+radius = 180.225
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
+radius = 27.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -379,17 +374,49 @@ collision_mask = 3
 script = ExtResource("1_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_qqxsh")
-animation = &"Attack_down"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_1f0kj")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_1f0kj")
 debug_color = Color(0.614368, 0.535107, 0.138033, 0.231373)
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -20)
+collision_mask = 3
+
+[node name="LostSightTimer" type="Timer" parent="."]
+wait_time = 1.731
+one_shot = true
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.984314, 0, 0, 0.52549)
+self_modulate = Color(1, 0, 0, 1)
+z_index = 6
+offset_left = -23.0
+offset_top = -58.0
+offset_right = 26.0
+offset_bottom = -51.0
+theme_override_font_sizes/font_size = 3
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_afpow")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="LostSightTimer" to="." method="_on_lost_sight_timer_timeout"]
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="body_shape_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_shape_entered"]

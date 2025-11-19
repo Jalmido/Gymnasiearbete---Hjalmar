@@ -547,5 +547,6 @@ libraries = {
 }
 
 [node name="Handgun" parent="." instance=ExtResource("5_5ixxa")]
+visible = true
 position = Vector2(-4, -9)
 scale = Vector2(0.34, 0.34)

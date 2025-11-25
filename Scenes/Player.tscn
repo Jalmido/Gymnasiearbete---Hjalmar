@@ -1,10 +1,11 @@
-[gd_scene load_steps=67 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=69 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="3_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://bo8uxj6u0jq40" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Walk.png" id="4_nn08x"]
 [ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="5_5ixxa"]
+[ext_resource type="Texture2D" uid="uid://c35nhbf0j2bj3" path="res://Assets/Items/Arrow.png" id="6_nn08x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
 atlas = ExtResource("2_dewec")
@@ -519,10 +520,39 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nn08x"]
+resource_name = "Jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
 _data = {
 &"Enter_underground": SubResource("Animation_dewec"),
+&"Jump": SubResource("Animation_nn08x"),
 &"RESET": SubResource("Animation_5ixxa")
 }
 
@@ -547,6 +577,21 @@ libraries = {
 }
 
 [node name="Handgun" parent="." instance=ExtResource("5_5ixxa")]
-visible = true
 position = Vector2(-4, -9)
 scale = Vector2(0.34, 0.34)
+
+[node name="DamageCooldownTimer" type="Timer" parent="."]
+wait_time = 0.71
+one_shot = true
+
+[node name="JumpRayCast" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(0, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="JumpRayCast"]
+position = Vector2(2.02178e-08, 18.5375)
+rotation = 1.5708
+scale = Vector2(0.0178594, 0.00882561)
+texture = ExtResource("6_nn08x")
+
+[connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

@@ -91,10 +91,7 @@ func _update_sight() -> void: #funktion som mha raycast jagar spelarn om den är
 #-----------------
 
 func _take_damage():
-	
 	health -= 1
-	print("Enemy hit! Health left: ", health)
-	
 	if health <= 0:
 		_enter_dead_state()
 	_update_healthbar()
@@ -136,7 +133,6 @@ func _walk_state(delta: float) -> void:
 	_movement(delta, direction_to_player, current_speed)
 
 func _attack_state(delta:float) -> void:
-	
 	anim.play("Attack_" + direction_name)
 	
 	var distance_to_player = global_position.distance_to(player.global_position)
@@ -144,7 +140,7 @@ func _attack_state(delta:float) -> void:
 	
 	if distance_to_player > 40:
 		_enter_walk_state()
-	
+	player._take_damage()
 	_movement(delta, Vector2.ZERO, 0)
 
 func _dead_state(delta:float) -> void:

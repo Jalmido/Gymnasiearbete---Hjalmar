@@ -333,7 +333,7 @@ offset_top = 8.0
 offset_right = -154.0
 offset_bottom = 20.0
 grow_horizontal = 0
-scale = Vector2(4.06431, 4.19819)
+scale = Vector2(5, 5.165)
 texture = ExtResource("2_t385i")
 
 [node name="Inventory" type="HBoxContainer" parent="HUDcontroller"]

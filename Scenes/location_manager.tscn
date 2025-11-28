@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b37booia272k1"]
 
-[ext_resource type="Script" uid="uid://dsv45p7f0whvr" path="res://Scenes/location_manager.gd" id="1_yyw85"]
+[ext_resource type="Script" uid="uid://dsv45p7f0whvr" path="res://Scripts/location_manager.gd" id="1_yyw85"]
 
 [sub_resource type="Animation" id="Animation_jenki"]
 resource_name = "Fade_to_black"

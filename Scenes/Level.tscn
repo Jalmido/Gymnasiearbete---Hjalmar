@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://cr7lasxqhaihf"]
 
-[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scenes/level.gd" id="1_ienac"]
+[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/position_manager.gd" id="1_ienac"]
 [ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="1_tj5wv"]
 [ext_resource type="Texture2D" uid="uid://ccfxl5iqg6fx6" path="res://Assets/overworld/sprites/tilesets/overworld/grass.png" id="2_ienac"]
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="4_5rrr5"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="6_esopp"]
 [ext_resource type="Texture2D" uid="uid://el17vui6pu7a" path="res://Assets/overworld/sprites/tilesets/overworld/Screenshot 2025-11-07 175240.png" id="7_fhlu0"]
 [ext_resource type="PackedScene" uid="uid://c8i7yrhysq8nm" path="res://Scenes/change_layer_area.tscn" id="9_or7tv"]
-[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scenes/levelchange.gd" id="11_b10nm"]
+[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="11_b10nm"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="11_esopp"]
 [ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="14_bktio"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="15_nrlyp"]

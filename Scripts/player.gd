@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 const MAX_SPEED = 160
-const MAX_JUMP_DISTANCE = 50
+const MAX_JUMP_DISTANCE = 70
 const ACC = 1100
 
 enum { IDLE, WALK, DEAD, JUMP }
@@ -12,6 +12,8 @@ var can_take_damage = true
 var jump_direction: Vector2 = Vector2.ZERO
 var jump_start_pos: Vector2
 var jump_speed = 200
+var can_jump = false
+var ignore_ground = false
 
 @onready var JumpRaycast: RayCast2D = $JumpRayCast
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -39,7 +41,7 @@ func _movement(delta: float, direction: Vector2) -> void:
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Jump"):
+	if event.is_action_pressed("Jump") and can_jump:
 		_enter_jump_state()
 
 func _update_direction(direction: Vector2) -> void:
@@ -75,13 +77,17 @@ func _display_raycast() -> void:
 	JumpRaycast.show()
 	var tween = create_tween()
 	tween.set_loops()
-	var rotate_raycast = tween.tween_property(JumpRaycast, "rotation", 2*PI, 1.0).as_relative() #Roterar, och as_relative är inbyggd funktion som gör att den fortsätter där den slutade
-
+	tween.tween_property(JumpRaycast, "rotation", 2*PI, 1.0).as_relative() #Roterar, och as_relative är inbyggd funktion som gör att den fortsätter där den slutade
 	
+func _reset_raycast() -> void:
+	JumpRaycast.hide()
+	JumpRaycast.rotation = 0
+	JumpRaycast.target_position = Vector2.ZERO
 
 # ------------------------------
 # State functions
 # ------------------------------
+
 func _idle_state(delta: float) -> void:
 	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
 	if input_vector != Vector2.ZERO:
@@ -117,7 +123,9 @@ func _jump_state(delta: float) -> void:
 	if traveled_jump_distance >= MAX_JUMP_DISTANCE:
 		velocity = Vector2.ZERO
 		_enter_idle_state()
-
+		await get_tree().create_timer(0.5).timeout
+		set_collision_mask_value(2, true) #slår på kollision igen efter 0.5 sek igen, 
+		#GÖR EN FUNKTION SOM HANTERAR LANDNING
 # ----------------------
 #Animation funktion
 # ----------------------
@@ -134,6 +142,7 @@ func _enter_idle_state():
 	state = IDLE
 
 
+
 func _enter_walk_state():
 	state = WALK
 
@@ -143,9 +152,15 @@ func _enter_dead_state():
 
 func _enter_jump_state():
 	state = JUMP
+
+	
+	set_collision_mask_value(2, false) #stänger av kollision m objekt medan man hoppar, så kan man hoppa mellan platformar
+	
 	jump_start_pos = global_position
 	jump_direction = Vector2.DOWN.rotated(JumpRaycast.global_rotation).normalized()
 	velocity = jump_direction * jump_speed
+
+
 ########## SIGNALS ########
 
 func _on_damage_cooldown_timer_timeout() -> void:

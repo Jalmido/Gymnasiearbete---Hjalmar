@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://vldeabhcwt55"]
+[gd_scene load_steps=3 format=3 uid="uid://vldeabhcwt55"]
 
-[ext_resource type="Script" uid="uid://d31kl3emm6w7x" path="res://jump_area.gd" id="1_vvxnu"]
+[ext_resource type="Script" uid="uid://d31kl3emm6w7x" path="res://Scripts/jump_area.gd" id="1_vvxnu"]
 
-[node name="JumpArea" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvxnu"]
+
+[node name="JumpArea" type="Area2D"]
 script = ExtResource("1_vvxnu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vvxnu")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

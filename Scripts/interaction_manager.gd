@@ -16,9 +16,7 @@ func unregister_area(area: InteractionArea):
 	if index != -1: #inte -1 för det innebär att listan ör tom
 		active_areas.remove_at(index) #testade först erase(), men den tog bara bort första förekomsten, sen testade jag pop_at(), men den returnerade det borttagna värdet, vilket itn  behövs för dessa dörrar
 
-func _process(delta: float):
-
-
+func _process(_delta: float):
 	if active_areas.size() > 0 and can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player) #använder egna funktionnen där avståndet mellan spelarn och areorna jämförs och tar sedan första index
 		#fixa labeln snyggt över arean

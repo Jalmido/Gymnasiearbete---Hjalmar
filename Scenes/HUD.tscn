@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bwmdphtvn0qv0"]
 
-[ext_resource type="Script" uid="uid://gsedg6kr47t" path="res://Scenes/hud.gd" id="1_g8s2e"]
+[ext_resource type="Script" uid="uid://gsedg6kr47t" path="res://Scripts/hud.gd" id="1_g8s2e"]
 [ext_resource type="Texture2D" uid="uid://pk8s8vw7uxtf" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sGun.png" id="1_psnte"]
 [ext_resource type="Texture2D" uid="uid://duycqfy8sfu2g" path="res://Assets/overworld/sprites/objects/rock_in_water_01.png" id="2_s3jbq"]
 [ext_resource type="Texture2D" uid="uid://dmt566i2kfqwu" path="res://ui/Healthbar/06-ezgif.com-crop.png" id="2_t385i"]

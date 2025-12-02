@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var change_to_underground: InteractionArea = $Change_to_underground
-@onready var anim: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	change_to_underground.interact = Callable(self, "_on_interact")
 

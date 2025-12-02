@@ -825,6 +825,7 @@ size = Vector2(10.75, 43.375)
 size = Vector2(422, 49)
 
 [node name="Overworld" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_ienac")
 
 [node name="Player" parent="." instance=ExtResource("6_esopp")]

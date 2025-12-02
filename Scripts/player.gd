@@ -5,7 +5,7 @@ const MAX_SPEED = 160
 const MAX_JUMP_DISTANCE = 70
 const ACC = 1100
 
-enum { IDLE, WALK, DEAD, JUMP }
+enum { IDLE, WALK, DEAD, JUMP, WATER }
 var state = IDLE
 var direction_name = "down"
 var can_take_damage = true
@@ -19,6 +19,7 @@ var ignore_ground = false
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var AnimPlayer: AnimationPlayer = $AnimationPlayer
 @onready var DamageCooldownTimer: Timer = $DamageCooldownTimer
+@onready var GroundControlRaycast: RayCast2D = $GroundControlRaycast
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -30,6 +31,8 @@ func _physics_process(delta: float) -> void:
 			_dead_state(delta)
 		JUMP:
 			_jump_state(delta)
+		WATER:
+			_water_state(delta)
 # ------------------------------
 # Movement helper
 # ------------------------------
@@ -109,23 +112,42 @@ func _walk_state(delta: float) -> void:
 	_update_direction(input_vector)
 	_movement(delta, input_vector)
 
-func _dead_state(delta: float) -> void:
+func _dead_state(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
 	
 	
 	#game over skärm görs sen
 
-func _jump_state(delta: float) -> void:
+func _jump_state(_delta: float) -> void:
 	AnimPlayer.play("Jump")
 	move_and_slide()
 	var traveled_jump_distance = global_position.distance_to(jump_start_pos)
 	if traveled_jump_distance >= MAX_JUMP_DISTANCE:
-		velocity = Vector2.ZERO
-		_enter_idle_state()
-		await get_tree().create_timer(0.5).timeout
-		set_collision_mask_value(2, true) #slår på kollision igen efter 0.5 sek igen, 
-		#GÖR EN FUNKTION SOM HANTERAR LANDNING
+		_landing_manager()
+
+func _water_state(_delta: float) -> void:
+	AnimPlayer.play("Drowning")
+	LocationManager.last_jump_position = global_position
+
+func _landing_manager() -> void:
+	velocity = Vector2.ZERO
+	set_collision_mask_value(2, true) # Slå på kollision med väggar igen
+	
+	# Tvinga raycasten att kolla vad som finns under fötterna just nu
+	GroundControlRaycast.force_raycast_update()
+	
+	# Kolla om vi träffade något
+	if GroundControlRaycast.is_colliding():
+		var collider = GroundControlRaycast.get_collider()
+		
+		# Kolla om det vi står på är med i gruppen "water"
+		if collider.is_in_group("water"):
+			_enter_water_state()
+			return # VIKTIGT: Avbryt här så vi inte går vidare till idle_state
+
+	# Om det inte var vatten (eller vi missade marken helt), landa som vanligt
+	_enter_idle_state()
 # ----------------------
 #Animation funktion
 # ----------------------
@@ -160,6 +182,8 @@ func _enter_jump_state():
 	jump_direction = Vector2.DOWN.rotated(JumpRaycast.global_rotation).normalized()
 	velocity = jump_direction * jump_speed
 
+func _enter_water_state():
+	state = WATER
 
 ########## SIGNALS ########
 

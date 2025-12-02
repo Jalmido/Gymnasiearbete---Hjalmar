@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=70 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
@@ -466,6 +466,33 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="Animation" id="Animation_52ee3"]
+resource_name = "Drowning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.990781, 0.862059, 0.728208, 1), Color(0.992157, 0.862745, 0.729412, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.967742, 0.967742), Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
 [sub_resource type="Animation" id="Animation_dewec"]
 resource_name = "Enter_underground"
 length = 0.6
@@ -507,7 +534,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133333, 0.333333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5ixxa"]
@@ -548,9 +575,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.990781, 0.862059, 0.728208, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.967742, 0.967742)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
 _data = {
+&"Drowning": SubResource("Animation_52ee3"),
 &"Enter_underground": SubResource("Animation_dewec"),
 &"Jump": SubResource("Animation_nn08x"),
 &"RESET": SubResource("Animation_5ixxa")
@@ -558,6 +610,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.990781, 0.862059, 0.728208, 1)
+scale = Vector2(0.967742, 0.967742)
 collision_mask = 6
 script = ExtResource("1_ij6vw")
 
@@ -593,5 +646,11 @@ position = Vector2(2.02178e-08, 18.5375)
 rotation = 1.5708
 scale = Vector2(0.0178594, 0.00882561)
 texture = ExtResource("6_nn08x")
+
+[node name="GroundControlRaycast" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 0)
+collision_mask = 16
+hit_from_inside = true
 
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

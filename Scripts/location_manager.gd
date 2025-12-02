@@ -6,6 +6,7 @@ extends Node2D
 var last_exit_position: Vector2
 var last_scene: String = ""
 
+var last_jump_position: Vector2
 
 func _play_animation() -> void:
 	anim.play("Fade_to_black")

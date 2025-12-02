@@ -118,7 +118,7 @@ func _walk_state(delta: float) -> void:
 		
 	#lokala variabler
 	var direction_to_player = global_position.direction_to(player.global_position)
-	var distance_to_player = global_position.distance_to(player.global_position)
+
 
 	
 	#hastighetsloigik om slowchase är true
@@ -143,7 +143,7 @@ func _attack_state(delta:float) -> void:
 	player._take_damage()
 	_movement(delta, Vector2.ZERO, 0)
 
-func _dead_state(delta:float) -> void:
+func _dead_state(_delta:float) -> void:
 	queue_free() #tar bort fienden från spelet
 # ------------------------------
 # Enter state functions
@@ -177,5 +177,5 @@ func _on_lost_sight_timer_timeout() -> void:
 
 
 
-func _on_attack_hitbox_body_entered(body: Node2D) -> void:
+func _on_attack_hitbox_body_entered(_body: Node2D) -> void:
 	_enter_attack_state()

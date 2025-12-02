@@ -1,7 +1,7 @@
 extends Area2D
 class_name JumpArea
 
-@onready var interaction_area: Area2D = $InteractionArea
+
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var tilemap: TileMapLayer = $"../Tilemaplayers/Ground"
 

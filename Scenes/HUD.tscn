@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwmdphtvn0qv0"]
+[gd_scene load_steps=11 format=3 uid="uid://bwmdphtvn0qv0"]
 
 [ext_resource type="Script" uid="uid://gsedg6kr47t" path="res://Scripts/hud.gd" id="1_g8s2e"]
-[ext_resource type="Texture2D" uid="uid://pk8s8vw7uxtf" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sGun.png" id="1_psnte"]
-[ext_resource type="Texture2D" uid="uid://duycqfy8sfu2g" path="res://Assets/overworld/sprites/objects/rock_in_water_01.png" id="2_s3jbq"]
 [ext_resource type="Texture2D" uid="uid://dmt566i2kfqwu" path="res://ui/Healthbar/06-ezgif.com-crop.png" id="2_t385i"]
 [ext_resource type="Texture2D" uid="uid://kwf5cjq7d0u8" path="res://Assets/Items/Shikashi's Fantasy Icons Pack v2/#1 - Transparent Icons.png" id="3_c3eba"]
 [ext_resource type="Texture2D" uid="uid://bhcvjp5dr30ur" path="res://ui/Pixel UI pack 3/06.png" id="3_s3jbq"]
+[ext_resource type="Texture2D" uid="uid://cqpxl10rvoalv" path="res://Assets/overworld/sprites/objects/rock_in_water-sheet.png" id="3_t385i"]
+[ext_resource type="Texture2D" uid="uid://csg048ucc6byx" path="res://Assets/overworld/sprites/objects/chest_01.png" id="4_nfm57"]
+[ext_resource type="Texture2D" uid="uid://dkfyrfq63sjky" path="res://Assets/overworld/sprites/objects/chest_02.png" id="5_b5b84"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c3eba"]
 texture = ExtResource("3_s3jbq")
@@ -328,39 +329,40 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -204.0
-offset_top = 8.0
-offset_right = -154.0
-offset_bottom = 20.0
+offset_left = -234.0
+offset_top = 4.0
+offset_right = -184.0
+offset_bottom = 16.0
 grow_horizontal = 0
 scale = Vector2(5, 5.165)
 texture = ExtResource("2_t385i")
 
-[node name="Inventory" type="HBoxContainer" parent="HUDcontroller"]
-custom_minimum_size = Vector2(100, 100)
+[node name="HotbarBackground" type="TextureRect" parent="HUDcontroller"]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 1032.0
+offset_right = 984.0
+offset_bottom = 1072.0
+texture = ExtResource("3_t385i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDcontroller/HotbarBackground"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -100.0
-offset_right = 50.0
 grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 10
+grow_vertical = 2
 
-[node name="Gun_picture" type="TextureRect" parent="HUDcontroller/Inventory"]
+[node name="TextureRect" type="TextureRect" parent="HUDcontroller/HotbarBackground/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_psnte")
+texture = ExtResource("4_nfm57")
 
-[node name="Sword_picture" type="TextureRect" parent="HUDcontroller/Inventory"]
+[node name="TextureRect2" type="TextureRect" parent="HUDcontroller/HotbarBackground/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_s3jbq")
+texture = ExtResource("5_b5b84")
+
+[node name="TextureRect3" type="TextureRect" parent="HUDcontroller/HotbarBackground/HBoxContainer"]
+layout_mode = 2
 
 [node name="Items" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray(0, 0, 1, 0, 255, 255, 1, 0, 0, 0, 4, 0, 0, 0)

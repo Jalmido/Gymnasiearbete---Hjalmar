@@ -536,16 +536,18 @@ position = Vector2(186, 134)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.2, 3.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." instance=ExtResource("3_oyied")]
 position = Vector2(235, 197)
 
 [node name="JumpArea" parent="." instance=ExtResource("4_agq4y")]
-position = Vector2(208, 313)
+position = Vector2(208, 302)
 scale = Vector2(1.42166, 0.830821)
 
 [node name="JumpArea2" parent="." instance=ExtResource("4_agq4y")]
-position = Vector2(209, 381)
+position = Vector2(210, 362)
 scale = Vector2(1.42166, 0.830821)
 
 [node name="HUD" parent="." instance=ExtResource("5_agq4y")]

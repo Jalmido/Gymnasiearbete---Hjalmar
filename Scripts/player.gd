@@ -14,6 +14,7 @@ var jump_start_pos: Vector2
 var jump_speed = 200
 var can_jump = false
 var ignore_ground = false
+var is_respawning = false
 
 @onready var JumpRaycast: RayCast2D = $JumpRayCast
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -120,6 +121,7 @@ func _dead_state(_delta: float) -> void:
 	#game over skärm görs sen
 
 func _jump_state(_delta: float) -> void:
+
 	AnimPlayer.play("Jump")
 	move_and_slide()
 	var traveled_jump_distance = global_position.distance_to(jump_start_pos)
@@ -127,10 +129,33 @@ func _jump_state(_delta: float) -> void:
 		_landing_manager()
 
 func _water_state(_delta: float) -> void:
+
+	velocity = Vector2.ZERO
+
+	if is_respawning:
+		return
+	is_respawning = true
+
 	AnimPlayer.play("Drowning")
-	LocationManager.last_jump_position = global_position
+	await AnimPlayer.animation_finished
+
+	# Stoppa animationen så den inte fortsätter behålla scale/modulate
+	AnimPlayer.stop()
+	AnimPlayer.play("Reset_visual")
+	# Respawn position
+	global_position = LocationManager.last_jump_position.snapped(Vector2.ONE)
+
+	GroundControlRaycast.enabled = true
+	set_collision_mask_value(2, true)
+
+	_take_damage()
+
+	is_respawning = false
+	_enter_idle_state()
+
 
 func _landing_manager() -> void:
+
 	velocity = Vector2.ZERO
 	set_collision_mask_value(2, true) # Slå på kollision med väggar igen
 	
@@ -174,7 +199,8 @@ func _enter_dead_state():
 
 func _enter_jump_state():
 	state = JUMP
-
+	LocationManager.last_jump_position = global_position #gör så vi kan respawna om vi landar fel
+	
 	
 	set_collision_mask_value(2, false) #stänger av kollision m objekt medan man hoppar, så kan man hoppa mellan platformar
 	

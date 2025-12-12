@@ -5,8 +5,9 @@ extends Node2D
 
 var last_exit_position: Vector2
 var last_scene: String = ""
-
 var last_jump_position: Vector2
+var target_spawn_point_name: String = ""
+
 
 func _play_animation() -> void:
 	anim.play("Fade_to_black")
@@ -24,12 +25,18 @@ func _exit_house() -> void:
 	anim.play("Fade_to_level")
 
 ########### BYT RUM UNDEGROUND ############
-func _enter_next_room(room_number: int) -> void:
-	var scene_path = "res://Scenes/underground_room_%d.tscn" % room_number
-	get_tree().change_scene_to_file(scene_path)
-	anim.play("Fade_to_level")
+func _enter_new_room(scene_path: String) -> void:
+	var error = get_tree().change_scene_to_file(scene_path)
+	if error != OK:
+		push_error("Kunde inte ladda scen: ", scene_path)
+		return
 	
-
-func _return_to_last_room() -> void:
-	get_tree().change_scene_to_file(LocationManager.last_scene)
+	await get_tree().process_frame
+	var player = get_tree().get_first_node_in_group("player")
+	if target_spawn_point_name != "":
+		var spawn_point = get_tree().current_scene.find_child(target_spawn_point_name)
+		if spawn_point:
+			player.global_position = spawn_point.global_position
+		else:
+			push_warning("Hittade inte spawnpunkt:", target_spawn_point_name)
 	anim.play("Fade_to_level")

@@ -22,7 +22,7 @@ func _process(_delta: float):
 		#fixa labeln snyggt över arean
 		label.text = default_text + active_areas[0].action_name #action name är exportvariabeln som kan ändras t lite vad som
 		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 20
+		label.global_position.y -= 30
 		label.global_position.x -= label.size.x / 2
 		#Positioneringen ovanförs gör så den hamnar snyggt
 		label.show() 

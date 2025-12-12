@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b21e8npxmyd3y"]
+
+[ext_resource type="Script" uid="uid://bvjgd1wsdwxpt" path="res://Scenes/room_change.gd" id="1_k4vnn"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_dhd1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okv2n"]
+radius = 21.0
+
+[node name="RoomChange" type="Node2D"]
+script = ExtResource("1_k4vnn")
+
+[node name="RoomChangeArea" parent="." instance=ExtResource("2_dhd1h")]
+position = Vector2(0, 1)
+action_name = "Enter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomChangeArea"]
+shape = SubResource("CircleShape2D_okv2n")
+
+[node name="RoomChangeTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="RoomChangeTimer" to="." method="_on_room_change_timer_timeout"]

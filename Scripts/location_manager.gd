@@ -22,4 +22,14 @@ func enter_house(house_number: int) -> void:
 func _exit_house() -> void:
 	get_tree().change_scene_to_file(LocationManager.last_scene)
 	anim.play("Fade_to_level")
+
+########### BYT RUM UNDEGROUND ############
+func _enter_next_room(room_number: int) -> void:
+	var scene_path = "res://Scenes/underground_room_%d.tscn" % room_number
+	get_tree().change_scene_to_file(scene_path)
+	anim.play("Fade_to_level")
 	
+
+func _return_to_last_room() -> void:
+	get_tree().change_scene_to_file(LocationManager.last_scene)
+	anim.play("Fade_to_level")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dr5d772mdxfli"]
+
+[node name="mountain_village" type="Node2D"]
+
+[node name="mountain_village_spawn" type="Marker2D" parent="."]
+position = Vector2(265, 119)

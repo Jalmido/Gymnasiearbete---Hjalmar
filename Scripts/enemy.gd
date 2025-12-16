@@ -1,6 +1,7 @@
 extends CharacterBody2D
-
 class_name Enemy
+
+signal dead(enemy: Enemy)
 
 const ACC = 1100
 var speed: int = 80
@@ -145,6 +146,7 @@ func _attack_state(delta:float) -> void:
 
 func _dead_state(_delta:float) -> void:
 	queue_free() #tar bort fienden från spelet
+	emit_signal("dead", self)
 # ------------------------------
 # Enter state functions
 # ------------------------------

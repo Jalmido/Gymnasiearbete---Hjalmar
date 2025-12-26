@@ -71,9 +71,10 @@ Jump={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Objects"
-2d_physics/layer_3="Enemies"
+2d_physics/layer_3="Enemies/NPC"
 2d_physics/layer_4="Attacks"
 2d_physics/layer_5="Water/Void"
+2d_physics/layer_6="Ice"
 2d_physics/size/mode=2
 2d_physics/size/viewport_height=1080
 2d_physics/size/viewport_width=1920

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7m2hgpoqutad"]
+
+[ext_resource type="Script" uid="uid://bj6bkghob3cvj" path="res://Scripts/Objectscripts/house.gd" id="1_po30p"]
+[ext_resource type="Texture2D" uid="uid://dwwypbmsh5ima" path="res://Assets/mountain_biome/Snowy Asset Pack/Decoration/Log_Cabin.png" id="2_50tml"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="3_ch2m3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4v4ig"]
+radius = 24.0208
+
+[node name="House4" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_po30p")
+house_number = 4
+
+[node name="LogCabin" type="Sprite2D" parent="."]
+position = Vector2(26, -10)
+texture = ExtResource("2_50tml")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-45, -7, 95, -8, 91, 67, 31, 70, 29, 21, -28, 20, -30, 72, -51, 71)
+
+[node name="EnterHouseArea" parent="." instance=ExtResource("3_ch2m3")]
+position = Vector2(-8, 78)
+action_name = "Enter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterHouseArea"]
+position = Vector2(9, -58)
+shape = SubResource("CircleShape2D_4v4ig")
+debug_color = Color(0.529412, 0.572549, 0.0627451, 0.654902)
+
+[node name="EnterHouseTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="EnterHouseTimer" to="." method="_on_enter_house_timer_timeout"]

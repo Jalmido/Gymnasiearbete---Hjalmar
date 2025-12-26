@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bgxxj54ysla4a" path="res://Assets/mountain_biome/WINTER TILES/WINTER TILES.png" id="1_1h3gl"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_xsckg"]
 [ext_resource type="PackedScene" uid="uid://c7m2hgpoqutad" path="res://Scenes/house_4.tscn" id="3_xsckg"]
-[ext_resource type="PackedScene" uid="uid://t10uwtkei83e" path="res://Scenes/npc_townsmanbill.tscn" id="4_nyct2"]
+[ext_resource type="PackedScene" uid="uid://t10uwtkei83e" path="res://Scenes/npc_h_1.tscn" id="4_nyct2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h3gl"]
 texture = ExtResource("1_1h3gl")

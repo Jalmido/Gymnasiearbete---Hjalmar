@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctan2nuc7q3ya"
-path="res://.godot/imported/03.png-a4e0766fc67414c6126951c22d7f5522.ctex"
+uid="uid://b5xari38b16dn"
+path="res://.godot/imported/Sample-InventorySlotsSet-ezgif.com-crop.png-c95020df5c20d13f65fd87afd17d74fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/Pixel UI pack 3/03.png"
-dest_files=["res://.godot/imported/03.png-a4e0766fc67414c6126951c22d7f5522.ctex"]
+source_file="res://Assets/ui/Sample-InventorySlotsSet-ezgif.com-crop.png"
+dest_files=["res://.godot/imported/Sample-InventorySlotsSet-ezgif.com-crop.png-c95020df5c20d13f65fd87afd17d74fd.ctex"]
 
 [params]
 

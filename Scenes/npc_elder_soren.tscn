@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfqhbqinwqane"]
+
+[ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_osig5"]
+[ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="3_osig5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktggm"]
+atlas = ExtResource("1_67ax8")
+region = Rect2(0, 480, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me1r8"]
+atlas = ExtResource("1_67ax8")
+region = Rect2(32, 480, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl5um"]
+atlas = ExtResource("1_67ax8")
+region = Rect2(64, 480, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jsj5"]
+atlas = ExtResource("1_67ax8")
+region = Rect2(96, 480, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o52ba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktggm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me1r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl5um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jsj5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wi5jj"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wh5hh"]
+radius = 50.01
+
+[node name="NPC_ElderSoren" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_o52ba")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_wi5jj")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_osig5")]
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_wh5hh")
+
+[node name="RoamTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Dialogue" parent="." instance=ExtResource("3_osig5")]
+dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue1.json"

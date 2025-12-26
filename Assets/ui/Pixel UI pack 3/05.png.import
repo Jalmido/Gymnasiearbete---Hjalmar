@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b74f8shd8sa2y"
-path="res://.godot/imported/06-ezgif.com-crop-3.png-3f8137df5b3790dbfa87730761caaf7f.ctex"
+uid="uid://dxcgiq3vc16m5"
+path="res://.godot/imported/05.png-05162ef93f4b8b1a5d079e920edd0807.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/Healthbar/06-ezgif.com-crop-3.png"
-dest_files=["res://.godot/imported/06-ezgif.com-crop-3.png-3f8137df5b3790dbfa87730761caaf7f.ctex"]
+source_file="res://Assets/ui/Pixel UI pack 3/05.png"
+dest_files=["res://.godot/imported/05.png-05162ef93f4b8b1a5d079e920edd0807.ctex"]
 
 [params]
 

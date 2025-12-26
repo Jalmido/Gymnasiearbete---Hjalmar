@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnxy2vfhnqcxu"]
+
+[ext_resource type="Script" uid="uid://b6jbhwsnoq8xv" path="res://Interaction/Dialogue/dialogueplayer.gd" id="1_dvt2y"]
+[ext_resource type="Texture2D" uid="uid://b5xari38b16dn" path="res://Assets/ui/Sample-InventorySlotsSet-ezgif.com-crop.png" id="2_xngqd"]
+
+[node name="Dialogue" type="Control"]
+z_index = 101
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dvt2y")
+dialogue_file = "res://Interaction/Dialogue/TownsmanBill_dialogue1"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -37.0
+offset_top = -56.0
+offset_right = 35.0
+offset_bottom = -18.0
+texture = ExtResource("2_xngqd")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 160.0
+offset_bottom = 27.0
+scale = Vector2(0.4, 0.4)
+text = "Name:"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 215.0
+offset_bottom = 86.0
+scale = Vector2(0.3, 0.3)
+text = "Talking......"

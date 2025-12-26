@@ -1,12 +1,18 @@
 extends CharacterBody2D
 class_name Player
 
-const MAX_SPEED = 160
+
 const MAX_JUMP_DISTANCE = 70
-const ACC = 1100
+const NORMAL_SPEED = 160
+const NORMAL_ACCELERATION = 1100
+const ICE_SPEED = 230
+const ICE_ACCELERATION = 200
 
 enum { IDLE, WALK, DEAD, JUMP, WATER }
+
 var state = IDLE
+var speed: float = NORMAL_SPEED
+var acceleration: float = NORMAL_ACCELERATION
 var direction_name = "down"
 var can_take_damage = true
 var jump_direction: Vector2 = Vector2.ZERO
@@ -39,10 +45,23 @@ func _physics_process(delta: float) -> void:
 # ------------------------------
 func _movement(delta: float, direction: Vector2) -> void:
 	if direction != Vector2.ZERO:
-		velocity = velocity.move_toward(direction * MAX_SPEED, ACC * delta)
+		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, ACC * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 	move_and_slide()
+
+func _update_ground_movement():
+	#Normal mark
+	speed = NORMAL_SPEED
+	acceleration = NORMAL_ACCELERATION
+	
+	GroundControlRaycast.enabled = true
+	GroundControlRaycast.force_raycast_update()
+	if GroundControlRaycast.is_colliding():
+		var collider = GroundControlRaycast.get_collider()
+		if collider.is_in_group("ice"):
+			speed = ICE_SPEED
+			acceleration = ICE_ACCELERATION
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Jump") and can_jump:
@@ -104,6 +123,9 @@ func _idle_state(delta: float) -> void:
 
 func _walk_state(delta: float) -> void:
 	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
+	
+	_update_ground_movement() #Kollar om vi är på vanlig mark eller is
+	
 	if input_vector == Vector2.ZERO:
 		_enter_idle_state()
 	else:
@@ -112,7 +134,7 @@ func _walk_state(delta: float) -> void:
 		
 	_update_direction(input_vector)
 	_movement(delta, input_vector)
-
+	
 func _dead_state(_delta: float) -> void:
 	velocity = Vector2.ZERO
 	move_and_slide()
@@ -152,7 +174,6 @@ func _water_state(_delta: float) -> void:
 
 	is_respawning = false
 	_enter_idle_state()
-
 
 func _landing_manager() -> void:
 

@@ -12,6 +12,9 @@ var target_spawn_point_name: String = ""
 func _play_animation() -> void:
 	anim.play("Fade_to_black")
 
+func _play_animation2() -> void:
+	anim.play("Fade_to_level")
+	
 ########## IN I HUS ############
 
 func enter_house(house_number: int) -> void:

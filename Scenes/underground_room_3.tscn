@@ -741,5 +741,5 @@ target_spawn_point_name = "Exit_To_Room3"
 
 [node name="RoomChange2" parent="." instance=ExtResource("3_t8ciw")]
 position = Vector2(312, -26)
-target_scene = "res://Scenes/mountain_village.tscn"
+target_scene = "res://Scenes/Cutscenes/enter_mountain_cutscene.tscn"
 target_spawn_point_name = "res://Scenes/underground_room_3.tscn"

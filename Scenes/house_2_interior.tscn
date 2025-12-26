@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://cknmw4wln02v2"]
+[gd_scene load_steps=12 format=4 uid="uid://cknmw4wln02v2"]
 
 [ext_resource type="Script" uid="uid://d4mdtopncprly" path="res://Scripts/house_interior.gd" id="1_2w0e5"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_nvxsd"]
 [ext_resource type="Texture2D" uid="uid://bjdre1h2cd3f7" path="res://Assets/overworld/sprites/tilesets/floors/wooden.png" id="3_lfxar"]
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="4_c2qpj"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="5_pk0yk"]
+[ext_resource type="PackedScene" uid="uid://bfqhbqinwqane" path="res://Scenes/npc_elder_soren.tscn" id="6_nvxsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2w0e5"]
 texture = ExtResource("3_lfxar")
@@ -375,6 +376,9 @@ shape = SubResource("RectangleShape2D_8wbxx")
 [node name="ExitHouseTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="NPC_ElderSoren" parent="." instance=ExtResource("6_nvxsd")]
+position = Vector2(1, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ExitHouseTimer" to="." method="_on_exit_house_timer_timeout"]

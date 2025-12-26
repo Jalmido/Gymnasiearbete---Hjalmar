@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvbkxfid1orq5"]
+
+[ext_resource type="Script" uid="uid://d1exekr3jx4kd" path="res://Scenes/npc.gd" id="1_xxsvc"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_h1ryf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6atyd"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_xxsvc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_6atyd")
+animation = &"Walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_h1ryf")]
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+
+[node name="RoamTimer" type="Timer" parent="."]
+autostart = true

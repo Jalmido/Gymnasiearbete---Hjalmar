@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://j8aawu8b85qi" path="res://Scripts/gun.gd" id="1_oqrbh"]
 [ext_resource type="Texture2D" uid="uid://pk8s8vw7uxtf" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sGun.png" id="2_t6ynv"]
 [ext_resource type="Texture2D" uid="uid://bx427cr7oybr7" path="res://Assets/guns/topdown_shooter_tutorial/topdown_shooter_assets/sBullet.png" id="3_t6ynv"]
-[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://ui/fonts/DungeonFont.ttf" id="4_k4teu"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="4_k4teu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yjyf"]
 radius = 4.47214

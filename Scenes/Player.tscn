@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=72 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bo8uxj6u0jq40" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Walk.png" id="4_nn08x"]
 [ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="5_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://c35nhbf0j2bj3" path="res://Assets/Items/Arrow.png" id="6_nn08x"]
+[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="7_52ee3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
 atlas = ExtResource("2_dewec")
@@ -685,6 +686,7 @@ libraries = {
 }
 
 [node name="Handgun" parent="." instance=ExtResource("5_5ixxa")]
+visible = false
 position = Vector2(-4, -9)
 scale = Vector2(0.34, 0.34)
 
@@ -707,5 +709,7 @@ enabled = false
 target_position = Vector2(0, 0)
 collision_mask = 48
 hit_from_inside = true
+
+[node name="HUD" parent="." instance=ExtResource("7_52ee3")]
 
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

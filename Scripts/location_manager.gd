@@ -2,9 +2,8 @@ extends Node2D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
-
 var last_exit_position: Vector2
-var last_scene: String = ""
+var last_scene: String
 var last_jump_position: Vector2
 var target_spawn_point_name: String = ""
 
@@ -18,20 +17,23 @@ func _play_animation2() -> void:
 ########## IN I HUS ############
 
 func enter_house(house_number: int) -> void:
-	var scene_path = "res://Scenes/house_%d_interior.tscn" % house_number
-	get_tree().change_scene_to_file(scene_path)
+	var target_scene = "res://Scenes/Houses/house_%d_interior.tscn" % house_number
+	get_tree().change_scene_to_file(target_scene)
 	anim.play("Fade_to_level")
 
 ########### UT UR HUS ###########
 func _exit_house() -> void:
 	get_tree().change_scene_to_file(LocationManager.last_scene)
+	await get_tree().process_frame
+	var player = get_tree().get_first_node_in_group("player")
+	player.global_position = last_exit_position
 	anim.play("Fade_to_level")
 
 ########### BYT RUM UNDEGROUND ############
-func _enter_new_room(scene_path: String) -> void:
-	var error = get_tree().change_scene_to_file(scene_path)
+func _enter_new_room(target_scene: String) -> void:
+	var error = get_tree().change_scene_to_file(target_scene)
 	if error != OK:
-		push_error("Kunde inte ladda scen: ", scene_path)
+		push_error("Kunde inte ladda scen: ", target_scene)
 		return
 	
 	await get_tree().process_frame

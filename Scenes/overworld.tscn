@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cr7lasxqhaihf"]
+[gd_scene load_steps=23 format=4 uid="uid://cr7lasxqhaihf"]
 
 [ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/position_manager.gd" id="1_5dcxx"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_w7v6x"]
@@ -8,13 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="6_dlnb1"]
 [ext_resource type="Texture2D" uid="uid://c1rx3vojpymxe" path="res://Assets/overworld/sprites/tilesets/overworld/fences.png" id="7_0imqq"]
 [ext_resource type="Texture2D" uid="uid://el17vui6pu7a" path="res://Assets/overworld/sprites/tilesets/overworld/Screenshot 2025-11-07 175240.png" id="8_8ho5u"]
-[ext_resource type="PackedScene" uid="uid://bxsennemopq4g" path="res://Scenes/house_1.tscn" id="9_e8ubm"]
-[ext_resource type="PackedScene" uid="uid://lwds1gg6rinm" path="res://Scenes/house_2.tscn" id="10_ci6rn"]
-[ext_resource type="PackedScene" uid="uid://c7lo0b32uwggv" path="res://Scenes/house_3.tscn" id="11_2brhu"]
+[ext_resource type="PackedScene" uid="uid://bxsennemopq4g" path="res://Scenes/Houses/house_1.tscn" id="9_e8ubm"]
+[ext_resource type="PackedScene" uid="uid://lwds1gg6rinm" path="res://Scenes/Houses/house_2.tscn" id="10_ci6rn"]
+[ext_resource type="PackedScene" uid="uid://c7lo0b32uwggv" path="res://Scenes/Houses/house_3.tscn" id="11_2brhu"]
 [ext_resource type="PackedScene" uid="uid://c8i7yrhysq8nm" path="res://Scenes/change_layer_area.tscn" id="12_h7wov"]
 [ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="13_utuaw"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="14_52lmo"]
-[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="15_yxflv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 resource_name = "Plains tileset"
@@ -926,8 +925,5 @@ shape = SubResource("RectangleShape2D_fhlu0")
 position = Vector2(1168, 220)
 scale = Vector2(71.4155, 41.8343)
 polygon = PackedVector2Array(2.49245, 0.860538, 2.47845, 4.61344, 7.30934, 4.58954, 7.32334, 5.23494, 2.14239, 5.11542, 2.14239, 0.143423, 3.69668, 0.215135, 3.69668, 0.741019)
-
-[node name="HUD" parent="." instance=ExtResource("15_yxflv")]
-layer = 100
 
 [connection signal="timeout" from="LevelChange/ChangeLevelTimer" to="LevelChange" method="_on_change_level_timer_timeout"]

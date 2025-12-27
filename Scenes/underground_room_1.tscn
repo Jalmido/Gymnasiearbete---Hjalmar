@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cbkoqt166ojjo"]
+[gd_scene load_steps=10 format=4 uid="uid://cbkoqt166ojjo"]
 
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="2_7jytf"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_lpr5q"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_3i1pi"]
 [ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/jump_area.tscn" id="5_pxa8a"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://room_change.tscn" id="6_7ct7s"]
-[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="6_qchmu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3d5am"]
 texture = ExtResource("2_7jytf")
@@ -570,8 +569,6 @@ scale = Vector2(1.42166, 0.830821)
 [node name="JumpArea2" parent="." instance=ExtResource("5_pxa8a")]
 position = Vector2(210, 362)
 scale = Vector2(1.42166, 0.830821)
-
-[node name="HUD" parent="." instance=ExtResource("6_qchmu")]
 
 [node name="RoomChange" parent="." instance=ExtResource("6_7ct7s")]
 position = Vector2(523, 244)

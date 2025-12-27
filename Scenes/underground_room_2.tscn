@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cx2dtci42n0y0"]
+[gd_scene load_steps=10 format=4 uid="uid://cx2dtci42n0y0"]
 
 [ext_resource type="Script" uid="uid://dck1m43qho6vu" path="res://Scenes/underground_room_2.gd" id="1_m8cpq"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="1_ufji3"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://room_change.tscn" id="2_d7mrq"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_6beed"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_d7mrq"]
-[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="5_6beed"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7uknt"]
 texture = ExtResource("1_ufji3")
@@ -769,5 +768,3 @@ position = Vector2(-5, -10)
 
 [node name="Exit_To_Room1" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-5, -10)
-
-[node name="HUD" parent="." instance=ExtResource("5_6beed")]

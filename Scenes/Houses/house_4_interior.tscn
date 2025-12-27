@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7kuiuxtrtaqd"]
+[gd_scene load_steps=14 format=4 uid="uid://c7kuiuxtrtaqd"]
 
+[ext_resource type="Script" uid="uid://d4mdtopncprly" path="res://Scripts/house_interior.gd" id="1_ep8e7"]
 [ext_resource type="Texture2D" uid="uid://bjdre1h2cd3f7" path="res://Assets/overworld/sprites/tilesets/floors/wooden.png" id="1_io317"]
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="2_xmakj"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="3_wop1w"]
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="4_u8q1y"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="5_k86s3"]
+[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="7_wqisy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqlpu"]
 texture = ExtResource("1_io317")
@@ -565,7 +567,11 @@ sources/1 = SubResource("TileSetAtlasSource_i2hpb")
 sources/2 = SubResource("TileSetAtlasSource_wajth")
 sources/3 = SubResource("TileSetAtlasSource_c8wnp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqisy"]
+size = Vector2(45, 28)
+
 [node name="house_4_interior" type="Node2D"]
+script = ExtResource("1_ep8e7")
 
 [node name="Floor_Carpet" type="TileMapLayer" parent="."]
 z_index = -2
@@ -584,3 +590,20 @@ position = Vector2(88, 214)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(84, 116)
 zoom = Vector2(4.5, 4.5)
+
+[node name="ExitHouseArea" type="Area2D" parent="."]
+position = Vector2(80, 239)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitHouseArea"]
+position = Vector2(12.5, 4)
+shape = SubResource("RectangleShape2D_wqisy")
+
+[node name="ExitHouseTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Ammo" parent="." instance=ExtResource("7_wqisy")]
+position = Vector2(41, 103)
+
+[connection signal="body_entered" from="ExitHouseArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ExitHouseTimer" to="." method="_on_exit_house_timer_timeout"]

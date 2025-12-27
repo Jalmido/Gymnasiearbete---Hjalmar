@@ -6,7 +6,7 @@ const MAX_JUMP_DISTANCE = 70
 const NORMAL_SPEED = 160
 const NORMAL_ACCELERATION = 1100
 const ICE_SPEED = 230
-const ICE_ACCELERATION = 200
+const ICE_ACCELERATION = 400
 
 enum { IDLE, WALK, DEAD, JUMP, WATER }
 
@@ -55,6 +55,7 @@ func _update_ground_movement():
 	speed = NORMAL_SPEED
 	acceleration = NORMAL_ACCELERATION
 	
+	#Se om man är på is
 	GroundControlRaycast.enabled = true
 	GroundControlRaycast.force_raycast_update()
 	if GroundControlRaycast.is_colliding():
@@ -84,6 +85,17 @@ func _update_direction(direction: Vector2) -> void:
 		else:
 			direction_name = "up"
 
+func _change_weapon(weapon_name: String) -> void:
+	$Handgun.disable_weapon()
+	#$Sword.disable_weapon() ## Har inte svärd än
+	
+	# Aktivera det valda vapnet
+	if weapon_name == "Pistol":
+		$Handgun.enable_weapon()
+	elif weapon_name == "Svärd":
+		print("Svärd valt (här körs svärdlogik sen)")
+		# sword.enable_weapon()
+
 func _take_damage() -> void:
 	if not can_take_damage:
 		return
@@ -106,6 +118,27 @@ func _reset_raycast() -> void:
 	JumpRaycast.hide()
 	JumpRaycast.rotation = 0
 	JumpRaycast.target_position = Vector2.ZERO
+	
+
+func _landing_manager() -> void:
+
+	velocity = Vector2.ZERO
+	set_collision_mask_value(2, true) # Slå på kollision med väggar igen
+	
+	# Tvinga raycasten att kolla vad som finns under fötterna just nu
+	GroundControlRaycast.force_raycast_update()
+	
+	# Kolla om vi träffade något
+	if GroundControlRaycast.is_colliding():
+		var collider = GroundControlRaycast.get_collider()
+		
+		# Kolla om det vi står på är med i gruppen "water"
+		if collider.is_in_group("water"):
+			_enter_water_state()
+			return # VIKTIGT: Avbryt här så vi inte går vidare till idle_state
+
+	# Om det inte var vatten (eller vi missade marken helt), landa som vanligt
+	_enter_idle_state()
 
 # ------------------------------
 # State functions
@@ -175,25 +208,6 @@ func _water_state(_delta: float) -> void:
 	is_respawning = false
 	_enter_idle_state()
 
-func _landing_manager() -> void:
-
-	velocity = Vector2.ZERO
-	set_collision_mask_value(2, true) # Slå på kollision med väggar igen
-	
-	# Tvinga raycasten att kolla vad som finns under fötterna just nu
-	GroundControlRaycast.force_raycast_update()
-	
-	# Kolla om vi träffade något
-	if GroundControlRaycast.is_colliding():
-		var collider = GroundControlRaycast.get_collider()
-		
-		# Kolla om det vi står på är med i gruppen "water"
-		if collider.is_in_group("water"):
-			_enter_water_state()
-			return # VIKTIGT: Avbryt här så vi inte går vidare till idle_state
-
-	# Om det inte var vatten (eller vi missade marken helt), landa som vanligt
-	_enter_idle_state()
 # ----------------------
 #Animation funktion
 # ----------------------

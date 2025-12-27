@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcxu0sri25tgd"]
+
+[ext_resource type="Script" uid="uid://re8anjyqfbr2" path="res://Scenes/Hotbar.gd" id="2_o071h"]
+[ext_resource type="Script" uid="uid://c7f8uym3py46q" path="res://Scripts/item_button.gd" id="3_o071h"]
+[ext_resource type="Texture2D" uid="uid://cu7a81u87aw6r" path="res://Assets/Items/ItemSprites/an-8-bit-retro-styled-pixel-art-illustration-of-a-stone-sword-free-png-ezgif.com-resize.webp" id="3_stvnf"]
+[ext_resource type="Texture2D" uid="uid://fwc4eennq316" path="res://Assets/Items/ItemSprites/dbk6s0q-ae674f69-f9dd-4a2f-9673-a6049fabe448-ezgif.com-resize.png" id="5_0gnsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o071h"]
+bg_color = Color(0.882353, 0.678431, 0.403922, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.458824, 0.239216, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf0n5"]
+bg_color = Color(0.881075, 0.677348, 0.404058, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.460436, 0.240103, 1.44392e-07, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_hf0n5"]
+resource_name = "HotbarButtons"
+
+[node name="Hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_o071h")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(460, 90)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 5
+
+[node name="ItemButton2" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hf0n5")
+icon = ExtResource("3_stvnf")
+expand_icon = true
+script = ExtResource("3_o071h")
+item_name = "Sword"
+
+[node name="ItemButton3" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hf0n5")
+icon = ExtResource("5_0gnsb")
+expand_icon = true
+script = ExtResource("3_o071h")
+item_name = "Pistol"
+
+[node name="ItemButton4" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hf0n5")
+expand_icon = true
+script = ExtResource("3_o071h")
+
+[node name="ItemButton5" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hf0n5")
+expand_icon = true
+script = ExtResource("3_o071h")
+
+[node name="ItemButton6" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hf0n5")
+expand_icon = true
+script = ExtResource("3_o071h")

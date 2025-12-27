@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
-	LocationManager.last_scene = "res://Scenes/overworld.tscn"
+	LocationManager.last_scene = get_tree().current_scene.scene_file_path
 	LocationManager.last_exit_position = player.global_position
 	LocationManager._play_animation()
 	$EnterHouseTimer.start()

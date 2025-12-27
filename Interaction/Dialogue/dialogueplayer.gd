@@ -9,10 +9,11 @@ var dialogue_completed = false
 
 func _ready() -> void:
 	$NinePatchRect.visible = false
-	
+	$".".show()
 func start():
 	if dialogue_active or dialogue_completed: #om aktiv, så är vi redan igång med dialog och vi returnar
 		return
+
 	$NinePatchRect.visible = true
 	dialogue_active = true
 	dialogue = _load_dialogue() #vi laddar dialogen som vi vill köra

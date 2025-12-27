@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqobkh0jrud6j"]
+
+[ext_resource type="Texture2D" uid="uid://12tfbrfkwjvr" path="res://Assets/Items/ItemSprites/stone.png" id="1_mq6ge"]
+[ext_resource type="Script" uid="uid://488st7jpf0xt" path="res://Scenes/ammo.gd" id="1_pncbt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vs3aj"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_1r3pl"]
+offsets = PackedFloat32Array(0, 0.88961)
+colors = PackedColorArray(4.04298e-06, 0.591824, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mq6ge"]
+gradient = SubResource("Gradient_1r3pl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
+[node name="Ammo" type="Area2D"]
+script = ExtResource("1_pncbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vs3aj")
+debug_color = Color(0.666667, 0.933333, 1, 0.313726)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mq6ge")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_mq6ge")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

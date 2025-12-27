@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5xari38b16dn" path="res://Assets/ui/Sample-InventorySlotsSet-ezgif.com-crop.png" id="2_xngqd"]
 
 [node name="Dialogue" type="Control"]
+visible = false
 z_index = 101
 layout_mode = 3
 anchors_preset = 0

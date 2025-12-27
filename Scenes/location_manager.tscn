@@ -60,6 +60,7 @@ _data = {
 script = ExtResource("1_yyw85")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

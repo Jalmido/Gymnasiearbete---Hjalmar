@@ -88,7 +88,7 @@ func disable_weapon():
 func _on_bullet_body_entered(body: Node2D) -> void:
 	if not is_shooting:
 		return
-	if body is Enemy:
+	if body.is_in_group("enemies"):
 		body._take_damage()
 	_reset_bullet()
 

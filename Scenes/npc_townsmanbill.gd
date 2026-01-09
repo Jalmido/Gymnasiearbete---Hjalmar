@@ -65,6 +65,7 @@ func _on_interact():
 	is_roaming = false
 	$AnimatedSprite2D.play("Idle")
 	$Dialogue.start()
+	
 func _on_timer_timeout() -> void:
 	$RoamTimer.wait_time = choose([0.5,1,1.5])
 	current_state = choose([IDLE, NEW_DIR, WALK])

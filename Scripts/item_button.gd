@@ -12,8 +12,8 @@ class_name ItemButton
 # Inuti ditt HUD/Hotbar script
 func _process(_delta):
 	if Globals.health_potions_in_inv > 0:
-		$"../ItemButton4/Healthpotionlabel".text = "x" + str(Globals.health_potions_in_inv)
-		$"../ItemButton4".icon = load("res://Assets/Items/game-potion-pixelated-free-png-2.png")
+		$"../HealthPotion/Healthpotionlabel".text = "x" + str(Globals.health_potions_in_inv)
+		$"../HealthPotion".icon = load("res://Assets/Items/game-potion-pixelated-free-png-2.png")
 	else:
-		$"../ItemButton4".icon = null
-		$"../ItemButton4/Healthpotionlabel".text = ""
+		$"../HealthPotion".icon = null
+		$"../HealthPotion/Healthpotionlabel".text = ""

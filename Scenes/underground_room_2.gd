@@ -11,7 +11,7 @@ func _ready():
 	$RoomChange2._lock_door()
 func _connect_enemy_signals():
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	enemies_required = enemies.size()
+	enemies_required = 3
 	for enemy in enemies:
 		enemy.dead.connect(_on_enemy_dead)
 		
@@ -22,9 +22,13 @@ func _on_enemy_dead(enemy):
 		_on_miniboss_room_cleared()
 
 func _on_miniboss_room_cleared():
-	print("MINIBOSS ROOM CLEARED!")
-	$RoomChange._unlock_door()
-	$RoomChange2._unlock_door()
+
+	$Rock_Boss.active = true
+	if $Rock_Boss.active == false:
+		$RoomChange._unlock_door()
+		$RoomChange2._unlock_door()
+		print("MINIBOSS ROOM CLEARED!")
+		
 	# Exempel:
 	# - öppna dörr
 	# - spawn chest

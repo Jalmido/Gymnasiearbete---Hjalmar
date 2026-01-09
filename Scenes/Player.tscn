@@ -929,6 +929,7 @@ size = Vector2(17, 16)
 modulate = Color(0.990781, 0.862059, 0.728208, 1)
 scale = Vector2(0.967742, 0.967742)
 collision_mask = 6
+safe_margin = 0.1
 script = ExtResource("1_ij6vw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

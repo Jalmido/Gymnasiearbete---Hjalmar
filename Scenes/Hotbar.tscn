@@ -66,7 +66,7 @@ grow_horizontal = 2
 grow_vertical = 0
 columns = 5
 
-[node name="ItemButton2" type="Button" parent="GridContainer"]
+[node name="Sword" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -80,7 +80,7 @@ expand_icon = true
 script = ExtResource("3_o071h")
 item_name = "Sword"
 
-[node name="ItemButton3" type="Button" parent="GridContainer"]
+[node name="Pistol" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -94,7 +94,7 @@ expand_icon = true
 script = ExtResource("3_o071h")
 item_name = "Pistol"
 
-[node name="ItemButton4" type="Button" parent="GridContainer"]
+[node name="HealthPotion" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -109,7 +109,7 @@ expand_icon = true
 script = ExtResource("3_o071h")
 item_name = "Health_Potion"
 
-[node name="Healthpotionlabel" type="Label" parent="GridContainer/ItemButton4"]
+[node name="Healthpotionlabel" type="Label" parent="GridContainer/HealthPotion"]
 layout_mode = 0
 offset_left = -13.0
 offset_top = -14.0

@@ -141,7 +141,7 @@ func _attack_state(delta:float) -> void:
 	
 	if distance_to_player > 40:
 		_enter_walk_state()
-	player._take_damage()
+	player._take_damage(1)
 	_movement(delta, Vector2.ZERO, 0)
 
 func _dead_state(_delta:float) -> void:
@@ -179,5 +179,5 @@ func _on_lost_sight_timer_timeout() -> void:
 
 
 
-func _on_attack_hitbox_body_entered(_body: Node2D) -> void:
+func _on_attack_range_body_entered(_body: Node2D) -> void:
 	_enter_attack_state()

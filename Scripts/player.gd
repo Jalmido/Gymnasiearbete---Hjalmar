@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Jump") and can_jump:
 		_enter_jump_state()
 	if event.is_action_pressed("Attack"):
-		if current_item == "Sword":
+		if current_item == "Sword" and attacking:
 			_enter_attack_state()
 		elif current_item == "Health_Potion":
 			_drink_potion()
@@ -103,8 +103,7 @@ func _change_hotbar_item(item_name: String) -> void:
 		$Handgun.enable_weapon()
 		attacking = false
 	elif item_name == "Sword":
-		print("Svärd valt (här körs svärdlogik sen)")
-		current_item = ""
+		current_item = "Sword"
 		attacking = true
 	elif item_name == "Health_Potion":
 		current_item = "Health_Potion"
@@ -116,14 +115,14 @@ func _drink_potion() -> void:
 		Globals.health_potions_in_inv -= 1
 		print("SKÅL!")
 
-func _take_damage() -> void:
+func _take_damage(amount: int) -> void:
 	if not can_take_damage:
 		return
 	
 	if can_take_damage:
 		can_take_damage = false
 		DamageCooldownTimer.start()
-		Globals.lives -= 1
+		Globals.lives -= amount
 
 		if Globals.lives <= 0:
 			_enter_dead_state()
@@ -222,20 +221,14 @@ func _water_state(_delta: float) -> void:
 	GroundControlRaycast.enabled = true
 	set_collision_mask_value(2, true)
 
-	_take_damage()
+	_take_damage(1)
 
 	is_respawning = false
 	_enter_idle_state()
 
 func _attack_state(_delta: float) -> void:
-
-	print("ATTACKING")
-
-	if Input.is_action_pressed("Attack"):
-		AnimPlayer.play("Attack_" + direction_name)
-	
+	AnimPlayer.play("Attack_" + direction_name)
 	await AnimPlayer.animation_finished
-	
 	_enter_idle_state()
 
 
@@ -285,5 +278,5 @@ func _on_damage_cooldown_timer_timeout() -> void:
 
 
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
+	if body.is_in_group("enemies"):
 		body._take_damage()

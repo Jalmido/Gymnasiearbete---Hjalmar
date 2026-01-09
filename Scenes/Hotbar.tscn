@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcxu0sri25tgd"]
+[gd_scene load_steps=9 format=3 uid="uid://bcxu0sri25tgd"]
 
 [ext_resource type="Script" uid="uid://re8anjyqfbr2" path="res://Scenes/Hotbar.gd" id="2_o071h"]
 [ext_resource type="Script" uid="uid://c7f8uym3py46q" path="res://Scripts/item_button.gd" id="3_o071h"]
 [ext_resource type="Texture2D" uid="uid://cu7a81u87aw6r" path="res://Assets/Items/ItemSprites/an-8-bit-retro-styled-pixel-art-illustration-of-a-stone-sword-free-png-ezgif.com-resize.webp" id="3_stvnf"]
 [ext_resource type="Texture2D" uid="uid://fwc4eennq316" path="res://Assets/Items/ItemSprites/dbk6s0q-ae674f69-f9dd-4a2f-9673-a6049fabe448-ezgif.com-resize.png" id="5_0gnsb"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="5_o071h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o071h"]
 bg_color = Color(0.882353, 0.678431, 0.403922, 1)
@@ -98,12 +99,24 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_o071h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_hf0n5")
+alignment = 0
 expand_icon = true
 script = ExtResource("3_o071h")
+item_name = "Health_Potion"
+
+[node name="Healthpotionlabel" type="Label" parent="GridContainer/ItemButton4"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -14.0
+offset_right = 27.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("5_o071h")
+theme_override_font_sizes/font_size = 22
 
 [node name="ItemButton5" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)

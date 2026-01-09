@@ -7,7 +7,7 @@ func _ready() -> void:
 	Globals.lives_changed.connect(_update_healthbar_image)
 	_update_healthbar_image(Globals.lives)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	ammolabel.text = str(Globals.ammo_in_mag) + " / " + str(Globals.ammo_in_inv)
 
 func _update_healthbar_image(new_lives) -> void:

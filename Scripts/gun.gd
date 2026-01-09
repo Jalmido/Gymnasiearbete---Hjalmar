@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 	if is_shooting:
 		bullet.global_position += (bullet_direction * bullet_velocity * delta)
 	if Input.is_action_just_pressed("Reload"):
-		print("reloading")
 		_reload_pistol()
 
 func shoot(target_pos: Vector2) -> void:
@@ -52,9 +51,7 @@ func shoot(target_pos: Vector2) -> void:
 	bullet_direction = (target_pos - bullet.global_position).normalized()
 	is_shooting = true
 	Globals.ammo_in_mag -=1
-	print(Globals.ammo_in_mag, "Bullets kvar i mag")
 	if Globals.ammo_in_mag <= 0:
-		print("Empty mag")
 		can_shoot = false
 	$ResetBulletTimer.start()
 

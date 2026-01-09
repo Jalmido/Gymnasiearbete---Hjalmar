@@ -55,7 +55,10 @@ func choose(array):
 
 func _movement(delta):
 	if not is_chatting:
-		position += dir * SPEED * delta
+		velocity = dir * SPEED
+		move_and_slide()
+	else:
+		velocity = Vector2.ZERO # Stoppa NPC:n om den pratar
 
 func _on_interact():
 	is_chatting = true

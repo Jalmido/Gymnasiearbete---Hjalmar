@@ -22,6 +22,6 @@ func select_slot(index: int):
 			var tween_up = create_tween()
 			tween_up.tween_property(button, "position:y", -20.0, 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 			
-			print("Du valde slot ", index + 1, ": ", button.item_name)
+
 			var player = get_tree().get_first_node_in_group("player")
-			player._change_weapon(button.item_name)
+			player._change_hotbar_item(button.item_name)

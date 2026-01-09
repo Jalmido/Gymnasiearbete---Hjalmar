@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8d3fyx555ggw"]
+
+[ext_resource type="Script" uid="uid://1hudettu06kd" path="res://health_potion.gd" id="1_x2qfu"]
+[ext_resource type="Texture2D" uid="uid://c2cd6urma0e0u" path="res://Assets/Items/game-potion-pixelated-free-png-2.png" id="2_petj4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttnbf"]
+radius = 9.0
+
+[node name="Health_potion" type="Area2D"]
+script = ExtResource("1_x2qfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ttnbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0267857, 0.0267857)
+texture = ExtResource("2_petj4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

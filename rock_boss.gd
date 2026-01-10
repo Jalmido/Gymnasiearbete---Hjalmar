@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Boss
 
-signal dead(enemy:Enemy)
+signal dead(enemy: Enemy)
 
 const ACC = 1100
 var speed: int = 40
@@ -33,9 +33,9 @@ func _physics_process(delta: float) -> void:
 		DEAD:
 			_dead_state(delta)
 		SWIPE:
-			_swipe_state(delta)
+			_movement(delta, Vector2.ZERO)
 		STOMP:
-			_stomp_state(delta)
+			_movement(delta, Vector2.ZERO)
 
 	
 
@@ -77,13 +77,21 @@ func _update_direction(direction: Vector2) -> void:
 #-----------------
 
 func _take_damage():
+	if not active:
+		return
+		
 	health -= 1
+	if health <= 0:
+		_enter_dead_state()
+	
 	if health < 8:
 		speed = 80
+		$AnimatedSprite2D.modulate.b = 0		
+		$AnimatedSprite2D.modulate.r = 1.0
+		$AnimatedSprite2D.modulate.g = 0	
 		$AfterStompIdleTimer.wait_time = 1.5
 		$AfterSwipeIdleTimer.wait_time = 1.0
-	elif health <= 0:
-		_enter_dead_state()
+
 	_update_healthbar()
 	
 func _update_healthbar() -> void:
@@ -101,12 +109,14 @@ func choose(array):
 func _idle_state(delta: float) -> void:
 	anim.play("Idle_" + direction_name)
 	_movement(delta, Vector2.ZERO)
-
+	if active and $AfterSwipeIdleTimer.is_stopped() and $AfterStompIdleTimer.is_stopped():
+		_enter_walk_state()
+		
 func _walk_state(delta: float) -> void:
 	var direction_to_player = global_position.direction_to(player.global_position)
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
-	if distance_to_player >= 100 and state != SWIPE and state != STOMP: #går bara t attack om den inte redan attackerar
+	if distance_to_player <= 100 and state != SWIPE and state != STOMP: #går bara t attack om den inte redan attackerar
 		_enter_attack_state()
 
 	elif distance_to_player < 50: #så man int fastnar i varandra
@@ -117,51 +127,38 @@ func _walk_state(delta: float) -> void:
 	anim.play("Walk_" + direction_name)
 	_movement(delta, direction_to_player)
 
-func _swipe_state(delta: float) -> void:
-	animplayer.play("Swipe_" + direction_name)
-	await animplayer.animation_finished
-	$AfterSwipeIdleTimer.start()
-	_enter_idle_state()
-	
-func _stomp_state(delta: float) -> void:
-	animplayer.play("Stomp_" + direction_name)
-	await animplayer.animation_finished
-	$AfterStompIdleTimer.start()
-	_enter_idle_state()
+
 	
 func _dead_state(_delta:float) -> void:
-	queue_free() #tar bort fienden från spelet
 	emit_signal("dead", self)
+	queue_free() #tar bort fienden från spelet
+	active = false
 # ------------------------------
 # Enter state functions
 # ------------------------------
 func _enter_idle_state():
 	state = IDLE
-
-
+	
 func _enter_walk_state():
 	state = WALK
-
 
 func _enter_dead_state():
 	state = DEAD
 	
 func _enter_attack_state():
 	state = choose([STOMP, SWIPE]) #slumpar mellan stomp å swipe
-	
-	
+	if state == STOMP:
+		animplayer.play("Stomp_" + direction_name)
+	elif state == SWIPE:
+		animplayer.play("Swipe_" + direction_name)
+	await animplayer.animation_finished
+	if state == STOMP:
+		$AfterStompIdleTimer.start()
+	elif state == SWIPE:
+		$AfterSwipeIdleTimer.start()
 	
 	
 ###### SIGNALS# ########
-
-
-"
-func _on_attack_range_body_entered(_body: Node2D) -> void:
-	if state != SWIPE and state != STOMP: #går bara t attack om den inte redan attackerar
-		_enter_attack_state()
-"
-	
-
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and $AfterSwipeIdleTimer.is_stopped() and $AfterStompIdleTimer.is_stopped():
@@ -172,7 +169,6 @@ func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 			damage = 2
 		body._take_damage(damage)
 
-
 func _on_after_attack_idle_timer_timeout() -> void:
 	print("HAR ATTACKERAT OCH SKA BÖRJA GÅ")
-	state = WALK
+	_enter_walk_state()

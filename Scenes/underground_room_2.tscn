@@ -713,7 +713,7 @@ sources/0 = SubResource("TileSetAtlasSource_m8cpq")
 
 [node name="underground_room_2" type="Node2D"]
 script = ExtResource("1_m8cpq")
-enemies_required = 3
+enemies_required = 4
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 
@@ -766,7 +766,7 @@ collision_mask = 7
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Exit_To_Room3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-5, -10)
+position = Vector2(216, 104)
 
 [node name="Exit_To_Room1" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-5, -10)

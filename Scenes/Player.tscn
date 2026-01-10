@@ -822,7 +822,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("SwordHitbox:monitoring")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -830,7 +830,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -929,6 +929,7 @@ size = Vector2(17, 16)
 modulate = Color(0.990781, 0.862059, 0.728208, 1)
 scale = Vector2(0.967742, 0.967742)
 collision_mask = 6
+platform_floor_layers = 4294967041
 safe_margin = 0.1
 script = ExtResource("1_ij6vw")
 
@@ -977,6 +978,7 @@ hit_from_inside = true
 [node name="SwordHitbox" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 4
+monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]

@@ -141,7 +141,7 @@ func _reset_raycast() -> void:
 func _landing_manager() -> void:
 
 	velocity = Vector2.ZERO
-	set_collision_mask_value(2, true) # Slå på kollision med väggar igen
+	set_collision_mask_value(7, true) # Slå på kollision med väggar igen
 	
 	# Tvinga raycasten att kolla vad som finns under fötterna just nu
 	GroundControlRaycast.force_raycast_update()
@@ -258,7 +258,7 @@ func _enter_jump_state():
 	LocationManager.last_jump_position = global_position #gör så vi kan respawna om vi landar fel
 	
 	
-	set_collision_mask_value(2, false) #stänger av kollision m objekt medan man hoppar, så kan man hoppa mellan platformar
+	set_collision_mask_value(7, false) #stänger av kollision m objekt medan man hoppar, så kan man hoppa mellan platformar
 	
 	jump_start_pos = global_position
 	jump_direction = Vector2.DOWN.rotated(JumpRaycast.global_rotation).normalized()
@@ -278,5 +278,7 @@ func _on_damage_cooldown_timer_timeout() -> void:
 
 
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
+	if state != ATTACK:
+		return
 	if body.is_in_group("enemies"):
 		body._take_damage()

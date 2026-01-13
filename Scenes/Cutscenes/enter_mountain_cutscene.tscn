@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=4 uid="uid://c6etunnvwytl4"]
 
-[ext_resource type="Script" uid="uid://bhta6shy7j8ut" path="res://enter_mountain_cutscene.gd" id="1_tekmq"]
+[ext_resource type="Script" uid="uid://bhta6shy7j8ut" path="res://Scripts/enter_mountain_cutscene.gd" id="1_tekmq"]
 [ext_resource type="Texture2D" uid="uid://bgxxj54ysla4a" path="res://Assets/mountain_biome/WINTER TILES/WINTER TILES.png" id="2_732ct"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="3_k5ul2"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="4_8mgnj"]

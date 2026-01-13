@@ -465,7 +465,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij6vw"]
 radius = 4.0
-height = 16.0
+height = 21.9333
 
 [sub_resource type="Animation" id="Animation_megsn"]
 resource_name = "Attack_down"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://t10uwtkei83e"]
 
-[ext_resource type="Script" uid="uid://djdm6wg6aa4fn" path="res://Scenes/npc_townsmanbill.gd" id="1_2no11"]
+[ext_resource type="Script" uid="uid://djdm6wg6aa4fn" path="res://Scripts/npc_townsmanbill.gd" id="1_2no11"]
 [ext_resource type="Texture2D" uid="uid://c8moofnbnbe33" path="res://Assets/NPC_Characters_v1/Male1.png" id="2_5cyh3"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="3_7dbql"]
 [ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="4_5cyh3"]

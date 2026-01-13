@@ -392,7 +392,7 @@ debug_color = Color(0.614368, 0.535107, 0.138033, 0.231373)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -20)
-collision_mask = 3
+collision_mask = 195
 
 [node name="LostSightTimer" type="Timer" parent="."]
 wait_time = 3.0

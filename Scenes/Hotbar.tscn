@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bcxu0sri25tgd"]
 
-[ext_resource type="Script" uid="uid://re8anjyqfbr2" path="res://Scenes/Hotbar.gd" id="2_o071h"]
+[ext_resource type="Script" uid="uid://re8anjyqfbr2" path="res://Scripts/Hotbar.gd" id="2_o071h"]
 [ext_resource type="Script" uid="uid://c7f8uym3py46q" path="res://Scripts/item_button.gd" id="3_o071h"]
 [ext_resource type="Texture2D" uid="uid://cu7a81u87aw6r" path="res://Assets/Items/ItemSprites/an-8-bit-retro-styled-pixel-art-illustration-of-a-stone-sword-free-png-ezgif.com-resize.webp" id="3_stvnf"]
 [ext_resource type="Texture2D" uid="uid://fwc4eennq316" path="res://Assets/Items/ItemSprites/dbk6s0q-ae674f69-f9dd-4a2f-9673-a6049fabe448-ezgif.com-resize.png" id="5_0gnsb"]

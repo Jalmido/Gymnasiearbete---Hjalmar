@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_3i1pi"]
 [ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/jump_area.tscn" id="5_pxa8a"]
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="6_3d5am"]
-[ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://room_change.tscn" id="6_7ct7s"]
+[ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="6_7ct7s"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="7_hp65m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3d5am"]
@@ -578,6 +578,7 @@ tile_set = SubResource("TileSet_oyied")
 
 [node name="Player" parent="." instance=ExtResource("3_lpr5q")]
 position = Vector2(186, 134)
+collision_mask = 198
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1.03333, -1.03333)
@@ -588,6 +589,7 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_3i1pi")]
 position = Vector2(496, 453)
+collision_mask = 195
 
 [node name="RoomChange" parent="." instance=ExtResource("6_7ct7s")]
 position = Vector2(523, 244)
@@ -614,11 +616,11 @@ scale = Vector2(0.916382, 1.02935)
 
 [node name="JumpArea5" parent="JumpAreas" instance=ExtResource("5_pxa8a")]
 position = Vector2(23, 364)
-scale = Vector2(0.916382, 1.02935)
+scale = Vector2(1.34726, 1.38803)
 
 [node name="JumpArea6" parent="JumpAreas" instance=ExtResource("5_pxa8a")]
 position = Vector2(-25, 429)
-scale = Vector2(0.916382, 1.02935)
+scale = Vector2(1.32673, 1.54456)
 
 [node name="JumpArea7" parent="JumpAreas" instance=ExtResource("5_pxa8a")]
 position = Vector2(-86, 429)

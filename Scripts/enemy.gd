@@ -72,13 +72,15 @@ func _update_direction(direction: Vector2) -> void:
 
 func _update_sight() -> void: #funktion som mha raycast jagar spelarn om den är synlig
 	var raycast_direction = (player.global_position - global_position).normalized()
-	raycast.target_position = raycast_direction * 500
+	raycast.target_position = raycast_direction*300
 	
 	raycast.force_raycast_update() 
 	
 	if raycast.is_colliding():
 		var collided_with = raycast.get_collider() 
 		if collided_with == player: #spelarn syns
+			raycast_direction = (player.global_position - global_position).normalized()
+
 			chasing = true 
 			slow_chase = false
 			lost_sight_timer.stop()

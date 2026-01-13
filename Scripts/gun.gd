@@ -1,7 +1,7 @@
 extends Node2D
 class_name pistol
 
-var mouseposition
+
 var bullet_velocity = 2000
 var is_shooting = false
 var bullet_direction = Vector2.ZERO

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvbkxfid1orq5"]
 
-[ext_resource type="Script" uid="uid://d1exekr3jx4kd" path="res://Scenes/npc.gd" id="1_xxsvc"]
+[ext_resource type="Script" uid="uid://d1exekr3jx4kd" path="res://Scripts/npc.gd" id="1_xxsvc"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_h1ryf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6atyd"]

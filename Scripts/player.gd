@@ -219,7 +219,7 @@ func _water_state(_delta: float) -> void:
 	global_position = LocationManager.last_jump_position.snapped(Vector2.ONE)
 
 	GroundControlRaycast.enabled = true
-	set_collision_mask_value(2, true)
+	set_collision_mask_value(7, true)
 
 	_take_damage(1)
 

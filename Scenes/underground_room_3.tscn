@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="1_mbtr4"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_t8ciw"]
-[ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://room_change.tscn" id="3_t8ciw"]
+[ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="3_t8ciw"]
 [ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/jump_area.tscn" id="4_0t6f4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0t6f4"]

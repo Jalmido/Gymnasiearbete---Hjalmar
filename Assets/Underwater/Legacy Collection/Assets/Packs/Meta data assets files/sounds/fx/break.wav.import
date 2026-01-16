@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bspf2vf16lqlc"
+path="res://.godot/imported/break.wav-427b475aa7e569a954e48775e5fa7245.sample"
+
+[deps]
+
+source_file="res://Assets/Underwater/Legacy Collection/Assets/Packs/Meta data assets files/sounds/fx/break.wav"
+dest_files=["res://.godot/imported/break.wav-427b475aa7e569a954e48775e5fa7245.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

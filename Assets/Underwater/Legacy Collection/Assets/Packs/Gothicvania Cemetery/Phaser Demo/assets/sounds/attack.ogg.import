@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b7q3yqurm3es1"
+path="res://.godot/imported/attack.ogg-d65705b659f531c86a4425df0677f689.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Underwater/Legacy Collection/Assets/Packs/Gothicvania Cemetery/Phaser Demo/assets/sounds/attack.ogg"
+dest_files=["res://.godot/imported/attack.ogg-d65705b659f531c86a4425df0677f689.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

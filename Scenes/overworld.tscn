@@ -902,10 +902,10 @@ shape = SubResource("RectangleShape2D_b10nm")
 
 [node name="ColorRect" type="ColorRect" parent="LevelChange/Change_to_underground"]
 z_index = -1
-offset_left = -49.0
-offset_top = -41.0
-offset_right = -9.0
-offset_bottom = -1.0
+offset_left = -50.0
+offset_top = -36.0
+offset_right = -10.0
+offset_bottom = 4.0
 scale = Vector2(2.65673, 2.36052)
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true

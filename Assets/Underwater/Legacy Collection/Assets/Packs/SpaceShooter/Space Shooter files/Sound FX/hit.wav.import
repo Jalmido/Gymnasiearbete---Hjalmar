@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cc8k40nw1brxh"
+path="res://.godot/imported/hit.wav-c0865122b87062c724e20ca67b5d3d39.sample"
+
+[deps]
+
+source_file="res://Assets/Underwater/Legacy Collection/Assets/Packs/SpaceShooter/Space Shooter files/Sound FX/hit.wav"
+dest_files=["res://.godot/imported/hit.wav-c0865122b87062c724e20ca67b5d3d39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

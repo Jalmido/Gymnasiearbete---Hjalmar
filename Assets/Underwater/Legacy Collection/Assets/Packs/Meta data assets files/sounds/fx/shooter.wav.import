@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3g1y06x6fb3r"
+path="res://.godot/imported/shooter.wav-88ee7b107fd5d1bae04b16c5211a29d1.sample"
+
+[deps]
+
+source_file="res://Assets/Underwater/Legacy Collection/Assets/Packs/Meta data assets files/sounds/fx/shooter.wav"
+dest_files=["res://.godot/imported/shooter.wav-88ee7b107fd5d1bae04b16c5211a29d1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

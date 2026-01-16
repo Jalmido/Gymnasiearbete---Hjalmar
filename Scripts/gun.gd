@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		return
 		
 	#vektor från spelarn till musen
-	var player_pos = get_parent().global_position - Vector2(0, 10) # Vi antar att pistolen är barn till Player
+	var player_pos = get_parent().global_position - Vector2(0, 10) #V antar att pistolen är barn till Player
 	var mouse_pos = get_global_mouse_position()
 	var direction_to_mouse = mouse_pos - player_pos
 	
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		direction_to_mouse = direction_to_mouse.normalized() * max_radius #gör att den stannar vid radien 
 
 	var target_pos = player_pos + direction_to_mouse
-	global_position = global_position.lerp(target_pos, 0.1) #lerp är funktion för "linear interpolation" inbyggd. De blir snyggare så
+	global_position = global_position.lerp(target_pos, 0.05) #lerp är funktion för "linear interpolation" inbyggd. De blir snyggare så
 	look_at(mouse_pos)
 
 

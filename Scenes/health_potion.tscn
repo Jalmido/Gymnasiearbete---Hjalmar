@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8d3fyx555ggw"]
+[gd_scene load_steps=6 format=3 uid="uid://c8d3fyx555ggw"]
 
 [ext_resource type="Script" uid="uid://1hudettu06kd" path="res://Scripts/health_potion.gd" id="1_x2qfu"]
 [ext_resource type="Texture2D" uid="uid://c2cd6urma0e0u" path="res://Assets/Items/game-potion-pixelated-free-png-2.png" id="2_petj4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ttnbf"]
 radius = 9.0
+
+[sub_resource type="Gradient" id="Gradient_x2qfu"]
+offsets = PackedFloat32Array(0.00684932, 0.719178)
+colors = PackedColorArray(0.980392, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_petj4"]
+gradient = SubResource("Gradient_x2qfu")
+fill = 1
+fill_from = Vector2(0.511905, 0.504762)
 
 [node name="Health_potion" type="Area2D"]
 script = ExtResource("1_x2qfu")
@@ -15,5 +24,9 @@ shape = SubResource("CircleShape2D_ttnbf")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0267857, 0.0267857)
 texture = ExtResource("2_petj4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 4)
+texture = SubResource("GradientTexture2D_petj4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,14 +2,23 @@ extends CharacterBody2D
 
 const MAX_SPEED = 200.0
 const ACC = 1500.0
-const SWIM_FORCE = -200.0 
+const SWIM_FORCE = -100.0 
 const GRAVITY = 400.0      
+const DASH_SPEED = 600.0
+const DASH_DURATION = 0.2
+const SWIM_ACCEL = -600.0  # Kraften när man håller inne space
+const MAX_SWIM_SPEED = -300.0 # Maxhastighet uppåt så man inte flyger iväg
 
-enum { IDLE, WALK, SWIM }
-var state = IDLE
+enum { IDLE, WALK, SWIM , DASH, DEAD}
+var state = WALK
 var direction_name = "right" 
+var attacking = false
+var current_item: String = "None"
+var dash_timer = 0.0
+var dash_direction = Vector2.ZERO
+var can_take_damage = true
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -19,8 +28,11 @@ func _physics_process(delta: float) -> void:
 			_walk_state(delta)
 		SWIM:
 			_swim_state(delta)
-	
-	move_and_slide()
+		DASH:
+			_dash_state(delta)
+		DEAD:
+			_dead_state(delta)
+
 
 # ------------------------------
 # Central rörelsefunktion
@@ -37,6 +49,7 @@ func _movement(delta: float, input_x: float, apply_gravity: bool = true) -> void
 	if apply_gravity and not is_on_floor():
 		velocity.y += GRAVITY * delta
 
+	move_and_slide()
 
 func _update_direction(axis: float) -> void:
 	if axis > 0:
@@ -45,14 +58,47 @@ func _update_direction(axis: float) -> void:
 		direction_name = "left"
 
 
-# ------------------------------
-# State logik
-# ------------------------------
-# ... (behåll konstanter och variabler överst)
+func _change_hotbar_item(item_name: String) -> void:
+	$Handgun.disable_weapon()
+
+	
+	# Aktivera det valda vapnet
+	if item_name == "Pistol":
+		$Handgun.enable_weapon()
+		attacking = false
+	elif item_name == "Sword":
+		current_item = "Sword"
+		attacking = true
+	elif item_name == "Health_Potion":
+		current_item = "Health_Potion"
+		attacking = false
+ 
+func _drink_potion() -> void:
+	
+	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
+		Globals.lives += 1
+		Globals.health_potions_in_inv -= 1
+		print("SKÅL!")
+
+func _take_damage(amount: int) -> void:
+	if not can_take_damage:
+		return
+	
+	if can_take_damage:
+		can_take_damage = false
+		$DamageCooldownTimer.start()
+		Globals.lives -= amount
+
+		if Globals.lives <= 0:
+			_enter_dead_state()
 
 # ------------------------------
 # State logik
 # ------------------------------
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Shift"):
+		_enter_dash_state()
 
 func _idle_state(delta: float) -> void:
 	anim.play("Idle_" + direction_name)
@@ -67,7 +113,7 @@ func _idle_state(delta: float) -> void:
 		_enter_swim_state() # Nu ger denna fart uppåt!
 
 func _walk_state(delta: float) -> void:
-	anim.play("Walk_" + direction_name)
+	anim.play("Swim_" + direction_name)
 
 	var axis = Input.get_axis("Left", "Right")
 	
@@ -85,22 +131,37 @@ func _walk_state(delta: float) -> void:
 
 func _swim_state(delta: float) -> void:
 	anim.play("Swim_" + direction_name) 
-	
 	var axis = Input.get_axis("Left", "Right")
 	_update_direction(axis)
-	
 
-	_movement(delta, axis)
-	
-	# Fixat stavfel: "jump" istället för "Jump"
-	if Input.is_action_just_pressed("Jump"):
-		velocity.y = SWIM_FORCE
-	
-	if is_on_floor():
-		_enter_idle_state()
+	var is_swimming_up = Input.is_action_pressed("Jump")
 
-# ... (behåll hjälpfunktioner)
+	if is_swimming_up:
+		velocity.y = move_toward(velocity.y, MAX_SWIM_SPEED, abs(SWIM_ACCEL) * delta)
 
+	# Vi skickar med 'not is_swimming_up' som apply_gravity. 
+	# Om vi simmar uppåt (true), blir apply_gravity = false.
+	_movement(delta, axis, not is_swimming_up)
+	
+	if is_on_floor() and velocity.y >= 0:
+		if axis == 0: _enter_idle_state()
+		else: _enter_walk_state()
+
+func _dash_state(delta: float) -> void:
+	dash_timer -= delta
+	velocity = dash_direction * DASH_SPEED
+	
+	# VIKTIGT: Du måste flytta gubben!
+	move_and_slide() 
+	
+	if dash_timer <= 0:
+		state = SWIM if not is_on_floor() else IDLE
+
+
+
+func _dead_state(delta: float) -> void:
+	#queue_free()
+	pass
 # ------------------------------
 # Enter state funktioner
 # ------------------------------
@@ -113,5 +174,30 @@ func _enter_walk_state():
 
 func _enter_swim_state():
 	state = SWIM
-	# VIKTIGT: Detta gör att "hoppet" från marken faktiskt sker
 	velocity.y = SWIM_FORCE
+
+func _enter_dash_state():
+	if state == DASH: return # Hindra dubbel-dash
+	
+	state = DASH
+	dash_timer = DASH_DURATION
+	
+	# Bestäm riktning baserat på senaste håll man rörde sig
+	var axis = Input.get_axis("Left", "Right")
+	if axis != 0:
+		dash_direction = Vector2(axis, 0)
+	else:
+		# Om man står stilla, dasha åt det håll man tittar
+		dash_direction = Vector2(1, 0) if direction_name == "right" else Vector2(-1, 0)
+	anim.play("Dash_" + direction_name)
+func _enter_dead_state():
+	state = DEAD
+
+func _on_dash_area_body_entered(body: Node2D) -> void:
+	if state == DASH:
+		print("träffad med dash")
+		body._take_damage()
+
+
+func _on_damage_cooldown_timer_timeout() -> void:
+	can_take_damage = true

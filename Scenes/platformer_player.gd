@@ -157,8 +157,6 @@ func _dash_state(delta: float) -> void:
 	if dash_timer <= 0:
 		state = SWIM if not is_on_floor() else IDLE
 
-
-
 func _dead_state(delta: float) -> void:
 	#queue_free()
 	pass
@@ -177,7 +175,8 @@ func _enter_swim_state():
 	velocity.y = SWIM_FORCE
 
 func _enter_dash_state():
-	if state == DASH: return # Hindra dubbel-dash
+	if state == DASH: 
+		return
 	
 	state = DASH
 	dash_timer = DASH_DURATION
@@ -189,14 +188,16 @@ func _enter_dash_state():
 	else:
 		# Om man står stilla, dasha åt det håll man tittar
 		dash_direction = Vector2(1, 0) if direction_name == "right" else Vector2(-1, 0)
+	print("spelar anim dash")
 	anim.play("Dash_" + direction_name)
+	await anim.animation_finished
 func _enter_dead_state():
 	state = DEAD
 
 func _on_dash_area_body_entered(body: Node2D) -> void:
 	if state == DASH:
 		print("träffad med dash")
-		body._take_damage()
+		body._take_damage(1)
 
 
 func _on_damage_cooldown_timer_timeout() -> void:

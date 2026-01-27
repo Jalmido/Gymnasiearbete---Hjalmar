@@ -1,5 +1,5 @@
 extends Node2D
-class_name pistol
+
 
 
 var bullet_velocity = 2000

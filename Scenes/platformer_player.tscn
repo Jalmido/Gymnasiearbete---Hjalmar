@@ -723,6 +723,18 @@ shape = SubResource("CapsuleShape2D_13pfg")
 
 [node name="HUD" parent="." instance=ExtResource("5_nkjwl")]
 
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -217.0
+offset_top = 72.0
+offset_right = -20.0
+offset_bottom = 99.0
+grow_horizontal = 0
+max_value = 2.0
+show_percentage = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_60dy7")
@@ -745,6 +757,10 @@ debug_color = Color(0.952941, 0.992157, 1, 0.243137)
 wait_time = 0.71
 one_shot = true
 
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -16)
 color = Color(0.145546, 0.379652, 0.997336, 1)
@@ -757,3 +773,4 @@ texture_scale = 5.73
 
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_body_entered"]
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

@@ -2,22 +2,22 @@ extends CharacterBody2D
 
 const SPEED = 300
 
-var bounces_left = 2
+var bounces_left = 10
 var direction = Vector2.ZERO
 var shoot_out = false
+var has_been_summoned = false
+var summon_setup_finished = false
 
 @onready var path: Line2D = $Path_line
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
-func _ready() -> void:
-	$Shoot_out_timer.start()
-	var angle = randf_range(0,2*PI)
-	direction = Vector2.UP.rotated(angle)
-	velocity = direction * SPEED
-
-	_draw_path()
 
 func _process(delta: float) -> void:
+	if not has_been_summoned:
+		return
+	elif has_been_summoned and not summon_setup_finished:
+		_summoned()
+
 	if not shoot_out:
 		return
 	var collision = move_and_collide(velocity * delta)
@@ -31,39 +31,23 @@ func _process(delta: float) -> void:
 			anim.play("Death")
 			queue_free()
 
-func _draw_path():
-
-	path.clear_points()
-	path.add_point(Vector2.ZERO) # Startpunkt (lokal)
+func _summoned():
+	$Shoot_out_timer.start()
+	anim.play("Summoned")
 	
-	var current_pos = Vector2.ZERO
-	var current_dir = direction * 1000 # Lång räckvidd för sökning
-	var temp_bounces = 2
+	var angle = randf_range(0,2*PI)
+	direction = Vector2.UP.rotated(angle)
+	velocity = direction * SPEED
 	
-	# Vi använder en RayCast eller direkt i koden med SpaceState för att hitta väggar
-	var space_state = get_world_2d().direct_space_state
+	$Area2D.set_deferred("monitoring", true)
+	visible = true
 	
-	while temp_bounces >= 0:
-		var query = PhysicsRayQueryParameters2D.create(global_position + current_pos, global_position + current_pos + current_dir)
-		query.exclude = [get_rid()] # Ignorera summonen själv
-		
-		var result = space_state.intersect_ray(query)
-		
-		if result:
-			var hit_pos = to_local(result.position)
-			path.add_point(hit_pos)
-			
-			# Beräkna nästa riktning för linjen
-			var normal = result.normal
-			current_dir = current_dir.bounce(normal)
-			current_pos = hit_pos
-			temp_bounces -= 1
-		else:
-			# Om ingen vägg träffas, rita bara linjen ut i intet
-			path.add_point(to_local(global_position + current_dir))
-			break
-
-
+	summon_setup_finished = true
+	print("summon färdig")
 func _on_shoot_out_timer_timeout() -> void:
 	print("shoot out")
 	shoot_out = true
+	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body._take_damage(1)

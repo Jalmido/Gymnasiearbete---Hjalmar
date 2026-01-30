@@ -695,9 +695,9 @@ offset_left = -22.0
 offset_top = -71.0
 offset_right = 23.0
 offset_bottom = -65.0
-max_value = 20.0
+max_value = 30.0
 step = 1.0
-value = 20.0
+value = 30.0
 rounded = true
 show_percentage = false
 

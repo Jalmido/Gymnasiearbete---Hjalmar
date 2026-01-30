@@ -10,14 +10,14 @@ enum { CHASE, ATTACK_1, ATTACK_2, SUMMON, DEAD }
 var state = CHASE
 
 
-var health = 20
+var health = 14
 var direction_name = "left"
 var target = null
 var player = null
 var active = false
 var can_summon = true
 @onready var anim = $AnimationPlayer
-
+@onready var summon_scenes = load("res://Scenes/executioner_summons.tscn")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -55,6 +55,19 @@ func _chase_state(delta: float) -> void:
 	var distance_to_player = global_position.distance_to(target.global_position)
 	
 	
+	if health < 15 and can_summon: #När under 10 hp så summonar han sina småttingar
+		state = SUMMON
+		can_summon = false
+		anim.play("Summon")
+
+		for child in get_parent().get_children():
+			if child.is_in_group("summons"):
+				child.has_been_summoned = true
+				
+		
+		return
+
+	
 	_update_direction(direction_to_player)
 	anim.play("Walk_" + direction_name)
 	_movement(delta, direction_to_player)
@@ -74,12 +87,6 @@ func _dead_state(delta: float) -> void:
 
 func _enter_attack_state():
 	
-	if health < 10 and can_summon: #När under 10 hp så summonar han sina småttingar
-		state = SUMMON
-		can_summon = false
-		anim.play("Summon")
-		return
-
 
 	var r = randf()
 	if r < 0.5:

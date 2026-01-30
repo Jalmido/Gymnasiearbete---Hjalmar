@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://sjtxlo2o34i7"]
+[gd_scene load_steps=26 format=3 uid="uid://sjtxlo2o34i7"]
 
 [ext_resource type="Script" uid="uid://de7ded8v0n8k" path="res://Scenes/executioner_summons.gd" id="1_rgue7"]
 [ext_resource type="Texture2D" uid="uid://ckm3jt7n10gu1" path="res://Assets/Underwater/Undead executioner puppet/png/summonIdle.png" id="1_sr8td"]
@@ -21,25 +21,29 @@ region = Rect2(100, 0, 50, 50)
 atlas = ExtResource("1_sr8td")
 region = Rect2(150, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8o72p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgue7"]
 atlas = ExtResource("2_rgue7")
 region = Rect2(0, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dir1m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jaif"]
 atlas = ExtResource("2_rgue7")
 region = Rect2(50, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpmgk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o72p"]
 atlas = ExtResource("2_rgue7")
 region = Rect2(100, 0, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ml1gc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dir1m"]
 atlas = ExtResource("2_rgue7")
 region = Rect2(0, 50, 50, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk3aq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpmgk"]
 atlas = ExtResource("2_rgue7")
 region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml1gc"]
+atlas = ExtResource("2_rgue7")
+region = Rect2(100, 50, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s57ln"]
 atlas = ExtResource("3_0jaif")
@@ -86,6 +90,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rgue7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jaif")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8o72p")
 }, {
 "duration": 1.0,
@@ -96,9 +106,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ml1gc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jk3aq")
 }],
 "loop": true,
 "name": &"Death",
@@ -128,9 +135,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sr8td"]
-radius = 5.09902
-
 [sub_resource type="Gradient" id="Gradient_rgue7"]
 offsets = PackedFloat32Array(0, 0.712329)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -141,21 +145,25 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0jaif"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgue7"]
+
 [node name="Executioner_summons" type="CharacterBody2D"]
-collision_layer = 4
+visible = false
+collision_layer = 0
 collision_mask = 129
 script = ExtResource("1_rgue7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -12)
 sprite_frames = SubResource("SpriteFrames_u8r6a")
-animation = &"Death"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_sr8td")
+animation = &"Chasing"
+frame_progress = 0.107351
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 192
 
 [node name="Path_line" type="Line2D" parent="."]
 width = 5.0
@@ -172,4 +180,15 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_0jaif")
 texture_scale = 2.24
 
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_0jaif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rgue7")
+
 [connection signal="timeout" from="Shoot_out_timer" to="." method="_on_shoot_out_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

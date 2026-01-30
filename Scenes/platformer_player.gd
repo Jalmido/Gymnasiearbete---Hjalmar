@@ -17,8 +17,15 @@ var current_item: String = "None"
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
 var can_take_damage = true
+var can_dash = true
+var cooldown_duration = 2
+
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var cooldown_timer: Timer = $DashCooldownTimer
+@onready var progressbar: ProgressBar = $HUD/ProgressBar
+
+
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -32,6 +39,9 @@ func _physics_process(delta: float) -> void:
 			_dash_state(delta)
 		DEAD:
 			_dead_state(delta)
+			
+func _process(delta: float) -> void:
+	_update_dash_bar()
 
 
 # ------------------------------
@@ -92,6 +102,16 @@ func _take_damage(amount: int) -> void:
 		if Globals.lives <= 0:
 			_enter_dead_state()
 
+func _start_dash_cooldown():
+	progressbar.value = 0.0
+	cooldown_timer.start(cooldown_duration) 
+
+func _update_dash_bar():
+	if not can_dash:
+		var time_passed = cooldown_timer.wait_time - cooldown_timer.time_left
+		progressbar.value = time_passed
+	else:
+		progressbar.value = cooldown_duration
 # ------------------------------
 # State logik
 # ------------------------------
@@ -175,7 +195,7 @@ func _enter_swim_state():
 	velocity.y = SWIM_FORCE
 
 func _enter_dash_state():
-	if state == DASH: 
+	if state == DASH or not can_dash: 
 		return
 	
 	state = DASH
@@ -188,17 +208,21 @@ func _enter_dash_state():
 	else:
 		# Om man står stilla, dasha åt det håll man tittar
 		dash_direction = Vector2(1, 0) if direction_name == "right" else Vector2(-1, 0)
-	print("spelar anim dash")
 	anim.play("Dash_" + direction_name)
-	await anim.animation_finished
+	can_dash = false
+	_start_dash_cooldown()
 func _enter_dead_state():
 	state = DEAD
 
 func _on_dash_area_body_entered(body: Node2D) -> void:
 	if state == DASH:
 		print("träffad med dash")
-		body._take_damage(1)
+		body._take_damage()
 
 
 func _on_damage_cooldown_timer_timeout() -> void:
 	can_take_damage = true
+
+
+func _on_dash_cooldown_timer_timeout() -> void:
+	can_dash = true

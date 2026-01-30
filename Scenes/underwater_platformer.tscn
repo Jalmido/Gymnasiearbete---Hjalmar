@@ -315,7 +315,7 @@ script = ExtResource("1_n1dyx")
 position = Vector2(133, 9)
 
 [node name="Platformer_Player" parent="." instance=ExtResource("1_67kp6")]
-position = Vector2(489, 205)
+position = Vector2(-6, 23)
 
 [node name="Camera2D" type="Camera2D" parent="Platformer_Player"]
 zoom = Vector2(2, 2)
@@ -341,15 +341,21 @@ position = Vector2(387, -7)
 modulate = Color(0.359069, 0.359069, 0.359069, 1)
 z_index = -3
 position = Vector2(415, -23)
-scale = Vector2(2.17969, 3.34896)
+scale = Vector2(4.11286, 4.04754)
 texture = ExtResource("6_jrlmm")
 
 [node name="Executioner_boss" parent="." instance=ExtResource("6_8vwl1")]
 position = Vector2(988, -66)
 scale = Vector2(1.5, 1.5)
 
-[node name="Executioner_summons" parent="." instance=ExtResource("8_8vwl1")]
+[node name="Executioner_summons" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
 position = Vector2(867, -136)
+
+[node name="Executioner_summons2" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
+position = Vector2(1089, -8)
+
+[node name="Executioner_summons3" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
+position = Vector2(1090, -199)
 
 [node name="Fight_activation_area" type="Area2D" parent="."]
 position = Vector2(729, 115)

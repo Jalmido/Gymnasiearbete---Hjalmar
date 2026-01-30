@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt01edn65hpdn"]
+
+[ext_resource type="Script" uid="uid://bw31hnlnx23ka" path="res://Scenes/popup.gd" id="1_qml6d"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_kksav"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mupi7"]
+bg_color = Color(0, 0, 0, 0.403922)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_cgmvo"]
+font = ExtResource("2_kksav")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_vh8u0"]
+font = ExtResource("2_kksav")
+font_size = 50
+
+[node name="Popup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qml6d")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ItemPopup" type="PopupPanel" parent="UI"]
+position = Vector2i(710, 390)
+size = Vector2i(500, 300)
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_mupi7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ItemPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 297.0
+
+[node name="Label" type="Label" parent="UI/ItemPopup/VBoxContainer"]
+layout_mode = 2
+text = "Stat"
+label_settings = SubResource("LabelSettings_cgmvo")
+
+[node name="Label2" type="Label" parent="UI/ItemPopup/VBoxContainer"]
+layout_mode = 2
+text = "Information"
+label_settings = SubResource("LabelSettings_vh8u0")

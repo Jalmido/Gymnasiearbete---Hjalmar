@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cilxggqqhnik4"]
+[gd_scene load_steps=31 format=4 uid="uid://cilxggqqhnik4"]
 
 [ext_resource type="PackedScene" uid="uid://casvytn4081k1" path="res://Scenes/platformer_player.tscn" id="1_67kp6"]
 [ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scenes/underwater_platformer.gd" id="1_n1dyx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="6_n1dyx"]
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="7_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://sjtxlo2o34i7" path="res://Scenes/executioner_summons.tscn" id="8_8vwl1"]
+[ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="9_eccuq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdyok"]
 polygon = PackedVector2Array(0, 0, -8, 0, -8, 8, 8, 8, 4, 4)
@@ -308,6 +309,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_jrlmm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eccuq"]
+size = Vector2(142, 58)
+
 [node name="Underwater_platformer" type="Node2D"]
 script = ExtResource("1_n1dyx")
 
@@ -363,4 +367,16 @@ position = Vector2(729, 115)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fight_activation_area"]
 polygon = PackedVector2Array(28, 9, 27, 68, 62, 66, 64, -65, -81, -66, -82, -35, 25, -33)
 
+[node name="Popup_UI" parent="." instance=ExtResource("9_eccuq")]
+popup_text = "Press [Shift] to dash
+Dashing damages enemies
+Sword unusable underwater!"
+
+[node name="Hide_Popup" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_Popup"]
+position = Vector2(91, -148)
+shape = SubResource("RectangleShape2D_eccuq")
+
 [connection signal="body_entered" from="Fight_activation_area" to="." method="_on_fight_activation_area_body_entered"]
+[connection signal="body_entered" from="Hide_Popup" to="." method="_on_hide_popup_body_entered"]

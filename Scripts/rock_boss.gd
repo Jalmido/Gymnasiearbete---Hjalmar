@@ -15,6 +15,7 @@ var active = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	_update_healthbar()
 	player = get_tree().get_first_node_in_group("player")

@@ -118,7 +118,7 @@ offset_bottom = 9.0
 theme_override_fonts/font = ExtResource("5_o071h")
 theme_override_font_sizes/font_size = 22
 
-[node name="ItemButton5" type="Button" parent="GridContainer"]
+[node name="Yunion_key" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -129,6 +129,7 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_hf0n5")
 expand_icon = true
 script = ExtResource("3_o071h")
+item_name = "Yunion_Key"
 
 [node name="ItemButton6" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)

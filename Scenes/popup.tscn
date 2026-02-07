@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt01edn65hpdn"]
+[gd_scene load_steps=7 format=3 uid="uid://bt01edn65hpdn"]
 
 [ext_resource type="Script" uid="uid://lcyp5ngx84ok" path="res://Scenes/popup_ui.gd" id="1_kksav"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_kksav"]
-[ext_resource type="Texture2D" uid="uid://cqpxl10rvoalv" path="res://Assets/overworld/sprites/objects/rock_in_water-sheet.png" id="2_vjsy5"]
+
+[sub_resource type="Gradient" id="Gradient_qml6d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.736301)
+colors = PackedColorArray(0.196143, 0.196143, 0.196143, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kksav"]
+gradient = SubResource("Gradient_qml6d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qml6d"]
+content_margin_left = 12.0
+content_margin_right = 12.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_cgmvo"]
 font = ExtResource("2_kksav")
@@ -13,10 +27,10 @@ script = ExtResource("1_kksav")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = 206.0
-offset_top = 133.0
-offset_right = 706.0
+offset_top = 130.0
+offset_right = 774.0
 offset_bottom = 433.0
-texture = ExtResource("2_vjsy5")
+texture = SubResource("GradientTexture2D_kksav")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -26,10 +40,22 @@ patch_margin_bottom = 10
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 496.0
+offset_right = 568.0
 offset_bottom = 297.0
 
 [node name="Label" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/line_spacing = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qml6d")
 text = "Info"
 label_settings = SubResource("LabelSettings_cgmvo")
+
+[node name="Close_button" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("2_kksav")
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Close_button" to="." method="_on_close_button_pressed"]

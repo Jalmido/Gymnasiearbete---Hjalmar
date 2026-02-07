@@ -9,6 +9,6 @@ func _on_body_entered(body: Node2D) -> void:
 		elif Globals.lives > 3:
 			Globals.health_potions_in_inv += 1
 			queue_free()
-			#in med health potion i hotbar
+
 
 		

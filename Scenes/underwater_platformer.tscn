@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="7_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://sjtxlo2o34i7" path="res://Scenes/executioner_summons.tscn" id="8_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="9_eccuq"]
+[ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://key_to_yunion.tscn" id="10_0n5py"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdyok"]
 polygon = PackedVector2Array(0, 0, -8, 0, -8, 8, 8, 8, 4, 4)
@@ -309,9 +310,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_jrlmm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eccuq"]
-size = Vector2(142, 58)
-
 [node name="Underwater_platformer" type="Node2D"]
 script = ExtResource("1_n1dyx")
 
@@ -370,13 +368,10 @@ polygon = PackedVector2Array(28, 9, 27, 68, 62, 66, 64, -65, -81, -66, -82, -35,
 [node name="Popup_UI" parent="." instance=ExtResource("9_eccuq")]
 popup_text = "Press [Shift] to dash
 Dashing damages enemies
-Sword unusable underwater!"
+Sword unusable underwater!
+Hold [Space] to swim up"
 
-[node name="Hide_Popup" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_Popup"]
-position = Vector2(91, -148)
-shape = SubResource("RectangleShape2D_eccuq")
+[node name="Key_to_yunion" parent="." instance=ExtResource("10_0n5py")]
+position = Vector2(1554, 162)
 
 [connection signal="body_entered" from="Fight_activation_area" to="." method="_on_fight_activation_area_body_entered"]
-[connection signal="body_entered" from="Hide_Popup" to="." method="_on_hide_popup_body_entered"]

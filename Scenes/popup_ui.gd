@@ -5,3 +5,8 @@ extends CanvasLayer
 
 func _ready() -> void:
 	$NinePatchRect/VBoxContainer/Label.text = popup_text
+
+
+
+func _on_close_button_pressed() -> void:
+	hide()

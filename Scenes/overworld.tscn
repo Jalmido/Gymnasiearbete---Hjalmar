@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://cr7lasxqhaihf"]
 
-[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/position_manager.gd" id="1_5dcxx"]
+[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Overworld.gd" id="1_5dcxx"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_w7v6x"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="3_gy7g8"]
 [ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="4_46gqp"]
@@ -895,7 +895,7 @@ position = Vector2(153, 106)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.4, 3.4)
-limit_left = -100
+limit_left = -150
 limit_top = -150
 limit_right = 1620
 limit_bottom = 570
@@ -1004,3 +1004,4 @@ libraries = {
 [node name="Cutscene_Camera" type="Camera2D" parent="Opening_Cutscene"]
 
 [connection signal="timeout" from="LevelChange/ChangeLevelTimer" to="LevelChange" method="_on_change_level_timer_timeout"]
+[connection signal="animation_finished" from="Opening_Cutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

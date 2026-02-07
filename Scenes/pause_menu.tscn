@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://boky65bo6ngsw"]
+
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://o13bium7bvee" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scenes/pause_menu.gdshader" id="2_1och7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpi0q"]
+shader = ExtResource("2_1och7")
+shader_parameter/blur_amount = 4.499
+shader_parameter/brightness = 0.905
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emv3i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0w1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1och7"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_k0w1u")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bpi0q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0.505882)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.0
+offset_top = -384.0
+offset_right = 532.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.89421, 0.000205807, 0.777119, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 100
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Resume_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
+text = "Resume
+"
+
+[node name="Restart_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
+text = "Restart from Checkpoint"
+
+[node name="Quit_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
+text = "Quit
+"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

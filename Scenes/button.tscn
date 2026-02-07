@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b570fca2tikno"]
+
+[node name="Button" type="Button"]
+offset_left = 258.0
+offset_top = 160.0
+offset_right = 416.0
+offset_bottom = 237.0

@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Gymnasiearbate"
-run/main_scene="uid://cr7lasxqhaihf"
+run/main_scene="uid://cur2gvwck47ux"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/size/viewport_height=1080
+boot_splash/size/viewport_width=1920
 
 [autoload]
 

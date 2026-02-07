@@ -80,6 +80,7 @@ func _change_hotbar_item(item_name: String) -> void:
 		current_item = "Sword"
 		attacking = true
 	elif item_name == "Health_Potion":
+		print("valt health potion")
 		current_item = "Health_Potion"
 		attacking = false
  
@@ -119,6 +120,11 @@ func _update_dash_bar():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shift"):
 		_enter_dash_state()
+	if event.is_action_pressed("Attack"):
+		if current_item == "Health_Potion":
+			_drink_potion()
+		else:
+			pass
 
 func _idle_state(delta: float) -> void:
 	anim.play("Idle_" + direction_name)

@@ -13,11 +13,11 @@ func select_slot(index: int):
 
 		for child in grid.get_children():
 			var tween_down = create_tween()
-			tween_down.tween_property(child, "position:y", 0.0, 0.1) # 0.1 sekunder
+			tween_down.tween_property(child, "position:y", 0.0, 0.1) 
 
 		var button = grid.get_child(index) as ItemButton 
 		if button:
-			button.button_pressed = true # ButtonGroup sköter att de andra släpps
+			button.button_pressed = true #
 		
 			var tween_up = create_tween()
 			tween_up.tween_property(button, "position:y", -20.0, 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

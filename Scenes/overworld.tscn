@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cr7lasxqhaihf"]
+[gd_scene load_steps=27 format=4 uid="uid://cr7lasxqhaihf"]
 
 [ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/position_manager.gd" id="1_5dcxx"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_w7v6x"]
@@ -824,6 +824,67 @@ size = Vector2(10.75, 43.375)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhlu0"]
 size = Vector2(422, 49)
 
+[sub_resource type="Animation" id="Animation_5dcxx"]
+resource_name = "Opening_Cutscene"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opening_Cutscene/Cutscene_Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.9, 3.86667, 5.53333, 7.26667, 8.3),
+"transitions": PackedFloat32Array(1, 1, 1.23114, 0.353553, 0.466516, 1),
+"update": 0,
+"values": [Vector2(1420, 350), Vector2(1420, 350), Vector2(900, 300), Vector2(750, 125), Vector2(500, 130), Vector2(153, 106)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Opening_Cutscene/Cutscene_Camera:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.93333, 3.83333, 5.5, 8.26667, 9.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(20, 20), Vector2(4, 4), Vector2(3, 3), Vector2(2.5, 2.5), Vector2(2.5, 2.5), Vector2(3.4, 3.4)]
+}
+
+[sub_resource type="Animation" id="Animation_w7v6x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opening_Cutscene/Cutscene_Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Opening_Cutscene/Cutscene_Camera:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gy7g8"]
+_data = {
+&"Opening_Cutscene": SubResource("Animation_5dcxx"),
+&"RESET": SubResource("Animation_w7v6x")
+}
+
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_5dcxx")
 
@@ -931,5 +992,15 @@ polygon = PackedVector2Array(2.49245, 0.860538, 2.47845, 4.61344, 7.30934, 4.589
 
 [node name="Health_potion" parent="Pickups" instance=ExtResource("15_5dcxx")]
 position = Vector2(1612, 301)
+
+[node name="Opening_Cutscene" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Opening_Cutscene"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_gy7g8")
+}
+
+[node name="Cutscene_Camera" type="Camera2D" parent="Opening_Cutscene"]
 
 [connection signal="timeout" from="LevelChange/ChangeLevelTimer" to="LevelChange" method="_on_change_level_timer_timeout"]

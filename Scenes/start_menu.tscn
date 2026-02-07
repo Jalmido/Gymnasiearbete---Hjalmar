@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://cur2gvwck47ux"]
+
+[ext_resource type="Script" uid="uid://8ryfkrwm728w" path="res://control.gd" id="1_juhg0"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_jgtwh"]
+[ext_resource type="Texture2D" uid="uid://c7a7u5guhiayt" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Underwater Fantasy/PNG/underwater-fantasy-preview.png" id="2_m6uer"]
+[ext_resource type="Texture2D" uid="uid://ckeagteophgsj" path="res://Assets/Underwater/Undead executioner puppet/png/idle.png" id="3_a43kq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_626he"]
+atlas = ExtResource("3_a43kq")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u0lp"]
+atlas = ExtResource("3_a43kq")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2i62"]
+atlas = ExtResource("3_a43kq")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfskg"]
+atlas = ExtResource("3_a43kq")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ru7em"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_626he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u0lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2i62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfskg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgtwh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8u0lp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m6uer"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a43kq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2i62"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_626he"]
+
+[node name="Start_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_juhg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.542982, 0.542982, 0.542982, 1)
+position = Vector2(1010.5, 486.5)
+scale = Vector2(3.61849, 6.06771)
+texture = ExtResource("2_m6uer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1671, 501)
+scale = Vector2(-8.71615, 8.79488)
+sprite_frames = SubResource("SpriteFrames_ru7em")
+animation = &"Idle"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = -344.0
+offset_right = 736.0
+offset_bottom = -74.0
+grow_vertical = 0
+
+[node name="Start_button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit_button")
+focus_neighbor_bottom = NodePath("../Quit_button")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_jgtwh")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jgtwh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8u0lp")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m6uer")
+text = "Start"
+
+[node name="Quit_button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start_button")
+focus_neighbor_bottom = NodePath("../Start_button")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.972549, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_jgtwh")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_a43kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_i2i62")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_626he")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

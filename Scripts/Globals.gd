@@ -4,6 +4,8 @@ signal lives_changed(new_health)
 var miniboss_room_cleared = false
 
 var visited_scenes = [] #här hamnar scener som varit activa, ifall en cutscene eller så ska spelas bara första gången man aktiverar
+var picked_up_items = []
+
 
 var yunion_key_collected = false
 var ammo_in_mag: int = 18

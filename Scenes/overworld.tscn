@@ -992,6 +992,7 @@ polygon = PackedVector2Array(2.49245, 0.860538, 2.47845, 4.61344, 7.30934, 4.589
 
 [node name="Health_potion" parent="Pickups" instance=ExtResource("15_5dcxx")]
 position = Vector2(1612, 301)
+item_id = " health_potion_overworld"
 
 [node name="Opening_Cutscene" type="Node2D" parent="."]
 

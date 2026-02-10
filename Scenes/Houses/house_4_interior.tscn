@@ -604,6 +604,7 @@ one_shot = true
 
 [node name="Ammo" parent="." instance=ExtResource("7_wqisy")]
 position = Vector2(41, 103)
+item_id = "ammo_house_4"
 
 [connection signal="body_entered" from="ExitHouseArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ExitHouseTimer" to="." method="_on_exit_house_timer_timeout"]

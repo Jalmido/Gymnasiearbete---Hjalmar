@@ -647,9 +647,11 @@ position = Vector2(524, 264)
 
 [node name="Ammo" parent="." instance=ExtResource("6_3d5am")]
 position = Vector2(-115, 413)
+item_id = "ammo_underground"
 
 [node name="Health_potion" parent="." instance=ExtResource("7_hp65m")]
 position = Vector2(-115, 436)
+item_id = "health_potion_underground"
 
 [connection signal="body_entered" from="JumpAreas/JumpArea" to="Player" method="_on_jump_area_body_entered"]
 [connection signal="body_entered" from="JumpAreas/JumpArea2" to="Player" method="_on_jump_area_body_entered"]

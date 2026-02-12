@@ -33,7 +33,6 @@ func _exit_house() -> void:
 func _enter_new_room(target_scene: String) -> void:
 	var error = get_tree().change_scene_to_file(target_scene)
 	if error != OK:
-		push_error("Kunde inte ladda scen: ", target_scene)
 		return
 	
 	await get_tree().process_frame

@@ -8,6 +8,9 @@ const default_text = "[E] to "
 var active_areas = [] #alla nuvarande areor som kan interageras med
 var can_interact = true #alla areor ska bli interagerbara när player är nära.
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
 func register_area(area: InteractionArea):
 	active_areas.append(area)
 

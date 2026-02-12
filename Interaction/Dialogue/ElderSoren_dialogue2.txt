@@ -1,0 +1,12 @@
+[
+	{"name": "You", "text": "Elder Soren, what are you doing here?"},
+	{"name": "Elder Soren", "text": "..."},
+	{"name": "You", "text": "I'm here to save the Yunion from the monsters, like you told me"},
+	{"name": "Elder Soren", "text": "Young one... You mustn't be so foolish"},
+	{"name": "Elder Soren", "text": "The Yunion was never seized by monsters"},
+	{"name": "Elder Soren", "text": "The monsters are MY creations..."},
+	{"name": "Elder Soren", "text": "And i sent you out to test the strengths of my monsters"},
+	{"name": "You", "text": "What... what are you saying"},
+	{"name": "Elder Soren", "text": "I wished you would have died during your journey, so that i wouldn't need to do this myself"},
+	
+]

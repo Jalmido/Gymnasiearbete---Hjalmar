@@ -141,7 +141,7 @@ func _attack_state(delta:float) -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 
 	
-	if distance_to_player > 40:
+	if distance_to_player > 50:
 		_enter_walk_state()
 	player._take_damage(1)
 	_movement(delta, Vector2.ZERO, 0)

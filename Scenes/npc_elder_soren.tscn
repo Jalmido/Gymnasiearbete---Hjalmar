@@ -82,5 +82,8 @@ shape = SubResource("CircleShape2D_wh5hh")
 [node name="RoamTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Dialogue" parent="." instance=ExtResource("3_osig5")]
+[node name="Dialogue1" parent="." instance=ExtResource("3_osig5")]
 dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue1.json"
+
+[node name="Dialogue" parent="." instance=ExtResource("3_osig5")]
+dialogue_file = "res://Interaction/Dialogue/TownsmanBill_dialogue2"

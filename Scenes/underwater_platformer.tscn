@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cilxggqqhnik4"]
+[gd_scene load_steps=35 format=4 uid="uid://cilxggqqhnik4"]
 
 [ext_resource type="PackedScene" uid="uid://casvytn4081k1" path="res://Scenes/platformer_player.tscn" id="1_67kp6"]
 [ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scenes/underwater_platformer.gd" id="1_n1dyx"]
@@ -10,8 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://sjtxlo2o34i7" path="res://Scenes/executioner_summons.tscn" id="8_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="9_eccuq"]
 [ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://key_to_yunion.tscn" id="10_0n5py"]
-[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="11_h3qv4"]
-[ext_resource type="Script" uid="uid://b0bwl2y7vuqwf" path="res://Scenes/exit.gd" id="11_qv6tb"]
+[ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="12_qv6tb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdyok"]
 polygon = PackedVector2Array(0, 0, -8, 0, -8, 8, 8, 8, 4, 4)
@@ -321,8 +320,6 @@ gradient = SubResource("Gradient_0n5py")
 fill = 1
 fill_from = Vector2(0.502381, 0.47381)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qv6tb"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3qv4"]
 size = Vector2(112, 37)
 
@@ -330,7 +327,7 @@ size = Vector2(112, 37)
 script = ExtResource("1_n1dyx")
 
 [node name="Underwater_start_pos" type="Marker2D" parent="."]
-position = Vector2(133, 9)
+position = Vector2(-11, -7)
 
 [node name="Platformer_Player" parent="." instance=ExtResource("1_67kp6")]
 position = Vector2(1394, 179)
@@ -393,7 +390,6 @@ Hold [Space] to swim up"
 position = Vector2(1554, 162)
 
 [node name="Exit" type="Node2D" parent="."]
-script = ExtResource("11_qv6tb")
 
 [node name="PointLight2D" type="PointLight2D" parent="Exit"]
 position = Vector2(1552, -22)
@@ -404,15 +400,6 @@ shadow_color = Color(1, 0, 0, 0)
 texture = SubResource("GradientTexture2D_h3qv4")
 texture_scale = 7.21
 
-[node name="InteractionArea" parent="Exit" instance=ExtResource("11_h3qv4")]
-position = Vector2(1555, 60)
-action_name = "Ascend"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/InteractionArea"]
-position = Vector2(-2, 15)
-scale = Vector2(6, 6)
-shape = SubResource("CircleShape2D_qv6tb")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Exit"]
 position = Vector2(1552, 44)
 collision_layer = 2
@@ -420,5 +407,11 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/StaticBody2D"]
 position = Vector2(-8, -20)
 shape = SubResource("RectangleShape2D_h3qv4")
+
+[node name="RoomChange" parent="Exit" instance=ExtResource("12_qv6tb")]
+position = Vector2(1551, 58)
+scale = Vector2(2.53411, 2.30694)
+target_scene = "res://Scenes/Cutscenes/enter_yunion_cutscene.tscn"
+target_spawn_point_name = "Yunion_spawnpoint"
 
 [connection signal="body_entered" from="Fight_activation_area" to="." method="_on_fight_activation_area_body_entered"]

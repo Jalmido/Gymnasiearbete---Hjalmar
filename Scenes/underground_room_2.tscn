@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cx2dtci42n0y0"]
+[gd_scene load_steps=12 format=4 uid="uid://cx2dtci42n0y0"]
 
 [ext_resource type="Script" uid="uid://dck1m43qho6vu" path="res://Scripts/underground_room_2.gd" id="1_m8cpq"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="1_ufji3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_6beed"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_d7mrq"]
 [ext_resource type="PackedScene" uid="uid://2sg5ai58yfpl" path="res://Scenes/rock_boss.tscn" id="6_m8cpq"]
+[ext_resource type="AudioStream" uid="uid://uh6hpe0ch0ta" path="res://Audio/Music/Underground_bossfight.mp3" id="7_7uknt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7uknt"]
 texture = ExtResource("1_ufji3")
@@ -776,3 +777,8 @@ position = Vector2(-5, -10)
 position = Vector2(-6, 211)
 collision_mask = 3
 safe_margin = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7uknt")
+volume_db = -11.886
+autoplay = true

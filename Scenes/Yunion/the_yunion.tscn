@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://q7htkykc18kn"]
+[gd_scene load_steps=20 format=4 uid="uid://q7htkykc18kn"]
 
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="1_apw5f"]
 [ext_resource type="Texture2D" uid="uid://b5hvair0mlj3g" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Grass.png" id="1_l4qxh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dqmiesf57vwdd" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Shadow.png" id="6_wv74w"]
 [ext_resource type="Texture2D" uid="uid://ct2fek3vkwnnn" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/Extra/TX Plant with Shadow.png" id="7_ww0il"]
 [ext_resource type="PackedScene" uid="uid://bfqhbqinwqane" path="res://Scenes/npc_elder_soren.tscn" id="10_5o62e"]
+[ext_resource type="AudioStream" uid="uid://bwof0m7x0ukdp" path="res://Audio/Music/Final_bossfight.mp3" id="11_k0i1a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbq8"]
 texture = ExtResource("1_l4qxh")
@@ -4169,3 +4170,6 @@ zoom = Vector2(3.2, 3.2)
 
 [node name="NPC_ElderSoren" parent="." instance=ExtResource("10_5o62e")]
 position = Vector2(818, -83)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_k0i1a")

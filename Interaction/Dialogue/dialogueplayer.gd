@@ -40,6 +40,9 @@ func next_script():
 		dialogue_active = false
 		dialogue_completed = true
 		$NinePatchRect.visible = false
+		if dialogue_file == "res://Interaction/Dialogue/ElderSoren_dialogue2.json":
+			$"..".start_boss_fight = true
+
 		emit_signal("dialogue_finished")
 		return
 		

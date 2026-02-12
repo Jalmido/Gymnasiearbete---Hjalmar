@@ -8,6 +8,7 @@ var dialogue_active = false
 var dialogue_completed = false
 
 func _ready() -> void:
+	print("dialogue file:", dialogue_file)
 	$NinePatchRect.visible = false
 	$".".show()
 func start():

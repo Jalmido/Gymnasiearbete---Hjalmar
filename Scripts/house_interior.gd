@@ -10,7 +10,8 @@ func _ready() -> void:
 		if ammo.item_id in Globals.picked_up_items:
 			ammo.queue_free()
 	if health_potion:
-		if health_potion.item_id
+		if health_potion.item_id in Globals.picked_up_items:
+			health_potion.queue_free()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	LocationManager._play_animation()

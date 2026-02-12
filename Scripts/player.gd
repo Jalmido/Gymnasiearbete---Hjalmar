@@ -239,8 +239,6 @@ func _attack_state(_delta: float) -> void:
 func _Enter_underground():
 	AnimPlayer.play("Enter_underground")
 
-
-
 # ------------------------------
 # Enter state functions
 # ------------------------------

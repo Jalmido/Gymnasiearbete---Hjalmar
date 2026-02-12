@@ -4127,11 +4127,9 @@ sources/6 = SubResource("TileSetAtlasSource_apw5f")
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(-6.10352e-05, 0)
-scale = Vector2(1, 1)
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("1_apw5f")]
 position = Vector2(570, 362)
-scale = Vector2(1, 1)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("1_apw5f")]
 position = Vector2(1065, 475)

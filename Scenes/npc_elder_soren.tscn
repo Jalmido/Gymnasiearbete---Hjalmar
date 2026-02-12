@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfqhbqinwqane"]
+[gd_scene load_steps=12 format=3 uid="uid://bfqhbqinwqane"]
 
 [ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
+[ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scenes/npc_elder_soren.gd" id="1_ktggm"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_osig5"]
 [ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="3_osig5"]
 
@@ -63,6 +64,7 @@ height = 48.0
 radius = 50.01
 
 [node name="NPC_ElderSoren" type="CharacterBody2D"]
+script = ExtResource("1_ktggm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -84,6 +86,3 @@ autostart = true
 
 [node name="Dialogue1" parent="." instance=ExtResource("3_osig5")]
 dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue1.json"
-
-[node name="Dialogue" parent="." instance=ExtResource("3_osig5")]
-dialogue_file = "res://Interaction/Dialogue/TownsmanBill_dialogue2"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=77 format=4 uid="uid://caxs27h1exgyw"]
 
-[ext_resource type="Script" uid="uid://bjf7eruegcjck" path="res://Scenes/Cutscenes/enter_yunion_cutscene.gd" id="1_1csbo"]
+[ext_resource type="Script" uid="uid://bjf7eruegcjck" path="res://Scripts/enter_yunion_cutscene.gd" id="1_1csbo"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="1_635ha"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="2_omrcv"]
 [ext_resource type="Texture2D" uid="uid://bo8uxj6u0jq40" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Walk.png" id="3_ljcw2"]

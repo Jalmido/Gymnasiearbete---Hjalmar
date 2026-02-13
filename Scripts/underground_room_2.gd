@@ -6,6 +6,7 @@ extends Node2D
 var dead_enemies = 0
 
 func _ready():
+	Globals.save_checkpoint()
 	if Globals.miniboss_room_cleared:
 		_setup_cleared_room()
 	else:

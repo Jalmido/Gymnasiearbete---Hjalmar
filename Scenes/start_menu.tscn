@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cur2gvwck47ux"]
 
-[ext_resource type="Script" uid="uid://8ryfkrwm728w" path="res://Start_menu.gd" id="1_juhg0"]
+[ext_resource type="Script" uid="uid://8ryfkrwm728w" path="res://Scripts/Start_menu.gd" id="1_juhg0"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_jgtwh"]
 [ext_resource type="Texture2D" uid="uid://c7a7u5guhiayt" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Underwater Fantasy/PNG/underwater-fantasy-preview.png" id="2_m6uer"]
 [ext_resource type="Texture2D" uid="uid://ckeagteophgsj" path="res://Assets/Underwater/Undead executioner puppet/png/idle.png" id="3_a43kq"]

@@ -137,15 +137,15 @@ func _walk_state(delta: float) -> void:
 
 func _attack_state(delta:float) -> void:
 	anim.play("Attack_" + direction_name)
+	_movement(delta, Vector2.ZERO, 0)
 	
+	if $AttackTimer.is_stopped(): #Attack m cooldown
+		player._take_damage(1)
+		$AttackTimer.start()
+		
 	var distance_to_player = global_position.distance_to(player.global_position)
-
-	
 	if distance_to_player > 50:
 		_enter_walk_state()
-	player._take_damage(1)
-	_movement(delta, Vector2.ZERO, 0)
-
 func _dead_state(_delta:float) -> void:
 	queue_free() #tar bort fienden från spelet
 	emit_signal("dead", self)
@@ -162,7 +162,7 @@ func _enter_walk_state():
 
 func _enter_attack_state():
 	state = ATTACK
-
+	$AttackTimer.start()
 func _enter_dead_state():
 	state = DEAD
 ###### SIGNALS# ########

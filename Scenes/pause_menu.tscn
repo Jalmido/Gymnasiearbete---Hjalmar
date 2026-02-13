@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://boky65bo6ngsw"]
 
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="1_emv3i"]
-[ext_resource type="Script" uid="uid://o13bium7bvee" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Script" uid="uid://o13bium7bvee" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
 [ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scenes/pause_menu.gdshader" id="2_1och7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bpi0q"]
@@ -26,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0.505882)

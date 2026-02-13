@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=78 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="5_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://c35nhbf0j2bj3" path="res://Assets/Items/Arrow.png" id="6_nn08x"]
 [ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="7_52ee3"]
+[ext_resource type="PackedScene" uid="uid://b06sm7dkald1w" path="res://Scenes/Death_screen.tscn" id="8_bhhdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
 atlas = ExtResource("2_dewec")
@@ -982,6 +983,10 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
 shape = SubResource("RectangleShape2D_52ee3")
+
+[node name="Death_screen" parent="." instance=ExtResource("8_bhhdu")]
+process_mode = 2
+visible = false
 
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
 [connection signal="body_entered" from="SwordHitbox" to="." method="_on_sword_hitbox_body_entered"]

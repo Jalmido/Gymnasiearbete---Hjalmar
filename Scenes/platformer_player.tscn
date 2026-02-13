@@ -1,12 +1,13 @@
-[gd_scene load_steps=59 format=3 uid="uid://casvytn4081k1"]
+[gd_scene load_steps=60 format=3 uid="uid://casvytn4081k1"]
 
-[ext_resource type="Script" uid="uid://cpkbdyyf3pq04" path="res://Scenes/platformer_player.gd" id="1_ckjt6"]
+[ext_resource type="Script" uid="uid://cpkbdyyf3pq04" path="res://Scripts/platformer_player.gd" id="1_ckjt6"]
 [ext_resource type="Texture2D" uid="uid://b4ytso6l8i3h6" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/underwater-diving-files/PNG/player/Spritesheets/player-idle.png" id="2_0n7a2"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="3_0n7a2"]
 [ext_resource type="Texture2D" uid="uid://bhlj1518iwnk5" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/underwater-diving-files/PNG/player/Spritesheets/player-swiming.png" id="3_nkjwl"]
 [ext_resource type="Texture2D" uid="uid://p6sr74xcounu" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/underwater-diving-files/PNG/player/Spritesheets/player-rush.png" id="4_hdtoq"]
 [ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="5_nkjwl"]
 [ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="7_hdtoq"]
+[ext_resource type="PackedScene" uid="uid://b06sm7dkald1w" path="res://Scenes/Death_screen.tscn" id="8_uhf06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n6dk"]
 atlas = ExtResource("2_0n7a2")
@@ -770,6 +771,8 @@ shadow_filter = 2
 shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_uhf06")
 texture_scale = 5.73
+
+[node name="Death_screen" parent="." instance=ExtResource("8_uhf06")]
 
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_body_entered"]
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]

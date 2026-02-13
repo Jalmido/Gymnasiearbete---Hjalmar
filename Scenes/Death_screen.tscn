@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://b06sm7dkald1w"]
+
+[ext_resource type="Script" uid="uid://by4wybs2tumqi" path="res://Scripts/death_screen.gd" id="1_8rqoo"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scenes/pause_menu.gdshader" id="1_hgh6j"]
+[ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_8rqoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnosy"]
+shader = ExtResource("1_hgh6j")
+shader_parameter/blur_amount = 4.499
+shader_parameter/brightness = 0.905
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkek8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahnud"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s37w0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rqoo"]
+
+[node name="Death_screen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_8rqoo")
+
+[node name="BlurBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gnosy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 400.0
+offset_right = 1920.0
+offset_bottom = 680.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.662745)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0.505882)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -532.0
+offset_top = -378.0
+offset_right = 532.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Retry_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../Quit_button")
+focus_neighbor_bottom = NodePath("../Quit_button")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_8rqoo")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qkek8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ahnud")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s37w0")
+text = "Retry from Checkpoint"
+
+[node name="Quit_button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../Retry_button")
+focus_neighbor_bottom = NodePath("../Retry_button")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_8rqoo")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qkek8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ahnud")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s37w0")
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -100.0
+offset_right = 363.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_8rqoo")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8rqoo")
+text = "You Died"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Retry_button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

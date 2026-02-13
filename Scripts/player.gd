@@ -188,8 +188,8 @@ func _walk_state(delta: float) -> void:
 	
 func _dead_state(delta: float) -> void:
 	_movement(delta, Vector2.ZERO)
-
-	
+	$Death_screen.show()
+	get_tree().paused = true
 	
 	#game over skärm görs sen
 

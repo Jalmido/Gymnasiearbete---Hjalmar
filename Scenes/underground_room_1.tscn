@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://cbkoqt166ojjo"]
+[gd_scene load_steps=13 format=4 uid="uid://cbkoqt166ojjo"]
 
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_hp65m"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="2_7jytf"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_lpr5q"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_3i1pi"]
@@ -576,6 +577,7 @@ terrain_set_1/terrain_0/color = Color(0.184705, 0.385584, 0.645816, 1)
 sources/0 = SubResource("TileSetAtlasSource_7ct7s")
 
 [node name="Underground_room_1" type="Node2D"]
+script = ExtResource("1_hp65m")
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 

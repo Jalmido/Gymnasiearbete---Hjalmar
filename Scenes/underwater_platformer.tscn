@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=4 uid="uid://cilxggqqhnik4"]
 
 [ext_resource type="PackedScene" uid="uid://casvytn4081k1" path="res://Scenes/platformer_player.tscn" id="1_67kp6"]
-[ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scenes/underwater_platformer.gd" id="1_n1dyx"]
+[ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scripts/underwater_platformer.gd" id="1_n1dyx"]
 [ext_resource type="Texture2D" uid="uid://dsnlhqb6t6sll" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Ocean View Files/Layers/Night/Tile.png" id="5_qv55x"]
 [ext_resource type="PackedScene" uid="uid://cfgpklimu1cp0" path="res://Scenes/Executioner_boss.tscn" id="6_8vwl1"]
 [ext_resource type="Texture2D" uid="uid://c7a7u5guhiayt" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Underwater Fantasy/PNG/underwater-fantasy-preview.png" id="6_jrlmm"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="7_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://sjtxlo2o34i7" path="res://Scenes/executioner_summons.tscn" id="8_8vwl1"]
 [ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="9_eccuq"]
-[ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://key_to_yunion.tscn" id="10_0n5py"]
+[ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://Scenes/key_to_yunion.tscn" id="10_0n5py"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="12_qv6tb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdyok"]

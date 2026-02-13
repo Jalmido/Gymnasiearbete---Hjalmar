@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dr5d772mdxfli"]
+[gd_scene load_steps=12 format=4 uid="uid://dr5d772mdxfli"]
 
 [ext_resource type="Texture2D" uid="uid://bgxxj54ysla4a" path="res://Assets/mountain_biome/WINTER TILES/WINTER TILES.png" id="1_1h3gl"]
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_lbbtg"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_xsckg"]
 [ext_resource type="Texture2D" uid="uid://bcdqy81ydnh2x" path="res://Assets/mountain_biome/The Fan-tasy Tileset (Free)/Art/Buildings/Well_Hay_1.png" id="3_datp0"]
 [ext_resource type="PackedScene" uid="uid://c7m2hgpoqutad" path="res://Scenes/Houses/house_4.tscn" id="3_xsckg"]
@@ -476,6 +477,7 @@ script/source = "extends Node2D
 "
 
 [node name="Mountain_Village" type="Node2D"]
+script = ExtResource("1_lbbtg")
 
 [node name="Player" parent="." instance=ExtResource("2_xsckg")]
 position = Vector2(228, 301)

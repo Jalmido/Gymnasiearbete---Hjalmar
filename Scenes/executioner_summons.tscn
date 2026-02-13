@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://sjtxlo2o34i7"]
 
-[ext_resource type="Script" uid="uid://de7ded8v0n8k" path="res://Scenes/executioner_summons.gd" id="1_rgue7"]
+[ext_resource type="Script" uid="uid://de7ded8v0n8k" path="res://Scripts/executioner_summons.gd" id="1_rgue7"]
 [ext_resource type="Texture2D" uid="uid://ckm3jt7n10gu1" path="res://Assets/Underwater/Undead executioner puppet/png/summonIdle.png" id="1_sr8td"]
 [ext_resource type="Texture2D" uid="uid://bor4ac4l0qvpk" path="res://Assets/Underwater/Undead executioner puppet/png/summonDeath.png" id="2_rgue7"]
 [ext_resource type="Texture2D" uid="uid://dfjmn3ogbjika" path="res://Assets/Underwater/Undead executioner puppet/png/summonAppear.png" id="3_0jaif"]

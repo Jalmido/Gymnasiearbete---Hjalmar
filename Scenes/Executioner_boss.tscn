@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://cfgpklimu1cp0"]
 
-[ext_resource type="Script" uid="uid://bc60db68iqlln" path="res://Scenes/executioner_boss.gd" id="1_v2ei5"]
+[ext_resource type="Script" uid="uid://bc60db68iqlln" path="res://Scripts/executioner_boss.gd" id="1_v2ei5"]
 [ext_resource type="Texture2D" uid="uid://dvtqo14hq68e" path="res://Assets/Underwater/Undead executioner puppet/png/attacking.png" id="2_rjsox"]
 [ext_resource type="Texture2D" uid="uid://ckeagteophgsj" path="res://Assets/Underwater/Undead executioner puppet/png/idle.png" id="3_mi12v"]
 [ext_resource type="Texture2D" uid="uid://kjytfsap6ekg" path="res://Assets/Underwater/Undead executioner puppet/png/summon.png" id="4_poqr8"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kkepo3epo8re"
+path="res://.godot/imported/49. Ancient Dragon Lansseax.mp3-9a27dc6abd4e90a61ba0af89dcd62d64.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/49. Ancient Dragon Lansseax.mp3"
+dest_files=["res://.godot/imported/49. Ancient Dragon Lansseax.mp3-9a27dc6abd4e90a61ba0af89dcd62d64.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

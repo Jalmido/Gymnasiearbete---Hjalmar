@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://sj4d8pktc373"]
+
+[ext_resource type="Script" uid="uid://dhcn7cgego1d4" path="res://Scripts/key_to_yunion.gd" id="1_3rca3"]
+[ext_resource type="Texture2D" uid="uid://bt0emar2fnvd3" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/Meta data assets files/Visuals/OBJECTS/items/key.png" id="1_mle66"]
+
+[sub_resource type="Gradient" id="Gradient_3rca3"]
+offsets = PackedFloat32Array(0.0136986, 0.767123)
+colors = PackedColorArray(1, 1, 0.054902, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_20f81"]
+gradient = SubResource("Gradient_3rca3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7euoy"]
+radius = 9.05539
+
+[node name="Key_to_yunion" type="Area2D"]
+script = ExtResource("1_3rca3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_mle66")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 3.3
+texture = SubResource("GradientTexture2D_20f81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7euoy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

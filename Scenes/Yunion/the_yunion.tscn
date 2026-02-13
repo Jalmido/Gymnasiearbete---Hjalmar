@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://q7htkykc18kn"]
+[gd_scene load_steps=23 format=4 uid="uid://q7htkykc18kn"]
 
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="1_apw5f"]
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_ho72w"]
 [ext_resource type="Texture2D" uid="uid://b5hvair0mlj3g" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Grass.png" id="1_l4qxh"]
 [ext_resource type="Texture2D" uid="uid://b3jgc6mfuv1k2" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Stone Ground.png" id="2_wv74w"]
 [ext_resource type="Texture2D" uid="uid://cdduqwddephnh" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Wall.png" id="3_ww0il"]
@@ -10,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dqmiesf57vwdd" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Shadow.png" id="6_wv74w"]
 [ext_resource type="Texture2D" uid="uid://ct2fek3vkwnnn" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/Extra/TX Plant with Shadow.png" id="7_ww0il"]
 [ext_resource type="PackedScene" uid="uid://bfqhbqinwqane" path="res://Scenes/npc_elder_soren.tscn" id="10_5o62e"]
-[ext_resource type="AudioStream" uid="uid://bwof0m7x0ukdp" path="res://Audio/Music/Final_bossfight.mp3" id="11_k0i1a"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="12_8mdag"]
+[ext_resource type="AudioStream" uid="uid://kkepo3epo8re" path="res://Audio/Music/49. Ancient Dragon Lansseax.mp3" id="12_ho72w"]
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="13_ho72w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7hbq8"]
@@ -4127,6 +4128,7 @@ sources/5 = SubResource("TileSetAtlasSource_ww0il")
 sources/6 = SubResource("TileSetAtlasSource_apw5f")
 
 [node name="The_Yunion" type="Node2D"]
+script = ExtResource("1_ho72w")
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(-6.10352e-05, 0)
@@ -4173,25 +4175,31 @@ zoom = Vector2(3.2, 3.2)
 [node name="NPC_ElderSoren" parent="." instance=ExtResource("10_5o62e")]
 position = Vector2(818, -83)
 collision_layer = 4
+collision_mask = 207
 platform_floor_layers = 4294967044
 platform_wall_layers = 4
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_k0i1a")
+stream = ExtResource("12_ho72w")
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Health_potion" parent="Items" instance=ExtResource("12_8mdag")]
+position = Vector2(787, 364)
 item_id = "Yunion_HP_1"
 
 [node name="Health_potion2" parent="Items" instance=ExtResource("12_8mdag")]
+position = Vector2(842, 443)
 item_id = " Yunion_HP_2"
 
 [node name="Health_potion3" parent="Items" instance=ExtResource("12_8mdag")]
+position = Vector2(955, 883)
 item_id = " Yunion_HP_3"
 
 [node name="Ammo" parent="Items" instance=ExtResource("13_ho72w")]
+position = Vector2(814, 749)
 item_id = "Yunion_ammo_1"
 
 [node name="Ammo2" parent="Items" instance=ExtResource("13_ho72w")]
+position = Vector2(785, 265)
 item_id = "Yunion_ammo_2"

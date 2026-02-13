@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cr7lasxqhaihf"]
+[gd_scene load_steps=28 format=4 uid="uid://cr7lasxqhaihf"]
 
 [ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Overworld.gd" id="1_5dcxx"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_w7v6x"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="13_utuaw"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="14_52lmo"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="15_5dcxx"]
+[ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="16_w7v6x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 resource_name = "Plains tileset"
@@ -1003,6 +1004,13 @@ libraries = {
 }
 
 [node name="Cutscene_Camera" type="Camera2D" parent="Opening_Cutscene"]
+
+[node name="Popup_UI" parent="." instance=ExtResource("16_w7v6x")]
+visible = false
+popup_text = "[W], [A], [S], [D] to walk
+Sword on [1]
+Gun on [2]
+"
 
 [connection signal="timeout" from="LevelChange/ChangeLevelTimer" to="LevelChange" method="_on_change_level_timer_timeout"]
 [connection signal="animation_finished" from="Opening_Cutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

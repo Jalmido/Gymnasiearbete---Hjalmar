@@ -12,6 +12,7 @@ func _ready() -> void:
 		$Player.set_physics_process(false)
 		$Opening_Cutscene/Cutscene_Camera.make_current()
 		$Opening_Cutscene/AnimationPlayer.play("Opening_Cutscene")
+
 		first_time_entering_scene = false
 	
 	if LocationManager.last_exit_position:
@@ -22,4 +23,5 @@ func _ready() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	$Player/Camera2D.make_current()
+	$Popup_UI.show()
 	$Player.set_physics_process(true)

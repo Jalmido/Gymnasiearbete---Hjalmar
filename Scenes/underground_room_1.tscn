@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://cbkoqt166ojjo"]
+[gd_scene load_steps=15 format=4 uid="uid://cbkoqt166ojjo"]
 
 [ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_hp65m"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="2_7jytf"]
+[ext_resource type="AudioStream" uid="uid://cefjmis4mu1kq" path="res://Audio/Music/1-17 Cave.mp3" id="2_lpr5q"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_lpr5q"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="4_3i1pi"]
 [ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/jump_area.tscn" id="5_pxa8a"]
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="6_3d5am"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="6_7ct7s"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="7_hp65m"]
+[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/item_cleaner.tscn" id="10_lpr5q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3d5am"]
 texture = ExtResource("2_7jytf")
@@ -578,6 +580,7 @@ sources/0 = SubResource("TileSetAtlasSource_7ct7s")
 
 [node name="Underground_room_1" type="Node2D"]
 script = ExtResource("1_hp65m")
+level_music = ExtResource("2_lpr5q")
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 
@@ -645,15 +648,22 @@ position = Vector2(-86, 429)
 scale = Vector2(0.916382, 1.02935)
 
 [node name="Exit_To_Room2" type="Marker2D" parent="."]
-position = Vector2(524, 264)
+position = Vector2(523, 272)
 
-[node name="Ammo" parent="." instance=ExtResource("6_3d5am")]
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Ammo" parent="Items" instance=ExtResource("6_3d5am")]
 position = Vector2(-115, 413)
 item_id = "ammo_underground"
 
-[node name="Health_potion" parent="." instance=ExtResource("7_hp65m")]
+[node name="Health_potion" parent="Items" instance=ExtResource("7_hp65m")]
 position = Vector2(-115, 436)
 item_id = "health_potion_underground"
+
+[node name="Health_potion2" parent="Items" instance=ExtResource("7_hp65m")]
+position = Vector2(-95, 406)
+
+[node name="ItemCleaner" parent="." instance=ExtResource("10_lpr5q")]
 
 [connection signal="body_entered" from="JumpAreas/JumpArea" to="Player" method="_on_jump_area_body_entered"]
 [connection signal="body_entered" from="JumpAreas/JumpArea2" to="Player" method="_on_jump_area_body_entered"]

@@ -6,7 +6,10 @@ var first_time_entering_scene = true
 
 func _ready() -> void:
 	Globals.save_checkpoint()
+	MusicManager.play_track(preload("res://Audio/Music/1-10 Skyloft.mp3"))
 	var scene_path = get_tree().current_scene.scene_file_path
+	
+	
 	
 	if scene_path not in Globals.visited_scenes: #kolla om animationen ska köras
 		Globals.visited_scenes.append(scene_path)

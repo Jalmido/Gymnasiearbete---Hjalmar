@@ -113,7 +113,7 @@ func _drink_potion() -> void:
 	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
 		Globals.lives += 1
 		Globals.health_potions_in_inv -= 1
-		print("SKÅL!")
+
 
 func _take_damage(amount: int) -> void:
 	if not can_take_damage:

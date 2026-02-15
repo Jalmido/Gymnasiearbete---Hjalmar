@@ -43,9 +43,7 @@ func _summoned():
 	visible = true
 	
 	summon_setup_finished = true
-	print("summon färdig")
 func _on_shoot_out_timer_timeout() -> void:
-	print("shoot out")
 	shoot_out = true
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:

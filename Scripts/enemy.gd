@@ -136,10 +136,11 @@ func _walk_state(delta: float) -> void:
 	_movement(delta, direction_to_player, current_speed)
 
 func _attack_state(delta:float) -> void:
-	anim.play("Attack_" + direction_name)
 	_movement(delta, Vector2.ZERO, 0)
 	
 	if $AttackTimer.is_stopped(): #Attack m cooldown
+		anim.play("Attack_" + direction_name)
+
 		player._take_damage(1)
 		$AttackTimer.start()
 		
@@ -161,8 +162,10 @@ func _enter_walk_state():
 
 
 func _enter_attack_state():
-	state = ATTACK
 	$AttackTimer.start()
+	state = ATTACK
+
+
 func _enter_dead_state():
 	state = DEAD
 ###### SIGNALS# ########

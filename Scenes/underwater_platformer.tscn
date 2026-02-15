@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=4 uid="uid://cilxggqqhnik4"]
+[gd_scene load_steps=37 format=4 uid="uid://cilxggqqhnik4"]
 
 [ext_resource type="PackedScene" uid="uid://casvytn4081k1" path="res://Scenes/platformer_player.tscn" id="1_67kp6"]
 [ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scripts/underwater_platformer.gd" id="1_n1dyx"]
+[ext_resource type="AudioStream" uid="uid://bwof0m7x0ukdp" path="res://Audio/Music/Final_bossfight.mp3" id="2_qv6tb"]
 [ext_resource type="Texture2D" uid="uid://dsnlhqb6t6sll" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Ocean View Files/Layers/Night/Tile.png" id="5_qv55x"]
 [ext_resource type="PackedScene" uid="uid://cfgpklimu1cp0" path="res://Scenes/Executioner_boss.tscn" id="6_8vwl1"]
 [ext_resource type="Texture2D" uid="uid://c7a7u5guhiayt" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Underwater Fantasy/PNG/underwater-fantasy-preview.png" id="6_jrlmm"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="9_eccuq"]
 [ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://Scenes/key_to_yunion.tscn" id="10_0n5py"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="12_qv6tb"]
+[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/item_cleaner.tscn" id="13_rpy62"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xdyok"]
 polygon = PackedVector2Array(0, 0, -8, 0, -8, 8, 8, 8, 4, 4)
@@ -325,12 +327,13 @@ size = Vector2(112, 37)
 
 [node name="Underwater_platformer" type="Node2D"]
 script = ExtResource("1_n1dyx")
+level_music = ExtResource("2_qv6tb")
 
 [node name="Underwater_start_pos" type="Marker2D" parent="."]
 position = Vector2(-11, -7)
 
 [node name="Platformer_Player" parent="." instance=ExtResource("1_67kp6")]
-position = Vector2(1394, 179)
+position = Vector2(1444, 192)
 
 [node name="Camera2D" type="Camera2D" parent="Platformer_Player"]
 zoom = Vector2(2, 2)
@@ -346,32 +349,36 @@ tile_map_data = PackedByteArray("AAADAAQAAAAGAAAAAQADAAMAAAAIAAQAAAADAAIAAAAJAAY
 enabled = false
 tile_set = SubResource("TileSet_67kp6")
 
-[node name="Health_potion" parent="." instance=ExtResource("6_n1dyx")]
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Health_potion" parent="Items" instance=ExtResource("6_n1dyx")]
 position = Vector2(346, -9)
 item_id = "health_potion_underwater"
 
-[node name="Ammo" parent="." instance=ExtResource("7_8vwl1")]
+[node name="Ammo" parent="Items" instance=ExtResource("7_8vwl1")]
 position = Vector2(387, -7)
 item_id = "ammo_underwater"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.359069, 0.359069, 0.359069, 1)
 z_index = -3
 position = Vector2(415, -23)
 scale = Vector2(4.11286, 4.04754)
 texture = ExtResource("6_jrlmm")
 
-[node name="Executioner_boss" parent="." instance=ExtResource("6_8vwl1")]
+[node name="Boss" type="Node2D" parent="."]
+
+[node name="Executioner_boss" parent="Boss" instance=ExtResource("6_8vwl1")]
 position = Vector2(988, -66)
 scale = Vector2(1.5, 1.5)
 
-[node name="Executioner_summons" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
+[node name="Executioner_summons" parent="Boss" groups=["summons"] instance=ExtResource("8_8vwl1")]
 position = Vector2(867, -136)
 
-[node name="Executioner_summons2" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
+[node name="Executioner_summons2" parent="Boss" groups=["summons"] instance=ExtResource("8_8vwl1")]
 position = Vector2(1089, -8)
 
-[node name="Executioner_summons3" parent="." groups=["summons"] instance=ExtResource("8_8vwl1")]
+[node name="Executioner_summons3" parent="Boss" groups=["summons"] instance=ExtResource("8_8vwl1")]
 position = Vector2(1090, -199)
 
 [node name="Fight_activation_area" type="Area2D" parent="."]
@@ -413,5 +420,7 @@ position = Vector2(1551, 58)
 scale = Vector2(2.53411, 2.30694)
 target_scene = "res://Scenes/Cutscenes/enter_yunion_cutscene.tscn"
 target_spawn_point_name = "Yunion_spawnpoint"
+
+[node name="ItemCleaner" parent="." instance=ExtResource("13_rpy62")]
 
 [connection signal="body_entered" from="Fight_activation_area" to="." method="_on_fight_activation_area_body_entered"]

@@ -2,11 +2,12 @@ extends Node2D
 
 
 @export var enemies_required: int
-
+@export var level_music: AudioStream
 var dead_enemies = 0
 
 func _ready():
 	Globals.save_checkpoint()
+	MusicManager.play_track(level_music)
 	if Globals.miniboss_room_cleared:
 		_setup_cleared_room()
 	else:
@@ -33,8 +34,6 @@ func _connect_enemy_signals():
 		
 func _on_enemy_dead(enemy):
 	dead_enemies += 1
-	print("Enemy defeated:", enemy.name)
-	print(dead_enemies)
 	if dead_enemies == 3:
 		$Rock_Boss.active = true
 	if dead_enemies >= enemies_required:
@@ -43,7 +42,6 @@ func _on_enemy_dead(enemy):
 func _on_miniboss_room_cleared():
 	$RoomChange._unlock_door()
 	$RoomChange2._unlock_door()
-	print("MINIBOSS ROOM CLEARED!")
 	Globals.miniboss_room_cleared = true
 	# Exempel:
 	# - öppna dörr

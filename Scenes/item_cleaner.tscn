@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ikd4h7qnav88"]
+
+[ext_resource type="Script" uid="uid://np14v6rawy7x" path="res://item_cleaner.gd" id="1_d23jq"]
+
+[node name="ItemCleaner" type="Node2D"]
+script = ExtResource("1_d23jq")

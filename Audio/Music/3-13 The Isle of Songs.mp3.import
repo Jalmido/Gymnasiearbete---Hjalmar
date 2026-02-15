@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kctg0vt88k1k"
+path="res://.godot/imported/3-13 The Isle of Songs.mp3-2963b11df6ad407783b6519ecb637937.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/3-13 The Isle of Songs.mp3"
+dest_files=["res://.godot/imported/3-13 The Isle of Songs.mp3-2963b11df6ad407783b6519ecb637937.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

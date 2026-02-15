@@ -80,7 +80,6 @@ func _change_hotbar_item(item_name: String) -> void:
 		current_item = "Sword"
 		attacking = true
 	elif item_name == "Health_Potion":
-		print("valt health potion")
 		current_item = "Health_Potion"
 		attacking = false
  
@@ -89,7 +88,7 @@ func _drink_potion() -> void:
 	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
 		Globals.lives += 1
 		Globals.health_potions_in_inv -= 1
-		print("SKÅL!")
+
 
 func _take_damage(amount: int) -> void:
 	if not can_take_damage:
@@ -165,13 +164,14 @@ func _swim_state(delta: float) -> void:
 	if is_swimming_up:
 		velocity.y = move_toward(velocity.y, MAX_SWIM_SPEED, abs(SWIM_ACCEL) * delta)
 
-	# Vi skickar med 'not is_swimming_up' som apply_gravity. 
-	# Om vi simmar uppåt (true), blir apply_gravity = false.
+
 	_movement(delta, axis, not is_swimming_up)
 	
 	if is_on_floor() and velocity.y >= 0:
-		if axis == 0: _enter_idle_state()
-		else: _enter_walk_state()
+		if axis == 0:
+			_enter_idle_state()
+		else:
+			_enter_walk_state()
 
 func _dash_state(delta: float) -> void:
 	dash_timer -= delta
@@ -185,7 +185,7 @@ func _dash_state(delta: float) -> void:
 
 func _dead_state(delta: float) -> void:
 	$Death_screen.show()
-
+	get_tree().paused = true
 # ------------------------------
 # Enter state funktioner
 # ------------------------------
@@ -222,7 +222,6 @@ func _enter_dead_state():
 
 func _on_dash_area_body_entered(body: Node2D) -> void:
 	if state == DASH:
-		print("träffad med dash")
 		body._take_damage()
 
 

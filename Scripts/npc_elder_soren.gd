@@ -1,8 +1,4 @@
 extends CharacterBody2D
-
-
-
-
 signal dead(enemy: Enemy)
 
 const ACC = 1100
@@ -17,12 +13,14 @@ var health: int = 30
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
 
+@export var boss_music: AudioStream
+
 func _ready() -> void:
 	var current_scene:String = get_tree().current_scene.scene_file_path
-	print(current_scene)
 	if current_scene == "res://Scenes/Yunion/the_yunion.tscn":
 		$Dialogue1.dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue2.json"
 	else:
@@ -109,7 +107,7 @@ func choose(array):
 func _boss_preparations():
 	$Healthbar.show()
 	$InteractionArea.set_deferred("monitoring", false)
-	$"../AudioStreamPlayer2D".play()
+	MusicManager.play_track(boss_music)
 	prepared_for_boss = true
 
 #------------------------------
@@ -160,7 +158,7 @@ func _after_attack_done():
 # ------------------------------
 func _enter_idle_state():
 	state = IDLE
-
+	animplayer.play("Levitating")
 	
 func _enter_walk_state():
 	state = WALK
@@ -172,6 +170,7 @@ func _enter_attack_state():
 	attacking = true
 	state = choose([SHOOT, DASH]) #slumpar mellan dash och shoot
 	if state == SHOOT:
+
 		animplayer.play("Shoot")
 		await get_tree().create_timer(3).timeout
 		_after_attack_done()

@@ -10,7 +10,7 @@ enum { IDLE, WALK, DEAD, SWIPE, STOMP}
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 20
+var health: int = 1
 var active = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -171,5 +171,4 @@ func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 		body._take_damage(damage)
 
 func _on_after_attack_idle_timer_timeout() -> void:
-	print("HAR ATTACKERAT OCH SKA BÖRJA GÅ")
 	_enter_walk_state()

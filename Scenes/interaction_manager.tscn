@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://gfbnuq7cud6i"]
 
-[ext_resource type="Script" uid="uid://dlugr0ygqdb1u" path="res://Scripts/interaction_manager.gd" id="1_g12pu"]
+[ext_resource type="Script" uid="uid://dlugr0ygqdb1u" path="res://Scripts/Globalscripts/interaction_manager.gd" id="1_g12pu"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_m5ky0"]
 
 [node name="InteractionManager" type="Node2D"]

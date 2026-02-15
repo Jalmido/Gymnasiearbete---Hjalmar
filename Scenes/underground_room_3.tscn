@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=4 uid="uid://bgi2w83afrnfq"]
+[gd_scene load_steps=14 format=4 uid="uid://bgi2w83afrnfq"]
 
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="1_mbtr4"]
 [ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_tu8io"]
+[ext_resource type="AudioStream" uid="uid://cefjmis4mu1kq" path="res://Audio/Music/1-17 Cave.mp3" id="2_8jany"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_t8ciw"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/room_change.tscn" id="3_t8ciw"]
 [ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/jump_area.tscn" id="4_0t6f4"]
+[ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="7_ytn71"]
+[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="8_u3d3t"]
+[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/item_cleaner.tscn" id="9_x41bj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0t6f4"]
 texture = ExtResource("1_mbtr4")
@@ -739,11 +743,9 @@ custom_data_layer_0/name = "is_water"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_8jany")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t6f4"]
-size = Vector2(37, 31)
-
 [node name="underground_room_3" type="Node2D"]
 script = ExtResource("1_tu8io")
+level_music = ExtResource("2_8jany")
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 
@@ -783,13 +785,16 @@ target_spawn_point_name = "res://Scenes/underground_room_3.tscn"
 
 [node name="JumpArea" parent="." instance=ExtResource("4_0t6f4")]
 position = Vector2(91, 31)
-scale = Vector2(0.83142, 4.26817)
+scale = Vector2(0.83142, 4.30817)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(111, -34)
-collision_layer = 2
-collision_mask = 0
+[node name="Items" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(9.5, 0.5)
-shape = SubResource("RectangleShape2D_0t6f4")
+[node name="Health_potion" parent="Items" instance=ExtResource("7_ytn71")]
+position = Vector2(60, 31)
+item_id = "health_potion_u3"
+
+[node name="Ammo" parent="Items" instance=ExtResource("8_u3d3t")]
+position = Vector2(53, 57)
+item_id = "ammo_u3"
+
+[node name="ItemCleaner" parent="." instance=ExtResource("9_x41bj")]

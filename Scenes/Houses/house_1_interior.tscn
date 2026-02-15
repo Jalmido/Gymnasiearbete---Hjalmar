@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://31vvoy0tfio5"]
+[gd_scene load_steps=14 format=4 uid="uid://31vvoy0tfio5"]
 
 [ext_resource type="Texture2D" uid="uid://bjdre1h2cd3f7" path="res://Assets/overworld/sprites/tilesets/floors/wooden.png" id="1_p7pcu"]
 [ext_resource type="Script" uid="uid://d4mdtopncprly" path="res://Scripts/house_interior.gd" id="1_vem02"]
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="2_0cjig"]
+[ext_resource type="AudioStream" uid="uid://2lerghntiyii" path="res://Audio/Music/1-10 Skyloft.mp3" id="2_d2bxd"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="3_0cjig"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_vem02"]
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="5_4ewg3"]
@@ -558,6 +559,7 @@ size = Vector2(51, 38.5)
 
 [node name="House1Interior" type="Node2D"]
 script = ExtResource("1_vem02")
+level_music = ExtResource("2_d2bxd")
 
 [node name="Floor_Carpet" type="TileMapLayer" parent="."]
 position = Vector2(-5, 12)

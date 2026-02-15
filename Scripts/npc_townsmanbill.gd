@@ -58,8 +58,8 @@ func _movement(delta):
 		velocity = dir * SPEED
 		move_and_slide()
 	else:
-		velocity = Vector2.ZERO # Stoppa NPC:n om den pratar
-
+		velocity = Vector2.ZERO
+		
 func _on_interact():
 	is_chatting = true
 	is_roaming = false

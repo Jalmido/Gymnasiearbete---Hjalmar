@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfqhbqinwqane"]
+[gd_scene load_steps=19 format=3 uid="uid://bfqhbqinwqane"]
 
 [ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
 [ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scripts/npc_elder_soren.gd" id="1_ktggm"]
+[ext_resource type="AudioStream" uid="uid://kkepo3epo8re" path="res://Audio/Music/49. Ancient Dragon Lansseax.mp3" id="2_me1r8"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_osig5"]
 [ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="3_osig5"]
 
@@ -62,6 +63,24 @@ height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wh5hh"]
 radius = 50.01
+
+[sub_resource type="Animation" id="Animation_ktggm"]
+resource_name = "Levitating"
+length = 4.0
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1, 1.66667, 2, 2.33333, 3, 3.66667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, -3), Vector2(0, -2), Vector2(0, 0), Vector2(0, 2), Vector2(0, 3), Vector2(0, 2), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wi5jj"]
 length = 0.001
@@ -226,24 +245,6 @@ tracks/5/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_ktggm"]
-resource_name = "Levitating"
-length = 4.0
-loop_mode = 1
-step = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 1, 1.66667, 2, 2.33333, 3, 3.66667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, -3), Vector2(0, -2), Vector2(0, 0), Vector2(0, 2), Vector2(0, 3), Vector2(0, 2), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o52ba"]
 _data = {
 &"Levitating": SubResource("Animation_ktggm"),
@@ -260,6 +261,7 @@ size = Vector2(28, 56.5)
 [node name="NPC_ElderSoren" type="CharacterBody2D" groups=["enemies"]]
 collision_mask = 199
 script = ExtResource("1_ktggm")
+boss_music = ExtResource("2_me1r8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -317,12 +319,12 @@ width = 5.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="LaserAttackHitbox" type="Area2D" parent="LaserPivot"]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserPivot/LaserAttackHitbox"]
 position = Vector2(0, 400.5)
 rotation = 6.28319
 shape = SubResource("RectangleShape2D_ktggm")
-disabled = true
 debug_color = Color(0, 0, 0, 1)
 
 [node name="DashAttackHitbox" type="Area2D" parent="."]

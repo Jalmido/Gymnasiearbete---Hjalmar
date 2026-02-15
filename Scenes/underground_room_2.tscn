@@ -715,6 +715,7 @@ sources/0 = SubResource("TileSetAtlasSource_m8cpq")
 [node name="underground_room_2" type="Node2D"]
 script = ExtResource("1_m8cpq")
 enemies_required = 4
+level_music = ExtResource("7_7uknt")
 
 [node name="Tilemaplayers" type="Node2D" parent="."]
 
@@ -777,8 +778,3 @@ position = Vector2(-5, -10)
 position = Vector2(-6, 211)
 collision_mask = 3
 safe_margin = 1.0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_7uknt")
-volume_db = -11.886
-autoplay = true

@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func _on_interact():
 	if is_locked:
-		print("LÅST")
 		return
 	LocationManager.last_scene = "res://Scenes/underground_room1.tscn"
 	LocationManager.target_spawn_point_name = target_spawn_point_name

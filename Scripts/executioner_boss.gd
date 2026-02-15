@@ -74,13 +74,12 @@ func _chase_state(delta: float) -> void:
 	
 	# Om vi är inom räckhåll, attackera
 	if distance_to_player < ATTACK_RANGE and not anim.is_playing():
-		print("ENTER ATTACK STATE")
 		_enter_attack_state()
 
 func _dead_state(delta: float) -> void:
 	queue_free()
-	$"../Boss_Arena_doors".enabled = false
-	$"..".boss_alive = false
+	$"../../Boss_Arena_doors".enabled = false
+	$"../..".boss_alive = false
 # ------------------------------
 # Attack Logik (Slumpad)
 # ------------------------------
@@ -109,12 +108,10 @@ func _enter_chase_state() -> void:
 func _take_damage():
 	health -= 1
 	_update_healthbar()
-	print("tar skada")
 	if health <= 0:
 		_enter_dead_state()
 
 func _update_healthbar() -> void:
-	print("healhtbar updateras")
 	$Healthbar.value = health
 
 

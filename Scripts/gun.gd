@@ -59,7 +59,6 @@ func _reload_pistol() -> void:
 	var after_reload = min(18 - Globals.ammo_in_mag, Globals.ammo_in_inv)
 	Globals.ammo_in_mag += after_reload
 	Globals.ammo_in_inv -= after_reload
-	print("du har nu:", Globals.ammo_in_mag, "bullets i mag")
 	if Globals.ammo_in_mag	> 0:
 		can_shoot = true
 func _reset_bullet() -> void:

@@ -15,7 +15,7 @@ gradient = SubResource("Gradient_x2qfu")
 fill = 1
 fill_from = Vector2(0.511905, 0.504762)
 
-[node name="Health_potion" type="Area2D"]
+[node name="Health_potion" type="Area2D" groups=["items"]]
 script = ExtResource("1_x2qfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

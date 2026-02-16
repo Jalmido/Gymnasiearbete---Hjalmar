@@ -10,14 +10,14 @@ enum { CHASE, ATTACK_1, ATTACK_2, SUMMON, DEAD }
 var state = CHASE
 
 
-var health = 14
+var health = 30
 var direction_name = "left"
 var target = null
 var player = null
 var active = false
 var can_summon = true
 @onready var anim = $AnimationPlayer
-@onready var summon_scenes = load("res://Scenes/executioner_summons.tscn")
+@onready var summon_scenes = load("res://Scenes/Characters/executioner_summons.tscn")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		CHASE:
 			_chase_state(delta)
 		ATTACK_1, ATTACK_2, SUMMON:
-			_movement(delta, Vector2.ZERO) # Stå still under attacker
+			_movement(delta, Vector2.ZERO) #ska bara stå still uner attacker
 		DEAD:
 			_dead_state(delta)
 # ------------------------------
@@ -64,7 +64,7 @@ func _chase_state(delta: float) -> void:
 			if child.is_in_group("summons"):
 				child.has_been_summoned = true
 				
-		
+				
 		return
 
 	
@@ -72,12 +72,13 @@ func _chase_state(delta: float) -> void:
 	anim.play("Walk_" + direction_name)
 	_movement(delta, direction_to_player)
 	
-	# Om vi är inom räckhåll, attackera
+
 	if distance_to_player < ATTACK_RANGE and not anim.is_playing():
 		_enter_attack_state()
 
 func _dead_state(delta: float) -> void:
-	queue_free()
+	$AnimatedSprite2D.play("Death")
+	await $AnimatedSprite2D.animation_finished
 	$"../../Boss_Arena_doors".enabled = false
 	$"../..".boss_alive = false
 # ------------------------------
@@ -124,7 +125,7 @@ func _update_direction(direction: Vector2):
 func _enter_dead_state():
 	state = DEAD
 	anim.play("Death")
-	# Vänta på dödsanimation eller queue_free()
+
 
 
 

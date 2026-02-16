@@ -1,27 +1,27 @@
 [gd_scene load_steps=30 format=4 uid="uid://cr7lasxqhaihf"]
 
-[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Overworld.gd" id="1_5dcxx"]
-[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_w7v6x"]
-[ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/enemy.tscn" id="3_gy7g8"]
-[ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="4_46gqp"]
-[ext_resource type="Texture2D" uid="uid://ccfxl5iqg6fx6" path="res://Assets/overworld/sprites/tilesets/overworld/grass.png" id="5_8k6i5"]
-[ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="6_dlnb1"]
-[ext_resource type="Texture2D" uid="uid://c1rx3vojpymxe" path="res://Assets/overworld/sprites/tilesets/overworld/fences.png" id="7_0imqq"]
-[ext_resource type="Texture2D" uid="uid://el17vui6pu7a" path="res://Assets/overworld/sprites/tilesets/overworld/Screenshot 2025-11-07 175240.png" id="8_8ho5u"]
-[ext_resource type="PackedScene" uid="uid://bxsennemopq4g" path="res://Scenes/Houses/house_1.tscn" id="9_e8ubm"]
-[ext_resource type="PackedScene" uid="uid://lwds1gg6rinm" path="res://Scenes/Houses/house_2.tscn" id="10_ci6rn"]
-[ext_resource type="PackedScene" uid="uid://c7lo0b32uwggv" path="res://Scenes/Houses/house_3.tscn" id="11_2brhu"]
-[ext_resource type="PackedScene" uid="uid://c8i7yrhysq8nm" path="res://Scenes/change_layer_area.tscn" id="12_h7wov"]
-[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="13_utuaw"]
-[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="14_52lmo"]
-[ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/health_potion.tscn" id="15_5dcxx"]
-[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="16_gy7g8"]
-[ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/popup.tscn" id="16_w7v6x"]
-[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/item_cleaner.tscn" id="18_46gqp"]
+[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Overworld.gd" id="1_3ysjs"]
+[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="2_7afob"]
+[ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/Characters/enemy.tscn" id="3_jv171"]
+[ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="4_o1nsl"]
+[ext_resource type="Texture2D" uid="uid://ccfxl5iqg6fx6" path="res://Assets/overworld/sprites/tilesets/overworld/grass.png" id="5_pbaho"]
+[ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="6_2j0ao"]
+[ext_resource type="Texture2D" uid="uid://c1rx3vojpymxe" path="res://Assets/overworld/sprites/tilesets/overworld/fences.png" id="7_wcclh"]
+[ext_resource type="Texture2D" uid="uid://el17vui6pu7a" path="res://Assets/overworld/sprites/tilesets/overworld/Screenshot 2025-11-07 175240.png" id="8_4cm3e"]
+[ext_resource type="PackedScene" uid="uid://bxsennemopq4g" path="res://Scenes/Houses/house_1.tscn" id="9_21y02"]
+[ext_resource type="PackedScene" uid="uid://lwds1gg6rinm" path="res://Scenes/Houses/house_2.tscn" id="10_r8fhl"]
+[ext_resource type="PackedScene" uid="uid://c7lo0b32uwggv" path="res://Scenes/Houses/house_3.tscn" id="11_onlrw"]
+[ext_resource type="PackedScene" uid="uid://c8i7yrhysq8nm" path="res://Scenes/Managers/change_layer_area.tscn" id="12_x82q5"]
+[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="13_sg6ii"]
+[ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="14_x2dcs"]
+[ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/Items/health_potion.tscn" id="15_m7okf"]
+[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/Items/ammo.tscn" id="16_xjuw7"]
+[ext_resource type="PackedScene" uid="uid://bt01edn65hpdn" path="res://Scenes/UI/popup.tscn" id="17_12d20"]
+[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/Items/item_cleaner.tscn" id="18_57gpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 resource_name = "Plains tileset"
-texture = ExtResource("4_46gqp")
+texture = ExtResource("4_o1nsl")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -398,11 +398,11 @@ texture = ExtResource("4_46gqp")
 5:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epypp"]
-texture = ExtResource("5_8k6i5")
+texture = ExtResource("5_pbaho")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_or7tv"]
-texture = ExtResource("6_dlnb1")
+texture = ExtResource("6_2j0ao")
 0:0/0 = 0
 0:0/0/terrain_set = 1
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -700,7 +700,7 @@ texture = ExtResource("6_dlnb1")
 2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.72036, -1.08815, -2.32467, -8, -8, -8, -8, 1.18707, -4.99558, 1.08814)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esopp"]
-texture = ExtResource("7_0imqq")
+texture = ExtResource("7_wcclh")
 0:0/0 = 0
 0:0/0/terrain_set = 2
 0:0/0/terrain = 0
@@ -799,7 +799,7 @@ texture = ExtResource("7_0imqq")
 3:3/0/terrains_peering_bit/left_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bktio"]
-texture = ExtResource("8_8ho5u")
+texture = ExtResource("8_4cm3e")
 texture_region_size = Vector2i(156, 156)
 0:0/0 = 0
 
@@ -889,9 +889,9 @@ _data = {
 }
 
 [node name="Overworld" type="Node2D"]
-script = ExtResource("1_5dcxx")
+script = ExtResource("1_3ysjs")
 
-[node name="Player" parent="." instance=ExtResource("2_w7v6x")]
+[node name="Player" parent="." instance=ExtResource("2_7afob")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(153, 106)
@@ -903,7 +903,7 @@ limit_top = -150
 limit_right = 1620
 limit_bottom = 570
 
-[node name="Enemy" parent="." instance=ExtResource("3_gy7g8")]
+[node name="Enemy" parent="." instance=ExtResource("3_jv171")]
 z_index = 1
 scale = Vector2(0.8, 0.8)
 
@@ -937,26 +937,26 @@ tile_set = SubResource("TileSet_epypp")
 process_mode = 3
 z_index = 2
 
-[node name="House1" parent="Houses" instance=ExtResource("9_e8ubm")]
+[node name="House1" parent="Houses" instance=ExtResource("9_21y02")]
 position = Vector2(802, 11)
 scale = Vector2(1.6, 1.6)
 
-[node name="House2" parent="Houses" instance=ExtResource("10_ci6rn")]
+[node name="House2" parent="Houses" instance=ExtResource("10_r8fhl")]
 position = Vector2(503, -22)
 scale = Vector2(1.6, 1.6)
 
-[node name="House3" parent="Houses" instance=ExtResource("11_2brhu")]
+[node name="House3" parent="Houses" instance=ExtResource("11_onlrw")]
 position = Vector2(800, 226)
 scale = Vector2(1.6, 1.6)
 
-[node name="ChangeLayerArea" parent="." instance=ExtResource("12_h7wov")]
+[node name="ChangeLayerArea" parent="." instance=ExtResource("12_x82q5")]
 position = Vector2(1557, 134)
 scale = Vector2(-0.541758, 2.49324)
 
 [node name="LevelChange" type="Node2D" parent="."]
-script = ExtResource("13_utuaw")
+script = ExtResource("13_sg6ii")
 
-[node name="Change_to_underground" parent="LevelChange" instance=ExtResource("14_52lmo")]
+[node name="Change_to_underground" parent="LevelChange" instance=ExtResource("14_x2dcs")]
 position = Vector2(1413, 341)
 action_name = "Jump"
 
@@ -993,11 +993,11 @@ polygon = PackedVector2Array(2.49245, 0.860538, 2.47845, 4.61344, 7.30934, 4.589
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Health_potion" parent="Items" instance=ExtResource("15_5dcxx")]
+[node name="Health_potion" parent="Items" instance=ExtResource("15_m7okf")]
 position = Vector2(1612, 301)
 item_id = " health_potion_overworld"
 
-[node name="Ammo" parent="Items" instance=ExtResource("16_gy7g8")]
+[node name="Ammo" parent="Items" instance=ExtResource("16_xjuw7")]
 position = Vector2(38, 421)
 
 [node name="Opening_Cutscene" type="Node2D" parent="."]
@@ -1010,17 +1010,17 @@ libraries = {
 
 [node name="Cutscene_Camera" type="Camera2D" parent="Opening_Cutscene"]
 
-[node name="Popup_UI" parent="." instance=ExtResource("16_w7v6x")]
+[node name="Popup_UI" parent="." instance=ExtResource("17_12d20")]
 visible = false
 popup_text = "[W], [A], [S], [D] to walk
 Sword on [1]
 Gun on [2]
 "
 
-[node name="Enemy2" parent="." instance=ExtResource("3_gy7g8")]
+[node name="Enemy2" parent="." instance=ExtResource("3_jv171")]
 position = Vector2(141, 432)
 
-[node name="ItemCleaner" parent="." instance=ExtResource("18_46gqp")]
+[node name="ItemCleaner" parent="." instance=ExtResource("18_57gpc")]
 position = Vector2(141, 432)
 
 [connection signal="timeout" from="LevelChange/ChangeLevelTimer" to="LevelChange" method="_on_change_level_timer_timeout"]

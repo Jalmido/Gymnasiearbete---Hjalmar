@@ -3,7 +3,7 @@ class_name NPC
 ###############################################################################################################################################
 
 #### ALLT SOM FÖLJER ÄR TILL MITT GENERELLA NPC SCRIPT SOM ANVÄNDS PÅ ALLA NPCS, SOM SEDAN MODIFIERAS UTIFRÅN SPECIFIKA KRAV ########
-#experimentalt frf
+#Används ej än
 ###############################################################################################################################################
 
 @export var speed = 40

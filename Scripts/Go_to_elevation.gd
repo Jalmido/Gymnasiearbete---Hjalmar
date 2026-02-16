@@ -1,5 +1,9 @@
 extends Area2D
 
+"""
+Gammal grej som används på ett ställe. Lite onödigt och finns bättre lösningar
+"""
+
 @export var tilemap_path: NodePath
 @onready var tilemap: TileMapLayer = $"../Tilemaplayers/Elevation"
 

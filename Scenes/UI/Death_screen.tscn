@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b06sm7dkald1w"]
 
 [ext_resource type="Script" uid="uid://by4wybs2tumqi" path="res://Scripts/death_screen.gd" id="1_8rqoo"]
-[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scenes/pause_menu.gdshader" id="1_hgh6j"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/pause_menu.gdshader" id="1_hgh6j"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_8rqoo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnosy"]

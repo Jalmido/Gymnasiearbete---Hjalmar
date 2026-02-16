@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="2_xmakj"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="3_wop1w"]
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="4_u8q1y"]
-[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="5_k86s3"]
-[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/ammo.tscn" id="7_wqisy"]
-[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/item_cleaner.tscn" id="9_2e84g"]
+[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="5_k86s3"]
+[ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/Items/ammo.tscn" id="7_wqisy"]
+[ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/Items/item_cleaner.tscn" id="9_2e84g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqlpu"]
 texture = ExtResource("1_io317")

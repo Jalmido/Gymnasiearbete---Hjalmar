@@ -17,7 +17,7 @@ func _on_interact():
 	
 
 """
-STÖRST PROBLEM HITTILS: felsökning för att jag spawnade vid 0,0 när jag gick ut ur huset trots att jag 
+PROBLEM: felsökning för att jag spawnade vid 0,0 när jag gick ut ur huset trots att jag 
 sparade enter_positionen i en global script. Problemet var att jag hade råkat stoppa
 interaction_manager i samma group (player) som playern, och därmed tog den interactionmanagerns coords ist.
 """

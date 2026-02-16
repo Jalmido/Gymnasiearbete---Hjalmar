@@ -10,7 +10,7 @@ enum { IDLE, WALK, DEAD, SWIPE, STOMP}
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 1
+var health: int = 20
 var active = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D

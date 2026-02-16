@@ -370,7 +370,7 @@ radius = 27.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 platform_floor_layers = 4294967044
 script = ExtResource("1_1f0kj")
 
@@ -418,6 +418,7 @@ position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_afpow")
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]

@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="3_0n7a2"]
 [ext_resource type="Texture2D" uid="uid://bhlj1518iwnk5" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/underwater-diving-files/PNG/player/Spritesheets/player-swiming.png" id="3_nkjwl"]
 [ext_resource type="Texture2D" uid="uid://p6sr74xcounu" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/underwater-diving-files/PNG/player/Spritesheets/player-rush.png" id="4_hdtoq"]
-[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/HUD.tscn" id="5_nkjwl"]
-[ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/handgun.tscn" id="7_hdtoq"]
-[ext_resource type="PackedScene" uid="uid://b06sm7dkald1w" path="res://Scenes/Death_screen.tscn" id="8_uhf06"]
+[ext_resource type="PackedScene" uid="uid://bwmdphtvn0qv0" path="res://Scenes/UI/HUD.tscn" id="5_nkjwl"]
+[ext_resource type="PackedScene" uid="uid://bkq7ogoq8jb6r" path="res://Scenes/Others/handgun.tscn" id="7_hdtoq"]
+[ext_resource type="PackedScene" uid="uid://b06sm7dkald1w" path="res://Scenes/UI/Death_screen.tscn" id="8_uhf06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n6dk"]
 atlas = ExtResource("2_0n7a2")

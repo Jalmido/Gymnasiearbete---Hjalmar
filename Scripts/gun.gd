@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 		_reload_pistol()
 
 func shoot(target_pos: Vector2) -> void:
+	$ShootSound.play()
 	handgun.show()
 	bullet.show()
 	bullet.set_as_top_level(true) #kulan blir oberoende av vaptnets rotation o position, kör rakt framåt
@@ -56,6 +57,7 @@ func shoot(target_pos: Vector2) -> void:
 	$ResetBulletTimer.start()
 
 func _reload_pistol() -> void:
+	$ReloadSound.play()
 	var after_reload = min(18 - Globals.ammo_in_mag, Globals.ammo_in_inv)
 	Globals.ammo_in_mag += after_reload
 	Globals.ammo_in_inv -= after_reload
@@ -79,7 +81,7 @@ func disable_weapon():
 	pistol_active = false
 	hide()
 	set_process(false)
-	_reset_bullet() # Avbryt pågående skott om man byter mitt i	
+	_reset_bullet() 
 
 
 ###SIGNALS####
@@ -88,7 +90,15 @@ func _on_bullet_body_entered(body: Node2D) -> void:
 	if not is_shooting:
 		return
 	if body.is_in_group("enemies"):
-		body._take_damage()
+
+		if body.name == "NPC_ElderSoren": ## Soren får HP av bullets efter halva HP
+			if body.health <= 20 or body.heals_from_bullets: 
+				body.heals_from_bullets = true
+				body._recieve_health()
+			else:
+				body._take_damage()
+		else:
+			body._take_damage()
 	_reset_bullet()
 
 

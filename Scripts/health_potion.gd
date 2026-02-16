@@ -5,7 +5,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		
-		# Skapa EXAKT samma ID som städaren letar efter
+		#Samma unika ID som item cleanern letar efter skapas
 		var current_scene_name = get_tree().current_scene.name
 		var unique_id = current_scene_name + str(get_path())
 		

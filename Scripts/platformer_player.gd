@@ -6,8 +6,8 @@ const SWIM_FORCE = -100.0
 const GRAVITY = 400.0      
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
-const SWIM_ACCEL = -600.0  # Kraften när man håller inne space
-const MAX_SWIM_SPEED = -300.0 # Maxhastighet uppåt så man inte flyger iväg
+const SWIM_ACCEL = -600.0 
+const MAX_SWIM_SPEED = -300.0 
 
 enum { IDLE, WALK, SWIM , DASH, DEAD}
 var state = WALK
@@ -49,13 +49,12 @@ func _process(delta: float) -> void:
 # ------------------------------
 
 func _movement(delta: float, input_x: float, apply_gravity: bool = true) -> void:
-	# Horisontell rörelse (Gå eller bromsa)
 	if input_x != 0:
 		velocity.x = move_toward(velocity.x, input_x * MAX_SPEED, ACC * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACC * delta)
 	
-	# Gravitation (Sjunk)
+	
 	if apply_gravity and not is_on_floor():
 		velocity.y += GRAVITY * delta
 
@@ -72,13 +71,11 @@ func _change_hotbar_item(item_name: String) -> void:
 	$Handgun.disable_weapon()
 
 	
-	# Aktivera det valda vapnet
+	
 	if item_name == "Pistol":
 		$Handgun.enable_weapon()
 		attacking = false
-	elif item_name == "Sword":
-		current_item = "Sword"
-		attacking = true
+
 	elif item_name == "Health_Potion":
 		current_item = "Health_Potion"
 		attacking = false
@@ -135,7 +132,7 @@ func _idle_state(delta: float) -> void:
 		_enter_walk_state()
 	
 	if Input.is_action_just_pressed("Jump"):
-		_enter_swim_state() # Nu ger denna fart uppåt!
+		_enter_swim_state() 
 
 func _walk_state(delta: float) -> void:
 	anim.play("Swim_" + direction_name)
@@ -176,8 +173,7 @@ func _swim_state(delta: float) -> void:
 func _dash_state(delta: float) -> void:
 	dash_timer -= delta
 	velocity = dash_direction * DASH_SPEED
-	
-	# VIKTIGT: Du måste flytta gubben!
+
 	move_and_slide() 
 	
 	if dash_timer <= 0:
@@ -207,13 +203,15 @@ func _enter_dash_state():
 	state = DASH
 	dash_timer = DASH_DURATION
 	
-	# Bestäm riktning baserat på senaste håll man rörde sig
+
 	var axis = Input.get_axis("Left", "Right")
 	if axis != 0:
 		dash_direction = Vector2(axis, 0)
 	else:
-		# Om man står stilla, dasha åt det håll man tittar
-		dash_direction = Vector2(1, 0) if direction_name == "right" else Vector2(-1, 0)
+		if direction_name == "right":
+			dash_direction = Vector2.RIGHT
+		else:
+			Vector2.LEFT
 	anim.play("Dash_" + direction_name)
 	can_dash = false
 	_start_dash_cooldown()

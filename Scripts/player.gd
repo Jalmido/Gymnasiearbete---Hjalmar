@@ -20,7 +20,7 @@ var jump_direction: Vector2 = Vector2.ZERO
 var jump_start_pos: Vector2
 var jump_speed = 200
 var can_jump = false
-var attacking = false
+var sword_equipped = false
 var ignore_ground = false
 var is_respawning = false
 
@@ -72,7 +72,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Jump") and can_jump:
 		_enter_jump_state()
 	if event.is_action_pressed("Attack"):
-		if current_item == "Sword" and attacking:
+		if current_item == "Sword" and sword_equipped:
 			_enter_attack_state()
 		elif current_item == "Health_Potion":
 			_drink_potion()
@@ -98,17 +98,16 @@ func _change_hotbar_item(item_name: String) -> void:
 	$Handgun.disable_weapon()
 
 	
-	# Aktivera det valda vapnet
+	
 	if item_name == "Pistol":
 		$Handgun.enable_weapon()
-		attacking = false
+		sword_equipped = false
 	elif item_name == "Sword":
 		current_item = "Sword"
-		attacking = true
+		sword_equipped = true
 	elif item_name == "Health_Potion":
 		current_item = "Health_Potion"
-		attacking = false
- 
+		sword_equipped = false
 func _drink_potion() -> void:
 	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
 		Globals.lives += 1
@@ -125,6 +124,7 @@ func _take_damage(amount: int) -> void:
 		Globals.lives -= amount
 
 		if Globals.lives <= 0:
+			print("dog")
 			_enter_dead_state()
 
 func _display_raycast() -> void:
@@ -141,21 +141,21 @@ func _reset_raycast() -> void:
 func _landing_manager() -> void:
 
 	velocity = Vector2.ZERO
-	set_collision_mask_value(7, true) # Slå på kollision med väggar igen
+	set_collision_mask_value(7, true) 
 	
-	# Tvinga raycasten att kolla vad som finns under fötterna just nu
+	#Tvinga raycasten att kolla vad som finns under fötterna just nu
 	GroundControlRaycast.force_raycast_update()
 	
-	# Kolla om vi träffade något
+
 	if GroundControlRaycast.is_colliding():
 		var collider = GroundControlRaycast.get_collider()
 		
-		# Kolla om det vi står på är med i gruppen "water"
+		
 		if collider.is_in_group("water"):
 			_enter_water_state()
-			return # VIKTIGT: Avbryt här så vi inte går vidare till idle_state
+			return 
 
-	# Om det inte var vatten (eller vi missade marken helt), landa som vanligt
+	
 	_enter_idle_state()
 
 # ------------------------------
@@ -187,7 +187,6 @@ func _walk_state(delta: float) -> void:
 	_movement(delta, input_vector)
 	
 func _dead_state(delta: float) -> void:
-	_movement(delta, Vector2.ZERO)
 	$Death_screen.show()
 	get_tree().paused = true
 	
@@ -212,25 +211,33 @@ func _water_state(_delta: float) -> void:
 	AnimPlayer.play("Drowning")
 	await AnimPlayer.animation_finished
 
-	# Stoppa animationen så den inte fortsätter behålla scale/modulate
+
 	AnimPlayer.stop()
 	AnimPlayer.play("Reset_visual")
-	# Respawn position
-	global_position = LocationManager.last_jump_position.snapped(Vector2.ONE)
+
+	global_position = LocationManager.last_jump_position.snapped(Vector2.ONE) #Respawnar där man hoppa ifrån
 
 	GroundControlRaycast.enabled = true
 	set_collision_mask_value(7, true)
 
 	_take_damage(1)
+	if Globals.lives > 0:
+		is_respawning = false
+		_enter_idle_state()
+	else:
+		is_respawning = false #om hp = 0 entrar man inte Idle state, utan man kommer dö istället
+	
+	
 
-	is_respawning = false
-	_enter_idle_state()
+func _attack_state(delta: float) -> void:
+	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
+	_update_ground_movement() 
 
-func _attack_state(_delta: float) -> void:
-	AnimPlayer.play("Attack_" + direction_name)
-	await AnimPlayer.animation_finished
-	_enter_idle_state()
 
+	_movement(delta, input_vector)
+	
+	if not AnimPlayer.is_playing():
+		_enter_idle_state()
 
 # ----------------------
 #Animation funktion
@@ -249,6 +256,7 @@ func _enter_walk_state():
 	state = WALK
 
 func _enter_dead_state():
+	print("enter dead")
 	state = DEAD
 
 func _enter_jump_state():
@@ -267,6 +275,9 @@ func _enter_water_state():
 
 func _enter_attack_state():
 	state = ATTACK
+	AnimPlayer.play("Attack_" + direction_name)
+	if not $SwordSound.playing:
+		$SwordSound.play()
 	
 
 ########## SIGNALS ########

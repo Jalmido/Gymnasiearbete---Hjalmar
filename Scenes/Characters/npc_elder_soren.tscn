@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfqhbqinwqane"]
+[gd_scene load_steps=20 format=3 uid="uid://bfqhbqinwqane"]
 
 [ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
 [ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scripts/npc_elder_soren.gd" id="1_ktggm"]
@@ -118,7 +118,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -135,7 +135,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("InteractionArea/CollisionShape2D:disabled")
+tracks/4/path = NodePath("LaserPivot:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -147,30 +147,30 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LaserPivot:visible")
+tracks/5/path = NodePath("AnimatedSprite2D:offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("AnimatedSprite2D:offset")
+tracks/6/path = NodePath("LaserPivot/LaserAttackHitbox/CollisionShape2D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_o52ba"]
-resource_name = "Shoot"
+resource_name = "Shoot_Left"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -223,33 +223,110 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("InteractionArea/CollisionShape2D:disabled")
+tracks/4/path = NodePath("LaserPivot:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LaserPivot:visible")
+tracks/5/path = NodePath("LaserPivot/LaserAttackHitbox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_co3mq"]
+resource_name = "Shoot_Right"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserPivot/Laser:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2.93333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 0, 800), PackedVector2Array(0, 0, 0, 800), PackedVector2Array(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserPivot/LaserAttackHitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserPivot/Laser:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserPivot:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserPivot/LaserAttackHitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o52ba"]
 _data = {
 &"Levitating": SubResource("Animation_ktggm"),
 &"RESET": SubResource("Animation_wi5jj"),
-&"Shoot": SubResource("Animation_o52ba")
+&"Shoot_Left": SubResource("Animation_o52ba"),
+&"Shoot_Right": SubResource("Animation_co3mq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktggm"]
@@ -259,6 +336,7 @@ size = Vector2(4, 805)
 size = Vector2(28, 56.5)
 
 [node name="NPC_ElderSoren" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
 collision_mask = 199
 script = ExtResource("1_ktggm")
 boss_music = ExtResource("2_me1r8")
@@ -290,10 +368,10 @@ libraries = {
 }
 
 [node name="AfterDashIdleTimer" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="AfterShootIdleTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [node name="Healthbar" type="ProgressBar" parent="."]
@@ -304,9 +382,9 @@ offset_left = -22.0
 offset_top = -71.0
 offset_right = 23.0
 offset_bottom = -65.0
-max_value = 30.0
+max_value = 40.0
 step = 1.0
-value = 30.0
+value = 40.0
 rounded = true
 show_percentage = false
 
@@ -320,6 +398,7 @@ default_color = Color(1, 0, 0, 1)
 
 [node name="LaserAttackHitbox" type="Area2D" parent="LaserPivot"]
 collision_layer = 8
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserPivot/LaserAttackHitbox"]
 position = Vector2(0, 400.5)

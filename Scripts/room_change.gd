@@ -14,20 +14,19 @@ func _ready() -> void:
 
 func _on_interact():
 	if is_locked:
-		return
-	LocationManager.last_scene = "res://Scenes/underground_room1.tscn"
+		return 
 	LocationManager.target_spawn_point_name = target_spawn_point_name
 	LocationManager._play_animation()
 	$RoomChangeTimer.start()
 
 func _lock_door():
 	is_locked = true
-	interaction_area.set_deferred("monitoring", false) #Tillåt interaktion igen
-	#kanske gör så att det är annan bild och grejer.
+	interaction_area.set_deferred("monitoring", false) 
+	
 	
 func _unlock_door():
 	is_locked = false
-	interaction_area.set_deferred("monitoring", true)
+	interaction_area.set_deferred("monitoring", true) #Tillåt interaktion igen
 
 
 func _on_room_change_timer_timeout() -> void:

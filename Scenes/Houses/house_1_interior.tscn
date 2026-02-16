@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="2_0cjig"]
 [ext_resource type="AudioStream" uid="uid://2lerghntiyii" path="res://Audio/Music/1-10 Skyloft.mp3" id="2_d2bxd"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="3_0cjig"]
-[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="3_vem02"]
+[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="3_vem02"]
 [ext_resource type="Texture2D" uid="uid://cpi3h30ag8kwx" path="res://Assets/overworld/sprites/objects/objects.png" id="5_4ewg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ewg3"]

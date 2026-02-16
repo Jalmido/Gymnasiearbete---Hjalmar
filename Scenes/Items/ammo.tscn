@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqobkh0jrud6j"]
 
-[ext_resource type="Texture2D" uid="uid://12tfbrfkwjvr" path="res://Assets/Items/ItemSprites/stone.png" id="1_mq6ge"]
 [ext_resource type="Script" uid="uid://488st7jpf0xt" path="res://Scripts/ammo.gd" id="1_pncbt"]
+[ext_resource type="Texture2D" uid="uid://c50w6xrnget0a" path="res://Assets/Items/Shikashi's Fantasy Icons Pack v2/image_2026-02-16_181526940-removebg-preview.png" id="2_pncbt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vs3aj"]
 radius = 6.0
@@ -25,7 +25,8 @@ shape = SubResource("CircleShape2D_vs3aj")
 debug_color = Color(0.666667, 0.933333, 1, 0.313726)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mq6ge")
+scale = Vector2(0.0512162, 0.0539929)
+texture = ExtResource("2_pncbt")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_mq6ge")

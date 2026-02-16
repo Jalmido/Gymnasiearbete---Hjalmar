@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://caxs27h1exgyw"]
+[gd_scene load_steps=79 format=4 uid="uid://caxs27h1exgyw"]
 
 [ext_resource type="Script" uid="uid://bjf7eruegcjck" path="res://Scripts/enter_yunion_cutscene.gd" id="1_1csbo"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="1_635ha"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcqnoj0uiy0e" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Props.png" id="7_ljcw2"]
 [ext_resource type="Texture2D" uid="uid://b3xtuq1neegqh" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Struct.png" id="8_1csbo"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="10_rbh3p"]
+[ext_resource type="PackedScene" uid="uid://sj4d8pktc373" path="res://Scenes/Items/key_to_yunion.tscn" id="12_00q25"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbh3p"]
 texture = ExtResource("4_1csbo")
@@ -3447,10 +3448,46 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Key_to_yunion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Key_to_yunion:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Key_to_yunion:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.12407]
+}
 
 [sub_resource type="Animation" id="Animation_rbh3p"]
 resource_name = "Walk_to_door"
-length = 12.0
+length = 16.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -3459,10 +3496,10 @@ tracks/0/path = NodePath("PlayerInCutscene/AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 6.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 6.3, 12.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [&"Walk_right", &"Walk_up"]
+"values": [&"Walk_right", &"Walk_up", &"Idle_up"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3486,7 +3523,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 6.2, 11.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(100, 80), Vector2(540, 80), Vector2(540, 20)]
+"values": [Vector2(100, 80), Vector2(540, 80), Vector2(545, 20)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -3499,6 +3536,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.807843), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Key_to_yunion:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 12.3, 15.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Key_to_yunion:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(12.1, 12.3, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(545, 7), Vector2(545, 7), Vector2(545, -27)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Key_to_yunion:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(12.3, 13.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bc14g"]
@@ -3546,5 +3619,8 @@ offset_bottom = 36.0
 theme_override_fonts/font = ExtResource("10_rbh3p")
 theme_override_font_sizes/font_size = 100
 text = "The Yunion"
+
+[node name="Key_to_yunion" parent="." instance=ExtResource("12_00q25")]
+rotation = 2.12407
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

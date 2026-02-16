@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="1_emv3i"]
 [ext_resource type="Script" uid="uid://o13bium7bvee" path="res://Scripts/Globalscripts/pause_menu.gd" id="1_k0w1u"]
-[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scenes/pause_menu.gdshader" id="2_1och7"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/pause_menu.gdshader" id="2_1och7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bpi0q"]
 shader = ExtResource("2_1och7")
@@ -96,6 +96,14 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Quit
 "
 
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+max_value = 1.5
+step = 0.01
+value = 0.75
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume_button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

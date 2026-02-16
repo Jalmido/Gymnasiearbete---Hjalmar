@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300
 
-var bounces_left = 10
+var bounces_left = 20
 var direction = Vector2.ZERO
 var shoot_out = false
 var has_been_summoned = false
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	if collision:
 		if bounces_left > 0:
-			# Räkna ut reflektionsvinkeln mot väggen
+			#Räkna ut reflektionsvinkeln mot väggen
 			velocity = velocity.bounce(collision.get_normal())
 			bounces_left -= 1
 		else:

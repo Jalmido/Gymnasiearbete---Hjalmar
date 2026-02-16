@@ -43,11 +43,4 @@ func _on_miniboss_room_cleared():
 	$RoomChange._unlock_door()
 	$RoomChange2._unlock_door()
 	Globals.miniboss_room_cleared = true
-	# Exempel:
-	# - öppna dörr
-	# - spawn chest
-	# - spela animation
-	# - spara progress
-
-	#$ExitDoor.open()
-	#$ClearAnimationPlayer.play("RoomClear")
+	

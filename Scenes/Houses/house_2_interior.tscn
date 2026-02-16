@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=4 uid="uid://cknmw4wln02v2"]
 
 [ext_resource type="Script" uid="uid://d4mdtopncprly" path="res://Scripts/house_interior.gd" id="1_2w0e5"]
-[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Player.tscn" id="2_nvxsd"]
+[ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="2_nvxsd"]
 [ext_resource type="AudioStream" uid="uid://2lerghntiyii" path="res://Audio/Music/1-10 Skyloft.mp3" id="2_phrm7"]
 [ext_resource type="Texture2D" uid="uid://bjdre1h2cd3f7" path="res://Assets/overworld/sprites/tilesets/floors/wooden.png" id="3_lfxar"]
 [ext_resource type="Texture2D" uid="uid://qk8ifb7p1w1u" path="res://Assets/overworld/sprites/tilesets/floors/carpet.png" id="4_c2qpj"]
 [ext_resource type="Texture2D" uid="uid://d1c6jxrr21qgh" path="res://Assets/overworld/sprites/tilesets/walls/walls.png" id="5_pk0yk"]
-[ext_resource type="PackedScene" uid="uid://bfqhbqinwqane" path="res://Scenes/npc_elder_soren.tscn" id="6_nvxsd"]
+[ext_resource type="PackedScene" uid="uid://bfqhbqinwqane" path="res://Scenes/Characters/npc_elder_soren.tscn" id="6_nvxsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2w0e5"]
 texture = ExtResource("3_lfxar")

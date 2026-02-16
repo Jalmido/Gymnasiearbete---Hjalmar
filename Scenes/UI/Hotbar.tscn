@@ -64,7 +64,7 @@ offset_top = -24.0
 offset_right = 26.0
 grow_horizontal = 2
 grow_vertical = 0
-columns = 5
+columns = 4
 
 [node name="Sword" type="Button" parent="GridContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -130,15 +130,3 @@ button_group = SubResource("ButtonGroup_hf0n5")
 expand_icon = true
 script = ExtResource("3_o071h")
 item_name = "Yunion_Key"
-
-[node name="ItemButton6" type="Button" parent="GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o071h")
-theme_override_styles/normal = SubResource("StyleBoxFlat_hf0n5")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_hf0n5")
-expand_icon = true
-script = ExtResource("3_o071h")

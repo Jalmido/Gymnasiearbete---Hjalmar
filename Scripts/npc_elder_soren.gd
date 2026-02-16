@@ -9,11 +9,12 @@ var start_boss_fight = false
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 30
+var health: int = 40
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2
-
+var heals_from_bullets = false #efter 50% hp healar han
+var rage_mode = false
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 		$Dialogue1.dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue2.json"
 	else:
 		$Dialogue1.dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue1.json"
+		Globals.objective_recieved = true
 
 	_update_healthbar()
 	player = get_tree().get_first_node_in_group("player")
@@ -84,13 +86,19 @@ func _update_direction(direction: Vector2) -> void:
 #------------
 #Health och damage
 #-----------------
-
+func _recieve_health():
+	if heals_from_bullets:
+		health += 2
+	_update_healthbar()
 func _take_damage():
+	if not start_boss_fight:
+		return
 	health -= 1
 	if health <= 0:
 		_enter_dead_state()
 	
-	if health < 8:
+	if health <= 20 or rage_mode:
+		rage_mode = true
 		$AnimatedSprite2D.modulate.b = 0		
 		$AnimatedSprite2D.modulate.r = 1.0
 		$AnimatedSprite2D.modulate.g = 0	
@@ -137,13 +145,15 @@ func _dash_state(delta: float) -> void:
 	
 	
 func _dead_state(_delta:float) -> void:
-	emit_signal("dead", self)
-	queue_free() #tar bort fienden från spelet
-
+	#set_physics_process(false)
+	#$"../Player/Camera2D".make_current()
+	#$"../AnimationPlayer".play("VictoryAnimation")
+	#$Healthbar.hide()
+	queue_free()
 
 func _after_attack_done():
-	if health <= 10:
-		speed = 100
+	if health <= 20:
+		speed = 110
 	else:
 		speed = 70
 
@@ -170,8 +180,8 @@ func _enter_attack_state():
 	attacking = true
 	state = choose([SHOOT, DASH]) #slumpar mellan dash och shoot
 	if state == SHOOT:
-
-		animplayer.play("Shoot")
+		var shot_direction = choose(["Left", "Right"])
+		animplayer.play("Shoot_" + shot_direction)
 		await get_tree().create_timer(3).timeout
 		_after_attack_done()
 	elif state == DASH:

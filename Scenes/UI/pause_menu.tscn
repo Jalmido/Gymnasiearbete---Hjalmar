@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://boky65bo6ngsw"]
+[gd_scene load_steps=19 format=3 uid="uid://boky65bo6ngsw"]
 
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="1_emv3i"]
 [ext_resource type="Script" uid="uid://o13bium7bvee" path="res://Scripts/Globalscripts/pause_menu.gd" id="1_k0w1u"]
@@ -9,14 +9,86 @@ shader = ExtResource("2_1och7")
 shader_parameter/blur_amount = 4.499
 shader_parameter/brightness = 0.905
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_emv3i"]
+[sub_resource type="Theme" id="Theme_r2i2h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deree"]
+bg_color = Color(0.6, 0.6, 0.6, 0.258824)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_size = 10
+
+[sub_resource type="Theme" id="Theme_oykix"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_702e2"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqqw2"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0w1u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1och7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyryt"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hanoc"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23me3"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7um"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2i2h"]
+bg_color = Color(0.787665, 0.317041, 0.887446, 1)
+border_width_left = 5
+border_width_top = 9
+border_width_right = 5
+border_width_bottom = 8
+border_color = Color(0.721649, 0.00139464, 0.856169, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oykix"]
+bg_color = Color(0.700226, 0.00252244, 0.924188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnb7"]
+bg_color = Color(0.801047, 0.389185, 0.947902, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.8, 0.254902, 0.8, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
+layer = 128
 script = ExtResource("1_k0w1u")
 
 [node name="BlurBackground" type="ColorRect" parent="."]
@@ -26,7 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0.505882)
@@ -42,6 +114,8 @@ offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = SubResource("Theme_r2i2h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_deree")
 
 [node name="Label" type="Label" parent="PanelContainer"]
 layout_mode = 2
@@ -60,12 +134,17 @@ size_flags_vertical = 4
 
 [node name="Resume_button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_oykix")
+theme_override_colors/font_hover_color = Color(0, 0, 0.713726, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("1_emv3i")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_702e2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nqqw2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Resume
@@ -73,37 +152,56 @@ text = "Resume
 
 [node name="Restart_button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.670588, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("1_emv3i")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qyryt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hanoc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Restart from Checkpoint"
 
 [node name="Quit_button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.619608, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("1_emv3i")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/hover = SubResource("StyleBoxEmpty_emv3i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_23me3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yq7um")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Quit
 "
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
+[node name="Volume" type="HSlider" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_oykix")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_kdnb7")
 max_value = 1.5
 step = 0.01
 value = 0.75
 
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Volume"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -39.0
+offset_right = 258.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 40
+text = "Master Volume:"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume_button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]
-[connection signal="value_changed" from="PanelContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/Volume" to="." method="_on_h_slider_value_changed"]

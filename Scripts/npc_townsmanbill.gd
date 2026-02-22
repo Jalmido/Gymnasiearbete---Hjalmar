@@ -49,7 +49,7 @@ func _update_direction(direction: Vector2):
 		$AnimatedSprite2D.play("Walk_down")
 		$AnimatedSprite2D.flip_h = false
 
-func choose(array):
+func choose(array): #Hade kunnat använda .pick_random funnktionen som ingår i godot, men visste inte att den fanns... 
 	array.shuffle() #godot funktion
 	return array.front()
 

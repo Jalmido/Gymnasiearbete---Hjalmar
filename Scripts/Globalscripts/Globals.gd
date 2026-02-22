@@ -11,6 +11,7 @@ var yunion_key_collected = false #Om true, läggs den i hotbar
 var ammo_in_mag: int = 18
 var ammo_in_inv: int = 8 
 var health_potions_in_inv = 0
+var saved_position: Vector2
 var lives: int = 4:
 	set(value):
 		lives = value
@@ -31,7 +32,7 @@ func save_checkpoint(): #Början av varje rum/scen sparar ett "checkpoint" som b
 func load_checkpoint(): #När man loadar ändras ens items och grejer till det som sparades i save checkpoint
 	if checkpoint_data.is_empty():
 		return 
-		
+	
 	lives = checkpoint_data["lives"]
 	ammo_in_mag = checkpoint_data["ammo_in_mag"]
 	ammo_in_inv = checkpoint_data["ammo_in_inv"]

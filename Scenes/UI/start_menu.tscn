@@ -63,14 +63,14 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ybwg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.542982, 0.542982, 0.542982, 1)
 position = Vector2(1010.5, 486.5)
 scale = Vector2(3.61849, 6.06771)
 texture = ExtResource("2_3kyvb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1671, 501)
+position = Vector2(1527, 605)
 scale = Vector2(-8.71615, 8.79488)
 sprite_frames = SubResource("SpriteFrames_ru7em")
 animation = &"Idle"
@@ -92,11 +92,13 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit_button")
 focus_neighbor_bottom = NodePath("../Quit_button")
+theme_override_colors/font_hover_color = Color(0, 0, 0.803922, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("4_j6k6k")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 140
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jgtwh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_8u0lp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m6uer")
@@ -107,15 +109,34 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start_button")
 focus_neighbor_bottom = NodePath("../Start_button")
+theme_override_colors/font_hover_color = Color(0.737255, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.972549, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("4_j6k6k")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 140
 theme_override_styles/hover = SubResource("StyleBoxEmpty_a43kq")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_i2i62")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_626he")
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -889.0
+offset_top = 53.0
+offset_right = 889.0
+offset_bottom = 253.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.588235)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("4_j6k6k")
+theme_override_font_sizes/font_size = 200
+text = "Saviour of The Yunion"
 
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

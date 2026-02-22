@@ -10,6 +10,8 @@ ANVÄNDS OCKSÅ FÖR ATT LADDA SCENENS MUSIC
 
 @export var level_music: AudioStream
 
+
+
 func _ready() -> void:
 	Globals.save_checkpoint()
 	

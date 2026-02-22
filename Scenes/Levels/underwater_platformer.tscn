@@ -362,7 +362,7 @@ item_id = "ammo_underwater"
 [node name="BG" type="Sprite2D" parent="."]
 modulate = Color(0.359069, 0.359069, 0.359069, 1)
 z_index = -3
-position = Vector2(415, -23)
+position = Vector2(416, -36)
 scale = Vector2(4.11286, 4.04754)
 texture = ExtResource("6_jrlmm")
 

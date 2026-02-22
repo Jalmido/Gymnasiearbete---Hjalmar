@@ -12,8 +12,7 @@ func _toggle_pause():
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 	if visible:
-		get_node("PanelContainer/VBoxContainer/Resume_button").grab_focus()
-
+		
 		var tween = create_tween()
 		#Fräsig blur shader vid paus
 		tween.tween_property($BlurBackground.material, "shader_parameter/blur_amount", 2.5, 0.3).from(0.0)

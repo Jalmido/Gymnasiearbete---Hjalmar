@@ -177,6 +177,7 @@ func _dash_state(delta: float) -> void:
 	move_and_slide() 
 	
 	if dash_timer <= 0:
+		set_collision_mask_value(3, false)
 		state = SWIM if not is_on_floor() else IDLE
 
 func _dead_state(delta: float) -> void:
@@ -212,6 +213,7 @@ func _enter_dash_state():
 			dash_direction = Vector2.RIGHT
 		else:
 			Vector2.LEFT
+	set_collision_mask_value(3, false)
 	anim.play("Dash_" + direction_name)
 	can_dash = false
 	_start_dash_cooldown()

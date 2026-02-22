@@ -907,6 +907,9 @@ limit_bottom = 570
 z_index = 1
 scale = Vector2(0.8, 0.8)
 
+[node name="Enemy2" parent="." instance=ExtResource("3_jv171")]
+position = Vector2(141, 432)
+
 [node name="Tilemaplayers" type="Node2D" parent="."]
 
 [node name="Ground" type="TileMapLayer" parent="Tilemaplayers"]
@@ -971,6 +974,7 @@ offset_top = -36.0
 offset_right = -10.0
 offset_bottom = 4.0
 scale = Vector2(2.65673, 2.36052)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -1014,11 +1018,8 @@ libraries = {
 visible = false
 popup_text = "[W], [A], [S], [D] to walk
 Sword on [1]
-Gun on [2]
+Gun on [2], [R] to reload
 "
-
-[node name="Enemy2" parent="." instance=ExtResource("3_jv171")]
-position = Vector2(141, 432)
 
 [node name="ItemCleaner" parent="." instance=ExtResource("18_57gpc")]
 position = Vector2(141, 432)

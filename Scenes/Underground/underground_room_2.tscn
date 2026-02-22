@@ -741,7 +741,7 @@ is_lockable = true
 [node name="RoomChange2" parent="." instance=ExtResource("4_71k60")]
 position = Vector2(217, 87)
 target_scene = "res://Scenes/Underground/underground_room_3.tscn"
-target_spawn_point_name = "Exit_To_Room3"
+target_spawn_point_name = "Exit_To_Room2"
 is_lockable = true
 
 [node name="Player" parent="." instance=ExtResource("5_smci2")]
@@ -756,15 +756,12 @@ position_smoothing_speed = 10.0
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("6_1ar78")]
 position = Vector2(-227, 181)
-collision_mask = 7
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_1ar78")]
 position = Vector2(-24, 314)
-collision_mask = 7
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("6_1ar78")]
 position = Vector2(189, 181)
-collision_mask = 7
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 

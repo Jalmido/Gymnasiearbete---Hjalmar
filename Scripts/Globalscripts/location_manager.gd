@@ -22,8 +22,8 @@ func enter_house(house_number: int) -> void:
 	anim.play("Fade_to_level")
 
 ########### UT UR HUS ###########
-func _exit_house() -> void:
-	get_tree().change_scene_to_file(LocationManager.last_scene)
+func _exit_house(target_scene: String) -> void:
+	get_tree().change_scene_to_file(target_scene)
 	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	player.global_position = last_exit_position

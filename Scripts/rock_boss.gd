@@ -98,7 +98,7 @@ func _take_damage():
 func _update_healthbar() -> void:
 	$Healthbar.value = health
 	
-func choose(array):
+func choose(array):#Hade kunnat använda .pick_random funnktionen som ingår i godot, men visste inte att den fanns... 
 	array.shuffle() #godot funktion
 	return array.front()
 	
@@ -147,7 +147,7 @@ func _enter_dead_state():
 	state = DEAD
 	
 func _enter_attack_state():
-	state = choose([STOMP, SWIPE]) #slumpar mellan stomp å swipe
+	state = choose([STOMP, SWIPE]) #slumpar mellan stomp å swipe.
 	if state == STOMP:
 		animplayer.play("Stomp_" + direction_name)
 	elif state == SWIPE:

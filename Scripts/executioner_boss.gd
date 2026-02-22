@@ -63,8 +63,7 @@ func _chase_state(delta: float) -> void:
 		for child in get_parent().get_children():
 			if child.is_in_group("summons"):
 				child.has_been_summoned = true
-				
-				
+
 		return
 
 	
@@ -81,13 +80,12 @@ func _dead_state(delta: float) -> void:
 	await $AnimatedSprite2D.animation_finished
 	$"../../Boss_Arena_doors".enabled = false
 	$"../..".boss_alive = false
+	queue_free()
 # ------------------------------
 # Attack Logik (Slumpad)
 # ------------------------------
 
 func _enter_attack_state():
-	
-
 	var r = randf()
 	if r < 0.5:
 		state = ATTACK_1

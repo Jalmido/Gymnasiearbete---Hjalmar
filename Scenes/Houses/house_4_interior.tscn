@@ -574,6 +574,7 @@ size = Vector2(45, 28)
 
 [node name="house_4_interior" type="Node2D"]
 script = ExtResource("1_ep8e7")
+target_scene = "uid://dr5d772mdxfli"
 level_music = ExtResource("2_n4mt1")
 
 [node name="Floor_Carpet" type="TileMapLayer" parent="."]

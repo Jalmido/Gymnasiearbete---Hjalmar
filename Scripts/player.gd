@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		ATTACK:
 			_attack_state(delta)
 # ------------------------------
-# Movement helper
+# Överiga funktioner (movement, vapen/items, hopp hjälpfunktioner)
 # ------------------------------
 func _movement(delta: float, direction: Vector2) -> void:
 	if direction != Vector2.ZERO:
@@ -108,11 +108,11 @@ func _change_hotbar_item(item_name: String) -> void:
 	elif item_name == "Health_Potion":
 		current_item = "Health_Potion"
 		sword_equipped = false
+
 func _drink_potion() -> void:
 	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
 		Globals.lives += 1
 		Globals.health_potions_in_inv -= 1
-
 
 func _take_damage(amount: int) -> void:
 	if not can_take_damage:
@@ -226,8 +226,6 @@ func _water_state(_delta: float) -> void:
 		_enter_idle_state()
 	else:
 		is_respawning = false #om hp = 0 entrar man inte Idle state, utan man kommer dö istället
-	
-	
 
 func _attack_state(delta: float) -> void:
 	var input_vector = Input.get_vector("Left", "Right", "Up", "Down")
@@ -243,7 +241,7 @@ func _attack_state(delta: float) -> void:
 #Animation funktion
 # ----------------------
 
-func _Enter_underground():
+func _Enter_underground(): #något onödig nu, hade kunnat lösa i annat script
 	AnimPlayer.play("Enter_underground")
 
 # ------------------------------
@@ -278,13 +276,12 @@ func _enter_attack_state():
 	AnimPlayer.play("Attack_" + direction_name)
 	if not $SwordSound.playing:
 		$SwordSound.play()
-	
+
 
 ########## SIGNALS ########
 
 func _on_damage_cooldown_timer_timeout() -> void:
 	can_take_damage = true
-
 
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if state != ATTACK:

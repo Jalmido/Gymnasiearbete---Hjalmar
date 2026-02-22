@@ -149,11 +149,12 @@ metadata/_snap_enabled = true
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgue7"]
+radius = 4.0
 
 [node name="Executioner_summons" type="CharacterBody2D"]
 visible = false
 collision_layer = 0
-collision_mask = 129
+collision_mask = 193
 script = ExtResource("1_rgue7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -188,6 +189,7 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_0jaif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_rgue7")
 
 [connection signal="timeout" from="Shoot_out_timer" to="." method="_on_shoot_out_timer_timeout"]

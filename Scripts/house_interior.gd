@@ -1,7 +1,7 @@
 extends Node2D
 
 
-
+@export_file(" ") var target_scene
 @export var level_music: AudioStream
 
 func _ready() -> void:
@@ -12,4 +12,4 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	$ExitHouseTimer.start()
 
 func _on_exit_house_timer_timeout() -> void:
-	LocationManager._exit_house()
+	LocationManager._exit_house(target_scene)

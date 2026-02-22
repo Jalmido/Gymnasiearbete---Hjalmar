@@ -344,6 +344,7 @@ size = Vector2(50, 28)
 
 [node name="House_2_interior" type="Node2D"]
 script = ExtResource("1_2w0e5")
+target_scene = "uid://cr7lasxqhaihf"
 level_music = ExtResource("2_phrm7")
 
 [node name="Player" parent="." instance=ExtResource("2_nvxsd")]

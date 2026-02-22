@@ -9,18 +9,20 @@ var start_boss_fight = false
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 40
+var health: int = 1
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2
 var heals_from_bullets = false #efter 50% hp healar han
 var rage_mode = false
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animplayer: AnimationPlayer = $AnimationPlayer
 
 @export var boss_music: AudioStream
 
 func _ready() -> void:
+
 	var current_scene:String = get_tree().current_scene.scene_file_path
 	if current_scene == "res://Scenes/Yunion/the_yunion.tscn":
 		$Dialogue1.dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue2.json"
@@ -108,7 +110,7 @@ func _take_damage():
 func _update_healthbar() -> void:
 	$Healthbar.value = health
 	
-func choose(array):
+func choose(array):#Hade kunnat använda .pick_random funnktionen som ingår i godot, men visste inte att den fanns... 
 	array.shuffle() #godot funktion
 	return array.front()
 	
@@ -145,11 +147,14 @@ func _dash_state(delta: float) -> void:
 	
 	
 func _dead_state(_delta:float) -> void:
-	#set_physics_process(false)
-	#$"../Player/Camera2D".make_current()
-	#$"../AnimationPlayer".play("VictoryAnimation")
-	#$Healthbar.hide()
-	queue_free()
+	set_physics_process(false)
+	$"../Player/Camera2D".enabled = false
+	$"../Cutscene/Camera2D".make_current()
+	$"../Cutscene/AnimationPlayer".play("VictoryAnimation")
+	$Healthbar.hide()
+	#queue_free()
+
+	
 
 func _after_attack_done():
 	if health <= 20:

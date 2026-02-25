@@ -31,5 +31,5 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
-func _on_h_slider_value_changed(value: float) -> void:
+func _on_h_slider_value_changed(value: float) -> void: #Master volume bar
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(value))

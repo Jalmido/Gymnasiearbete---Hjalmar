@@ -190,13 +190,18 @@ func _enter_attack_state():
 		await get_tree().create_timer(3).timeout
 		_after_attack_done()
 	elif state == DASH:
+
+	
 		dash_direction = global_position.direction_to(player.global_position)
+		$AttackArrowWarning.rotation = get_angle_to(player.global_position) #Varningspil skapas i riktning han ska dasha
+		$AttackArrowWarning.show()
 		speed = 350
-		
+		$AttackArrowWarning.hide()
 		$DashAttackHitbox.monitoring = true
 		await get_tree().create_timer(0.7).timeout
 		$DashAttackHitbox.monitoring = false
 		_after_attack_done()
+
 	
 	
 ###### SIGNALS# ########

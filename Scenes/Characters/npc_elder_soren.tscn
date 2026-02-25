@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfqhbqinwqane"]
+[gd_scene load_steps=21 format=3 uid="uid://bfqhbqinwqane"]
 
 [ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
 [ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scripts/npc_elder_soren.gd" id="1_ktggm"]
 [ext_resource type="AudioStream" uid="uid://kkepo3epo8re" path="res://Audio/Music/49. Ancient Dragon Lansseax.mp3" id="2_me1r8"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_osig5"]
 [ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="3_osig5"]
+[ext_resource type="Texture2D" uid="uid://c35nhbf0j2bj3" path="res://Assets/Items/Arrow.png" id="6_puawu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktggm"]
 atlas = ExtResource("1_67ax8")
@@ -361,6 +362,7 @@ autostart = true
 
 [node name="Dialogue1" parent="." instance=ExtResource("3_osig5")]
 dialogue_file = "res://Interaction/Dialogue/ElderSoren_dialogue1.json"
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -413,6 +415,14 @@ monitoring = false
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_me1r8")
 debug_color = Color(0.845844, 0.361576, 0.295563, 0.42)
+
+[node name="AttackArrowWarning" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(-3.31468e-07, 29.5831)
+rotation = 1.5708
+scale = Vector2(0.0303546, 0.0123901)
+texture = ExtResource("6_puawu")
 
 [connection signal="timeout" from="AfterDashIdleTimer" to="." method="_on_after_attack_idle_timer_timeout"]
 [connection signal="timeout" from="AfterShootIdleTimer" to="." method="_on_after_attack_idle_timer_timeout"]

@@ -1,5 +1,8 @@
 extends Node
-signal lives_changed(new_health)
+
+signal lives_changed(new_health) #När liv ändras, anvädns denna för att ändra healthbar.
+signal victory_screen_requested #Används om man kör boss fight mode ist för story mode, då triggas en victory screen vid vinst
+
 
 var miniboss_room_cleared = false #så bossrummet inte restartar om man går tillbaka efter att man dödat dene.
 
@@ -8,6 +11,7 @@ var picked_up_items = [] #för att förhindra "duplicering" av items
 
 var objective_recieved = false #Prata m Soren i början för objective, då kan man hoppa i abyss
 var yunion_key_collected = false #Om true, läggs den i hotbar
+var boss_fight_mode = false #Används om man inte kör storyn, och bara bossfights, och ger då en victory screen när boss dör.
 var ammo_in_mag: int = 18
 var ammo_in_inv: int = 8 
 var health_potions_in_inv = 0

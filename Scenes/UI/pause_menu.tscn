@@ -68,6 +68,11 @@ shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oykix"]
 bg_color = Color(0.700226, 0.00252244, 0.924188, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.77735, 0.000301972, 0.734599, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnb7"]
 bg_color = Color(0.801047, 0.389185, 0.947902, 1)

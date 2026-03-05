@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Boss
 
-signal dead(enemy: Enemy)
+signal dead(Enemy, enemy)
 
 const ACC = 1100
 var speed: int = 40
@@ -134,6 +134,11 @@ func _dead_state(_delta:float) -> void:
 	emit_signal("dead", self)
 	queue_free() #tar bort fienden från spelet
 	active = false
+	
+	if Globals.boss_fight_mode:
+		Globals.victory_screen_requested.emit()
+		Globals.boss_fight_mode = false
+	
 # ------------------------------
 # Enter state functions
 # ------------------------------

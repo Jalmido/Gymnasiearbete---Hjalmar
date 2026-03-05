@@ -9,7 +9,7 @@ var start_boss_fight = false
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 1
+var health: int = 40
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2
@@ -92,6 +92,7 @@ func _recieve_health():
 	if heals_from_bullets:
 		health += 2
 	_update_healthbar()
+	
 func _take_damage():
 	if not start_boss_fight:
 		return
@@ -147,6 +148,12 @@ func _dash_state(delta: float) -> void:
 	
 	
 func _dead_state(_delta:float) -> void:
+	if Globals.boss_fight_mode: #om boss fight mode är på, så visas
+		Globals.victory_screen_requested.emit()
+		Globals.boss_fight_mode = false
+		return
+	
+	$LaserPivot/LaserAttackHitbox.monitoring = false #så han ej har ute lasern och slaktar en när han håller på att dö
 	set_physics_process(false)
 	$"../Player/Camera2D".enabled = false
 	$"../Cutscene/Camera2D".make_current()
@@ -195,6 +202,7 @@ func _enter_attack_state():
 		dash_direction = global_position.direction_to(player.global_position)
 		$AttackArrowWarning.rotation = get_angle_to(player.global_position) #Varningspil skapas i riktning han ska dasha
 		$AttackArrowWarning.show()
+		await get_tree().create_timer(0.6).timeout
 		speed = 350
 		$AttackArrowWarning.hide()
 		$DashAttackHitbox.monitoring = true

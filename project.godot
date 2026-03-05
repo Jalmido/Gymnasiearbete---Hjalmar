@@ -23,6 +23,7 @@ LocationManager="*res://Scenes/Managers/location_manager.tscn"
 Globals="*res://Scripts/Globalscripts/Globals.gd"
 PauseMenu="*res://Scenes/UI/pause_menu.tscn"
 MusicManager="*res://Scenes/Managers/music_manager.tscn"
+VictoryScreen="*res://Scenes/UI/victory_screen.tscn"
 
 [display]
 

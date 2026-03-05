@@ -15,11 +15,11 @@ var speed: float = NORMAL_SPEED
 var acceleration: float = NORMAL_ACCELERATION
 var direction_name = "down"
 var current_item: String = "None"
-var can_take_damage = true
 var jump_direction: Vector2 = Vector2.ZERO
 var jump_start_pos: Vector2
 var jump_speed = 200
 var can_jump = false
+var can_take_damage = true
 var sword_equipped = false
 var ignore_ground = false
 var is_respawning = false
@@ -147,15 +147,12 @@ func _landing_manager() -> void:
 	GroundControlRaycast.force_raycast_update()
 	
 
-	if GroundControlRaycast.is_colliding():
+	if GroundControlRaycast.is_colliding(): #Kontrollerar om man landar på vatten, och drunknar då
 		var collider = GroundControlRaycast.get_collider()
-		
-		
 		if collider.is_in_group("water"):
 			_enter_water_state()
-			return 
-
-	
+			return
+			
 	_enter_idle_state()
 
 # ------------------------------

@@ -419,10 +419,12 @@ debug_color = Color(0.845844, 0.361576, 0.295563, 0.42)
 [node name="AttackArrowWarning" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.52549)
-position = Vector2(-3.31468e-07, 29.5831)
+position = Vector2(1.19209e-07, -3.55271e-15)
 rotation = 1.5708
 scale = Vector2(0.0303546, 0.0123901)
 texture = ExtResource("6_puawu")
+centered = false
+offset = Vector2(-200, -1000)
 
 [connection signal="timeout" from="AfterDashIdleTimer" to="." method="_on_after_attack_idle_timer_timeout"]
 [connection signal="timeout" from="AfterShootIdleTimer" to="." method="_on_after_attack_idle_timer_timeout"]

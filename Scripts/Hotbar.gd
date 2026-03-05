@@ -2,6 +2,12 @@ extends Control
 
 @onready var grid = $GridContainer
 
+func _ready() -> void:
+	for i in grid.get_child_count():
+		var button = grid.get_child(i)
+		#Koppla knappen t rätt index
+		button.pressed.connect(select_slot.bind(i))
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode >= KEY_1 and event.keycode <= KEY_9:

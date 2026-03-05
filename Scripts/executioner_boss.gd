@@ -81,6 +81,12 @@ func _dead_state(delta: float) -> void:
 	$"../../Boss_Arena_doors".enabled = false
 	$"../..".boss_alive = false
 	queue_free()
+	
+	if Globals.boss_fight_mode: #Om boss fight mode är aktivt, så visas victory screen
+		Globals.victory_screen_requested.emit()
+		Globals.boss_fight_mode = false
+
+
 # ------------------------------
 # Attack Logik (Slumpad)
 # ------------------------------

@@ -34,7 +34,8 @@ func _physics_process(delta: float) -> void:
 		DEAD:
 			_dead_state(delta)
 		SWIPE:
-			_movement(delta, Vector2.ZERO)
+			var slow_move = global_position.direction_to(player.global_position) * 0.5
+			_movement(delta, slow_move)
 		STOMP:
 			_movement(delta, Vector2.ZERO)
 
@@ -85,13 +86,11 @@ func _take_damage():
 	if health <= 0:
 		_enter_dead_state()
 	
-	if health < 8:
-		speed = 80
-		$AnimatedSprite2D.modulate.b = 0		
-		$AnimatedSprite2D.modulate.r = 1.0
-		$AnimatedSprite2D.modulate.g = 0	
-		$AfterStompIdleTimer.wait_time = 1.5
-		$AfterSwipeIdleTimer.wait_time = 1.0
+	if health <= 10:
+		speed = 100
+		anim.modulate = Color(1.5,0.5,0.5)
+		$AfterStompIdleTimer.wait_time = 0.3
+		$AfterSwipeIdleTimer.wait_time = 0.15
 
 	_update_healthbar()
 	
@@ -118,7 +117,7 @@ func _walk_state(delta: float) -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
 	if distance_to_player <= 100 and state != SWIPE and state != STOMP: #går bara t attack om den inte redan attackerar
-		_enter_attack_state()
+		_enter_attack_state(delta)
 
 	elif distance_to_player < 50: #så man int fastnar i varandra
 		direction_to_player -= direction_to_player * 0.5
@@ -151,10 +150,14 @@ func _enter_walk_state():
 func _enter_dead_state():
 	state = DEAD
 	
-func _enter_attack_state():
+func _enter_attack_state(delta:float):
+	var direction_to_player = global_position.direction_to(player.global_position)
+	_update_direction(direction_to_player)
 	state = choose([STOMP, SWIPE]) #slumpar mellan stomp å swipe.
 	if state == STOMP:
 		animplayer.play("Stomp_" + direction_name)
+		await get_tree().create_timer(1.1667).timeout #så att screen shaken startar när han faktiskt stampar
+		$"../Player/Camera2D"._screen_shake(8, 0.5)
 	elif state == SWIPE:
 		animplayer.play("Swipe_" + direction_name)
 	await animplayer.animation_finished

@@ -33,7 +33,6 @@ func _ready() -> void:
 	_update_healthbar()
 	player = get_tree().get_first_node_in_group("player")
 
-	
 func _physics_process(delta: float) -> void:
 	if not start_boss_fight:
 		return
@@ -152,7 +151,7 @@ func _dead_state(_delta:float) -> void:
 		Globals.victory_screen_requested.emit()
 		Globals.boss_fight_mode = false
 		return
-	
+	#Victory cutscene om det är story mode
 	$LaserPivot/LaserAttackHitbox.monitoring = false #så han ej har ute lasern och slaktar en när han håller på att dö
 	set_physics_process(false)
 	$"../Player/Camera2D".enabled = false

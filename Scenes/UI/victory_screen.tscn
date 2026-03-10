@@ -121,6 +121,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Quit
 "
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Return_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Return_button" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Return_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

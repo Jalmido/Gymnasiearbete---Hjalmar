@@ -17,6 +17,7 @@ var direction_name = "down"
 var current_item: String = "None"
 var jump_direction: Vector2 = Vector2.ZERO
 var jump_start_pos: Vector2
+var jump_target_pos: Vector2
 var jump_speed = 200
 var can_jump = false
 var can_take_damage = true
@@ -76,7 +77,8 @@ func _input(event: InputEvent) -> void:
 			_enter_attack_state()
 		elif current_item == "Health_Potion":
 			_drink_potion()
-		
+
+
 func _update_direction(direction: Vector2) -> void:
 	if direction == Vector2.ZERO:
 		return
@@ -132,7 +134,19 @@ func _display_raycast() -> void:
 	var tween = create_tween()
 	tween.set_loops()
 	tween.tween_property(JumpRaycast, "rotation", 2*PI, 1.0).as_relative() #Roterar, och as_relative är inbyggd funktion som gör att den fortsätter där den slutade
-	
+
+func _reset_jump_state_after_death() -> void:
+	print("resetar jumpstate efter död")
+	can_jump = false
+	_reset_raycast()
+	await get_tree().create_timer(0.05).timeout
+
+	for area in get_tree().get_nodes_in_group("jump_areas"):
+		if area.overlaps_body(self):
+			print("i gruppen och resetar raycast")
+			can_jump = true
+			_display_raycast()
+
 func _reset_raycast() -> void:
 	JumpRaycast.hide()
 	JumpRaycast.rotation = 0
@@ -141,6 +155,7 @@ func _reset_raycast() -> void:
 func _landing_manager() -> void:
 
 	velocity = Vector2.ZERO
+	global_position = jump_target_pos
 	set_collision_mask_value(7, true) 
 	
 	#Tvinga raycasten att kolla vad som finns under fötterna just nu
@@ -191,10 +206,12 @@ func _dead_state(delta: float) -> void:
 
 func _jump_state(_delta: float) -> void:
 
+	
 	AnimPlayer.play("Jump")
 	move_and_slide()
-	var traveled_jump_distance = global_position.distance_to(jump_start_pos)
-	if traveled_jump_distance >= MAX_JUMP_DISTANCE:
+
+	if global_position.distance_to(jump_target_pos) < 5:
+		global_position = jump_target_pos
 		_landing_manager()
 
 func _water_state(_delta: float) -> void:
@@ -213,10 +230,9 @@ func _water_state(_delta: float) -> void:
 	AnimPlayer.play("Reset_visual")
 
 	global_position = LocationManager.last_jump_position.snapped(Vector2.ONE) #Respawnar där man hoppa ifrån
-
+	_reset_jump_state_after_death()
 	GroundControlRaycast.enabled = true
 	set_collision_mask_value(7, true)
-
 	_take_damage(1)
 	if Globals.lives > 0:
 		is_respawning = false
@@ -255,16 +271,27 @@ func _enter_dead_state():
 	state = DEAD
 
 func _enter_jump_state():
-	state = JUMP
-	LocationManager.last_jump_position = global_position #gör så vi kan respawna om vi landar fel
-	
-	
-	set_collision_mask_value(7, false) #stänger av kollision m objekt medan man hoppar, så kan man hoppa mellan platformar
-	
-	jump_start_pos = global_position
-	jump_direction = Vector2.DOWN.rotated(JumpRaycast.global_rotation).normalized()
-	velocity = jump_direction * jump_speed
 
+	state = JUMP
+	
+	LocationManager.last_jump_position = global_position #sparar varifrån vi hoppade i globalscript
+	
+	set_collision_mask_value(7, false)
+
+	jump_start_pos = global_position
+	
+	jump_direction = Vector2.DOWN.rotated(JumpRaycast.global_rotation).normalized()
+
+	#BESTÄM LANDNINGSPOSITION
+	JumpRaycast.target_position = jump_direction * MAX_JUMP_DISTANCE
+	JumpRaycast.force_raycast_update()
+
+	if JumpRaycast.is_colliding():
+		jump_target_pos = JumpRaycast.get_collision_point()
+	else:
+		jump_target_pos = global_position + jump_direction * MAX_JUMP_DISTANCE
+
+	velocity = jump_direction * jump_speed
 func _enter_water_state():
 	state = WATER
 

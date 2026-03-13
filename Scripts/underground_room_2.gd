@@ -40,6 +40,8 @@ func _on_enemy_dead(enemy):
 		_on_miniboss_room_cleared()
 
 func _on_miniboss_room_cleared():
+	if Globals.boss_fight_mode:
+		return
 	$RoomChange._unlock_door()
 	$RoomChange2._unlock_door()
 	Globals.miniboss_room_cleared = true

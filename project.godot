@@ -112,6 +112,7 @@ Pause={
 2d_physics/layer_6="Ice"
 2d_physics/layer_7="Floor"
 2d_physics/layer_8="Walls"
+2d_physics/layer_9="JumpArea"
 2d_physics/size/mode=2
 2d_physics/size/viewport_height=1080
 2d_physics/size/viewport_width=1920

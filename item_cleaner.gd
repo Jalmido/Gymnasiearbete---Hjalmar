@@ -7,6 +7,6 @@ func _ready() -> void:
 	
 	var current_scene_name = get_tree().current_scene.name
 	for item in get_tree().get_nodes_in_group("items"):
-		var unique_id = current_scene_name + str(item.get_path())
+		var unique_id = current_scene_name + str(item.get_path()) #här skapas det unika id:t som kontrolleras i en global lista
 		if unique_id in Globals.picked_up_items:
 			item.queue_free()

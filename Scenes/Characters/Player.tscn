@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=80 format=3 uid="uid://882ppmuvsrh3"]
 
 [ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
@@ -468,6 +468,10 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij6vw"]
 radius = 4.0
 height = 21.9333
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_meglp"]
+length = 14.4667
+slide_on_slope = true
 
 [sub_resource type="Animation" id="Animation_megsn"]
 resource_name = "Attack_down"
@@ -990,9 +994,9 @@ size = Vector2(26.0667, 22.0333)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.990781, 0.862059, 0.728208, 1)
 scale = Vector2(0.967742, 0.967742)
-collision_mask = 6
+collision_mask = 198
 platform_floor_layers = 4294967041
-safe_margin = 0.1
+safe_margin = 0.01
 script = ExtResource("1_ij6vw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -1004,6 +1008,11 @@ animation = &"Attack_down"
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_ij6vw")
 debug_color = Color(0.992157, 0, 0, 0.419608)
+
+[node name="SeparationRayShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15.5)
+scale = Vector2(1, 1)
+shape = SubResource("SeparationRayShape2D_meglp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1021,6 +1030,7 @@ one_shot = true
 
 [node name="JumpRayCast" type="RayCast2D" parent="."]
 visible = false
+position = Vector2(0, -3.1)
 target_position = Vector2(0, 33)
 
 [node name="Sprite2D" type="Sprite2D" parent="JumpRayCast"]
@@ -1030,8 +1040,9 @@ scale = Vector2(0.0178594, 0.00882561)
 texture = ExtResource("6_nn08x")
 
 [node name="GroundControlRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, -2.06667)
 enabled = false
-target_position = Vector2(0, 0)
+target_position = Vector2(0, 1.03333)
 collision_mask = 48
 hit_from_inside = true
 

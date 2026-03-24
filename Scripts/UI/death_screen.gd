@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 
-func _ready() -> void:
-	get_node("PanelContainer/VBoxContainer/Retry_button").grab_focus()
-	
 
 func _on_retry_button_pressed() -> void:
 	Globals.load_checkpoint()

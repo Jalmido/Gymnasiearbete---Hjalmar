@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://cbkoqt166ojjo"]
 
-[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_4jv2j"]
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/Helpscripts/save_checkpoint.gd" id="1_4jv2j"]
 [ext_resource type="AudioStream" uid="uid://cefjmis4mu1kq" path="res://Audio/Music/1-17 Cave.mp3" id="2_xgsr7"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="3_5ko11"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="4_icwjp"]

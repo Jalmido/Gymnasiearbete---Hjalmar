@@ -116,13 +116,15 @@ func _drink_potion() -> void:
 		Globals.lives += 1
 		Globals.health_potions_in_inv -= 1
 
-func _take_damage(amount: int) -> void:
+func _take_damage(amount: int, play_anim: bool) -> void:
 	if not can_take_damage:
 		return
 	
 	if can_take_damage:
 		can_take_damage = false
 		DamageCooldownTimer.start()
+		if play_anim:
+			AnimPlayer.play("Take_damage")
 		Globals.lives -= amount
 
 		if Globals.lives <= 0:
@@ -205,10 +207,15 @@ func _dead_state(delta: float) -> void:
 	#game over skärm görs sen
 
 func _jump_state(_delta: float) -> void:
-
+	"""
+	STORT PROBLEM: hade många buggar, men framförallt att man ofta fastnade i väggar när man landade vid hopp. Inte ens CHatten kunde 
+	Kom till slut på en lösning som funkade, vilket är en collision shape som i slutet av hopp animationen utökas och går från storlek 0, så att den
+	"trycker" ut en från väggen. Klyftig lösning tyckte jag!
+	"""
 	
 	AnimPlayer.play("Jump")
 	move_and_slide()
+		
 
 	if global_position.distance_to(jump_target_pos) < 5:
 		global_position = jump_target_pos
@@ -233,7 +240,7 @@ func _water_state(_delta: float) -> void:
 	_reset_jump_state_after_death()
 	GroundControlRaycast.enabled = true
 	set_collision_mask_value(7, true)
-	_take_damage(1)
+	_take_damage(1, false)
 	if Globals.lives > 0:
 		is_respawning = false
 		_enter_idle_state()

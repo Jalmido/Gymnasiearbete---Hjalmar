@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bfqhbqinwqane"]
 
 [ext_resource type="Texture2D" uid="uid://cisawvppbpcvf" path="res://Assets/NPC_Characters_v1/Male3.png" id="1_67ax8"]
-[ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scripts/npc_elder_soren.gd" id="1_ktggm"]
+[ext_resource type="Script" uid="uid://ch30fy5rc63m3" path="res://Scripts/Characterscripts/npc_elder_soren.gd" id="1_ktggm"]
 [ext_resource type="AudioStream" uid="uid://kkepo3epo8re" path="res://Audio/Music/49. Ancient Dragon Lansseax.mp3" id="2_me1r8"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="2_osig5"]
 [ext_resource type="PackedScene" uid="uid://dnxy2vfhnqcxu" path="res://Interaction/Dialogue/dialogue.tscn" id="3_osig5"]

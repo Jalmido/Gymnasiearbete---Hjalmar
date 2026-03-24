@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://sj4d8pktc373"]
 
-[ext_resource type="Script" uid="uid://dhcn7cgego1d4" path="res://Scripts/key_to_yunion.gd" id="1_3rca3"]
+[ext_resource type="Script" uid="uid://dhcn7cgego1d4" path="res://Scripts/Objectscripts/key_to_yunion.gd" id="1_3rca3"]
 [ext_resource type="Texture2D" uid="uid://bt0emar2fnvd3" path="res://Assets/Underwater/Legacy Collection/Assets/Packs/Meta data assets files/Visuals/OBJECTS/items/key.png" id="1_mle66"]
 
 [sub_resource type="Gradient" id="Gradient_3rca3"]

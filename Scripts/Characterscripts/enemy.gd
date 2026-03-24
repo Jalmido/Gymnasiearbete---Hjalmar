@@ -141,7 +141,7 @@ func _attack_state(delta:float) -> void:
 	if $AttackTimer.is_stopped(): #Attack m cooldown
 		anim.play("Attack_" + direction_name)
 
-		player._take_damage(1)
+		player._take_damage(1,true)
 		$AttackTimer.start()
 		
 	var distance_to_player = global_position.distance_to(player.global_position)

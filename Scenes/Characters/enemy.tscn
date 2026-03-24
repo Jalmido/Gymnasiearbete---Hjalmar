@@ -1,6 +1,6 @@
 [gd_scene load_steps=52 format=3 uid="uid://beepnscn0oyw6"]
 
-[ext_resource type="Script" uid="uid://c8kah0oky6xef" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Script" uid="uid://c8kah0oky6xef" path="res://Scripts/Characterscripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://c8kjjfgox4cmf" path="res://Assets/Enemy/goblin.png" id="2_287tu"]
 [ext_resource type="Texture2D" uid="uid://dlo1k2f3uj6in" path="res://Assets/Enemy/goblinsword.png" id="2_afpow"]
 

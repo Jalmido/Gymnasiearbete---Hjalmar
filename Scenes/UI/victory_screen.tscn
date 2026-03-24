@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cfg162cxib12v"]
 
 [ext_resource type="Script" uid="uid://dwqlj06834tm5" path="res://Scenes/UI/victory_screen.gd" id="1_84oix"]
-[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/pause_menu.gdshader" id="2_ybs88"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/UI/pause_menu.gdshader" id="2_ybs88"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="3_7is2e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bpi0q"]

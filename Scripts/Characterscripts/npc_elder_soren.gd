@@ -9,7 +9,7 @@ var start_boss_fight = false
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 40
+var health: int = 1
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2
@@ -157,6 +157,7 @@ func _dead_state(_delta:float) -> void:
 	$"../Player/Camera2D".enabled = false
 	$"../Cutscene/Camera2D".make_current()
 	$"../Cutscene/AnimationPlayer".play("VictoryAnimation")
+	
 	$Healthbar.hide()
 	#queue_free()
 
@@ -222,4 +223,4 @@ func _on_after_attack_idle_timer_timeout() -> void:
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body._take_damage(1)
+		body._take_damage(1,true)

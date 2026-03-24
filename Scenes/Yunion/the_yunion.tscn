@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://q7htkykc18kn"]
 
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/Characters/enemy.tscn" id="1_apw5f"]
-[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_ho72w"]
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/Helpscripts/save_checkpoint.gd" id="1_ho72w"]
 [ext_resource type="Texture2D" uid="uid://b5hvair0mlj3g" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Grass.png" id="1_l4qxh"]
 [ext_resource type="AudioStream" uid="uid://cr8umilrij11r" path="res://Audio/Music/5-05 Temple of Hylia [Sealed Temple - Past].mp3" id="2_0hfcq"]
 [ext_resource type="Texture2D" uid="uid://b3jgc6mfuv1k2" path="res://Assets/Yunion/Pixel Art Top Down - Basic v1/Texture/TX Tileset Stone Ground.png" id="2_wv74w"]
@@ -4363,38 +4363,38 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Cutscene/Label:visible")
+tracks/16/path = NodePath("Player:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Player:visible")
+tracks/17/path = NodePath("Cutscene/CanvasLayer:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Cutscene/CanvasLayer:visible")
+tracks/18/path = NodePath("Cutscene/CanvasLayer/Label:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0hfcq"]
@@ -4595,35 +4595,35 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Cutscene/Label:visible")
+tracks/16/path = NodePath("Player:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(16.1667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Player:visible")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Cutscene/CanvasLayer:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(10.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Cutscene/CanvasLayer:visible")
+tracks/18/path = NodePath("Cutscene/CanvasLayer/Label:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(9.93333),
+"times": PackedFloat32Array(13.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -4679,7 +4679,7 @@ tile_map_data = PackedByteArray("AAAiADUABQADAAIAAAAiADYABQADAAIAAAAiADcABQADAAI
 tile_set = SubResource("TileSet_wbjd1")
 
 [node name="Player" parent="." instance=ExtResource("6_k0i1a")]
-position = Vector2(905, -11.0001)
+position = Vector2(854, 977)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1.03327, -12.4)
@@ -4776,13 +4776,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Cutscene"]
-visible = false
+[node name="Label" type="Label" parent="Cutscene/CanvasLayer"]
 z_index = 2
-offset_left = 421.0
-offset_top = 674.0
-offset_right = 1753.0
-offset_bottom = 855.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -666.0
+offset_top = -90.5
+offset_right = 666.0
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("16_d1ssc")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 140
 text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1

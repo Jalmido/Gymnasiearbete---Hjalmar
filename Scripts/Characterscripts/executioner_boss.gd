@@ -17,7 +17,7 @@ var player = null
 var active = false
 var can_summon = true
 @onready var anim = $AnimationPlayer
-@onready var summon_scenes = load("res://Scenes/Characters/executioner_summons.tscn")
+@onready var summon_scenes = load("res://Scenes/Characters/Characterscripts/executioner_summons.tscn")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -140,4 +140,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body._take_damage(1)
+		body._take_damage(1,true)

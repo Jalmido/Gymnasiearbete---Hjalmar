@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=4 uid="uid://cx2dtci42n0y0"]
 
-[ext_resource type="Script" uid="uid://dck1m43qho6vu" path="res://Scripts/underground_room_2.gd" id="1_smg38"]
+[ext_resource type="Script" uid="uid://dck1m43qho6vu" path="res://Scripts/Levelscripts/underground_room_2.gd" id="1_smg38"]
 [ext_resource type="AudioStream" uid="uid://uh6hpe0ch0ta" path="res://Audio/Music/Underground_bossfight.mp3" id="2_e683d"]
 [ext_resource type="Texture2D" uid="uid://dl5yifekalptx" path="res://Assets/underground/cave.png" id="3_4ajry"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/Managers/room_change.tscn" id="4_71k60"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="5_smci2"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/Characters/enemy.tscn" id="6_1ar78"]
-[ext_resource type="Script" uid="uid://cfpnsthpabmpg" path="res://Scripts/Screen_Shake.gd" id="6_e683d"]
+[ext_resource type="Script" uid="uid://cfpnsthpabmpg" path="res://Scripts/Helpscripts/Screen_Shake.gd" id="6_e683d"]
 [ext_resource type="PackedScene" uid="uid://2sg5ai58yfpl" path="res://Scenes/Characters/rock_boss.tscn" id="7_kuo6f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7uknt"]

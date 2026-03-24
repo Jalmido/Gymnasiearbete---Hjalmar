@@ -48,4 +48,4 @@ func _on_shoot_out_timer_timeout() -> void:
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body._take_damage(1)
+		body._take_damage(1,true)

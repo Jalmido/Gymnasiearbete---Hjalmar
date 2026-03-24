@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b06sm7dkald1w"]
+[gd_scene load_steps=10 format=3 uid="uid://b06sm7dkald1w"]
 
-[ext_resource type="Script" uid="uid://by4wybs2tumqi" path="res://Scripts/death_screen.gd" id="1_8rqoo"]
-[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/pause_menu.gdshader" id="1_hgh6j"]
+[ext_resource type="Script" uid="uid://by4wybs2tumqi" path="res://Scripts/UI/death_screen.gd" id="1_8rqoo"]
+[ext_resource type="Shader" uid="uid://wopbbcoxjmwf" path="res://Scripts/UI/pause_menu.gdshader" id="1_hgh6j"]
 [ext_resource type="FontFile" uid="uid://c7h2quexwjc7t" path="res://Assets/ui/fonts/DungeonFont.ttf" id="2_8rqoo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnosy"]
@@ -9,11 +9,15 @@ shader = ExtResource("1_hgh6j")
 shader_parameter/blur_amount = 4.499
 shader_parameter/brightness = 0.905
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkek8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mypln"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahnud"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s37w0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejkgb"]
+bg_color = Color(0.00392157, 0.00392157, 0.00392157, 0.415686)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rqoo"]
 
@@ -61,12 +65,13 @@ layout_mode = 2
 size_flags_vertical = 8
 focus_neighbor_top = NodePath("../Quit_button")
 focus_neighbor_bottom = NodePath("../Quit_button")
+theme_override_colors/font_hover_color = Color(5.77569e-06, 0.818051, 3.85046e-07, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("2_8rqoo")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/hover = SubResource("StyleBoxEmpty_qkek8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mypln")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ahnud")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s37w0")
 text = "Retry from Checkpoint"
@@ -76,12 +81,14 @@ layout_mode = 2
 size_flags_vertical = 8
 focus_neighbor_top = NodePath("../Retry_button")
 focus_neighbor_bottom = NodePath("../Retry_button")
+theme_override_colors/font_hover_color = Color(0, 0, 0.839216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("2_8rqoo")
 theme_override_font_sizes/font_size = 100
-theme_override_styles/hover = SubResource("StyleBoxEmpty_qkek8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejkgb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ahnud")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s37w0")
 text = "Quit

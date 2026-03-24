@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://bhwk51vbd4hc6"]
 
 [ext_resource type="Texture2D" uid="uid://bgxxj54ysla4a" path="res://Assets/mountain_biome/WINTER TILES/WINTER TILES.png" id="1_splun"]
-[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/save_checkpoint.gd" id="1_wveus"]
+[ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/Helpscripts/save_checkpoint.gd" id="1_wveus"]
 [ext_resource type="Texture2D" uid="uid://bcdqy81ydnh2x" path="res://Assets/mountain_biome/The Fan-tasy Tileset (Free)/Art/Buildings/Well_Hay_1.png" id="2_gmd56"]
 [ext_resource type="AudioStream" uid="uid://kctg0vt88k1k" path="res://Audio/Music/3-13 The Isle of Songs.mp3" id="2_n2rin"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="3_wveus"]

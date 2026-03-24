@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://cr7lasxqhaihf"]
 
-[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Overworld.gd" id="1_3ysjs"]
+[ext_resource type="Script" uid="uid://daict0p3324ef" path="res://Scripts/Levelscripts/Overworld.gd" id="1_3ysjs"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="2_7afob"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/Characters/enemy.tscn" id="3_jv171"]
 [ext_resource type="Texture2D" uid="uid://cgn5qnhk5n4g3" path="res://Assets/overworld/sprites/tilesets/overworld/plains.png" id="4_o1nsl"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://lwds1gg6rinm" path="res://Scenes/Houses/house_2.tscn" id="10_r8fhl"]
 [ext_resource type="PackedScene" uid="uid://c7lo0b32uwggv" path="res://Scenes/Houses/house_3.tscn" id="11_onlrw"]
 [ext_resource type="PackedScene" uid="uid://c8i7yrhysq8nm" path="res://Scenes/Managers/change_layer_area.tscn" id="12_x82q5"]
-[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/levelchange.gd" id="13_sg6ii"]
+[ext_resource type="Script" uid="uid://7oveto6evyks" path="res://Scripts/Helpscripts/levelchange.gd" id="13_sg6ii"]
 [ext_resource type="PackedScene" uid="uid://mp7oggiiqpnk" path="res://Interaction/InteractionArea/InteractionArea.tscn" id="14_x2dcs"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/Items/health_potion.tscn" id="15_m7okf"]
 [ext_resource type="PackedScene" uid="uid://cqobkh0jrud6j" path="res://Scenes/Items/ammo.tscn" id="16_xjuw7"]

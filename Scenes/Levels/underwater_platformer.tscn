@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=4 uid="uid://cilxggqqhnik4"]
 
 [ext_resource type="PackedScene" uid="uid://casvytn4081k1" path="res://Scenes/Characters/platformer_player.tscn" id="1_67kp6"]
-[ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scripts/underwater_platformer.gd" id="1_n1dyx"]
+[ext_resource type="Script" uid="uid://btetvgj5fl0kx" path="res://Scripts/Levelscripts/underwater_platformer.gd" id="1_n1dyx"]
 [ext_resource type="AudioStream" uid="uid://bwof0m7x0ukdp" path="res://Audio/Music/Final_bossfight.mp3" id="2_qv6tb"]
 [ext_resource type="Texture2D" uid="uid://dsnlhqb6t6sll" path="res://Assets/Underwater/Legacy Collection/Assets/Environments/Ocean View Files/Layers/Night/Tile.png" id="5_qv55x"]
 [ext_resource type="PackedScene" uid="uid://cfgpklimu1cp0" path="res://Scenes/Characters/Executioner_boss.tscn" id="6_8vwl1"]

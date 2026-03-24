@@ -1,6 +1,6 @@
-[gd_scene load_steps=80 format=3 uid="uid://882ppmuvsrh3"]
+[gd_scene load_steps=82 format=3 uid="uid://882ppmuvsrh3"]
 
-[ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/player.gd" id="1_ij6vw"]
+[ext_resource type="Script" uid="uid://dlmqkukhlmdup" path="res://Scripts/Characterscripts/player.gd" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://crl53dxvtc324" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Slash.png" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://8wx5wc2gb22" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Idle.png" id="3_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://bo8uxj6u0jq40" path="res://Assets/The Fantasy Tileset - Animated Character/Main Character/Character_Walk.png" id="4_nn08x"]
@@ -786,7 +786,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_nn08x"]
 resource_name = "Jump"
-length = 0.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -798,6 +798,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Push_hitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5ixxa"]
@@ -922,6 +934,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(0.1, 0.1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Push_hitbox:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bhhdu"]
 resource_name = "Reset_visual"
@@ -975,6 +999,22 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_meglp"]
+resource_name = "Take_damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.387956, 0.319725, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nn08x"]
 _data = {
 &"Attack_down": SubResource("Animation_megsn"),
@@ -985,11 +1025,14 @@ _data = {
 &"Enter_underground": SubResource("Animation_dewec"),
 &"Jump": SubResource("Animation_nn08x"),
 &"RESET": SubResource("Animation_5ixxa"),
-&"Reset_visual": SubResource("Animation_bhhdu")
+&"Reset_visual": SubResource("Animation_bhhdu"),
+&"Take_damage": SubResource("Animation_meglp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
 size = Vector2(26.0667, 22.0333)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meglp"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.990781, 0.862059, 0.728208, 1)
@@ -1011,7 +1054,6 @@ debug_color = Color(0.992157, 0, 0, 0.419608)
 
 [node name="SeparationRayShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15.5)
-scale = Vector2(1, 1)
 shape = SubResource("SeparationRayShape2D_meglp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1063,6 +1105,11 @@ visible = false
 
 [node name="SwordSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_megsn")
+
+[node name="Push_hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12.4)
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CapsuleShape2D_meglp")
 
 [connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
 [connection signal="body_entered" from="SwordHitbox" to="." method="_on_sword_hitbox_body_entered"]

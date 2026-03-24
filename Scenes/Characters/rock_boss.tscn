@@ -1,6 +1,6 @@
 [gd_scene load_steps=181 format=3 uid="uid://2sg5ai58yfpl"]
 
-[ext_resource type="Script" uid="uid://bdo2ng5begn3w" path="res://Scripts/rock_boss.gd" id="1_ojspi"]
+[ext_resource type="Script" uid="uid://bdo2ng5begn3w" path="res://Scripts/Characterscripts/rock_boss.gd" id="1_ojspi"]
 [ext_resource type="Texture2D" uid="uid://me02thd46p4i" path="res://Assets/Enemy/TopDown_RockBoss_EBrosAssets/idle/BossEnemy_idle.png" id="1_syyuj"]
 [ext_resource type="Texture2D" uid="uid://dowww5qm1virw" path="res://Assets/Enemy/TopDown_RockBoss_EBrosAssets/stomp/BossEnemy_stomp.png" id="2_480gc"]
 [ext_resource type="Texture2D" uid="uid://bxb6qh8oycxi2" path="res://Assets/Enemy/TopDown_RockBoss_EBrosAssets/swipe/BossEnemy_swipe.png" id="3_jj5on"]

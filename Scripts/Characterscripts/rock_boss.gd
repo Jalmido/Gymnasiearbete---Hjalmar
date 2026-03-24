@@ -89,7 +89,7 @@ func _take_damage():
 	if health <= 10:
 		speed = 100
 		anim.modulate = Color(1.5,0.5,0.5)
-		$AfterStompIdleTimer.wait_time = 0.3
+		$AfterIdleTimer.wait_time = 0.3
 		$AfterSwipeIdleTimer.wait_time = 0.15
 
 	_update_healthbar()
@@ -176,7 +176,7 @@ func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 			damage = 1
 		elif state == STOMP:
 			damage = 2
-		body._take_damage(damage)
+		body._take_damage(damage, true)
 
 func _on_after_attack_idle_timer_timeout() -> void:
 	_enter_walk_state()

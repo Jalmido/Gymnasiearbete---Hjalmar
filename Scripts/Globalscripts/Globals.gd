@@ -12,6 +12,7 @@ var picked_up_items = [] #för att förhindra "duplicering" av items
 var objective_recieved = false #Prata m Soren i början för objective, då kan man hoppa i abyss
 var yunion_key_collected = false #Om true, läggs den i hotbar
 var boss_fight_mode = false #Används om man inte kör storyn, och bara bossfights, och ger då en victory screen när boss dör.
+var boss_room = false
 var ammo_in_mag: int = 18
 var ammo_in_inv: int = 8 
 var health_potions_in_inv = 0
@@ -37,7 +38,7 @@ func load_checkpoint(): #När man loadar ändras ens items och grejer till det s
 	if checkpoint_data.is_empty():
 		return 
 	
-	lives = checkpoint_data["lives"]
+	lives = checkpoint_data["lives"] if not boss_room else 4 #om man är i boss fight rum, respawnar man m max hp
 	ammo_in_mag = checkpoint_data["ammo_in_mag"]
 	ammo_in_inv = checkpoint_data["ammo_in_inv"]
 	health_potions_in_inv = checkpoint_data["health_potions"]

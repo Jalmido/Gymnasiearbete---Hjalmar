@@ -123,8 +123,9 @@ func _take_damage(amount: int, play_anim: bool) -> void:
 	if can_take_damage:
 		can_take_damage = false
 		DamageCooldownTimer.start()
-		if play_anim:
+		if play_anim: #om inte play anim, så spelas ej. Används så man inte blir röd när man drunknar
 			AnimPlayer.play("Take_damage")
+		$HitSound.play()
 		Globals.lives -= amount
 
 		if Globals.lives <= 0:
@@ -303,6 +304,7 @@ func _enter_water_state():
 	state = WATER
 
 func _enter_attack_state():
+	anim.modulate = Color(1, 1, 1, 1) #gör så han int blir röd om man attackerar mitt i take_damade animationen
 	state = ATTACK
 	AnimPlayer.play("Attack_" + direction_name)
 	if not $SwordSound.playing:

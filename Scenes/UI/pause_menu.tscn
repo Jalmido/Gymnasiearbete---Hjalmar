@@ -186,6 +186,24 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
 text = "Quit
 "
 
+[node name="Toggle_fullscreen" type="CheckButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0.658824, 0.737255, 1)
+theme_override_colors/font_hover_color = Color(1.10701e-06, 0.445057, 0.500001, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1.05888e-06, 0.659442, 0.736921, 1)
+theme_override_colors/font_focus_color = Color(0, 0.658824, 0.737255, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.658824, 0.737255, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("1_emv3i")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_23me3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yq7um")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1och7")
+text = "Toggle Fullscreen"
+alignment = 1
+
 [node name="Volume" type="HSlider" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -198,10 +216,10 @@ value = 0.75
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Volume"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -39.0
-offset_right = 258.0
-offset_bottom = 8.0
+offset_left = 9.0
+offset_top = 21.0
+offset_right = 249.0
+offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("1_emv3i")
 theme_override_font_sizes/font_size = 40
 text = "Master Volume:"
@@ -209,4 +227,5 @@ text = "Master Volume:"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume_button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/Toggle_fullscreen" to="." method="_on_toggle_fullscreen_toggled"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/Volume" to="." method="_on_h_slider_value_changed"]

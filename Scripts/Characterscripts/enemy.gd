@@ -12,7 +12,8 @@ var direction_name: String
 var chasing = false
 var slow_chase = false
 var player
-var health: int = 5
+
+@export var health: int
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast: RayCast2D = $RayCast2D
@@ -32,10 +33,8 @@ func _physics_process(delta: float) -> void:
 			_dead_state(delta)
 		ATTACK: 
 			_attack_state(delta)
-	
 	if player:
 		_update_sight()
-	
 
 
 #------------------------------
@@ -52,14 +51,11 @@ func _movement(delta: float, direction: Vector2, move_speed: float) -> void:
 func _update_direction(direction: Vector2) -> void:
 	if direction == Vector2.ZERO:
 		return
-	
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
 			direction_name = "right"
-		
 		else:
 			direction_name = "left"
-	
 	else:
 		if direction.y > 0:
 			direction_name = "down"
@@ -73,9 +69,7 @@ func _update_direction(direction: Vector2) -> void:
 func _update_sight() -> void: #funktion som mha raycast jagar spelarn om den är synlig
 	var raycast_direction = (player.global_position - global_position).normalized()
 	raycast.target_position = raycast_direction*300
-	
 	raycast.force_raycast_update() 
-	
 	if raycast.is_colliding():
 		var collided_with = raycast.get_collider() 
 		if collided_with == player: #spelarn syns
@@ -98,10 +92,10 @@ func _take_damage():
 	if health <= 0:
 		_enter_dead_state()
 	_update_healthbar()
-	
+		
+		
 func _update_healthbar() -> void:
 	$Healthbar.value = health
-	
 #------------------------------
 #State functions
 #------------------------------
@@ -114,39 +108,34 @@ func _walk_state(delta: float) -> void:
 	if player == null:
 		_enter_idle_state()
 		return
-		
 	if not chasing and not slow_chase:
 		_enter_idle_state()
 		return
-		
 	#lokala variabler
 	var direction_to_player = global_position.direction_to(player.global_position)
 
 
-	
 	#hastighetsloigik om slowchase är true
 	var speed_multiplier = 1.0
 	if slow_chase:
 		speed_multiplier = 0.4
 
 	var current_speed = speed * speed_multiplier
-		
 	_update_direction(direction_to_player)
 	anim.play("Walk_" + direction_name)
 	_movement(delta, direction_to_player, current_speed)
 
 func _attack_state(delta:float) -> void:
 	_movement(delta, Vector2.ZERO, 0)
-	
 	if $AttackTimer.is_stopped(): #Attack m cooldown
 		anim.play("Attack_" + direction_name)
-
+		
 		player._take_damage(1,true)
 		$AttackTimer.start()
-		
 	var distance_to_player = global_position.distance_to(player.global_position)
 	if distance_to_player > 50:
 		_enter_walk_state()
+
 func _dead_state(_delta:float) -> void:
 	queue_free() #tar bort fienden från spelet
 	emit_signal("dead", self)
@@ -175,7 +164,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player = body
 		chasing = true
 		_enter_walk_state()
-		
 
 
 func _on_lost_sight_timer_timeout() -> void:

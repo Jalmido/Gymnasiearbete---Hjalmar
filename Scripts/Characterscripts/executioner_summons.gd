@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			anim.play("Death")
 			queue_free()
 
-func _summoned():
+func _summoned(): #Setar upp summons, och beräknar vinklar och slår på hitboxes så de kan skada fiende.
 	$Shoot_out_timer.start()
 	anim.play("Summoned")
 	
@@ -43,9 +43,11 @@ func _summoned():
 	visible = true
 	
 	summon_setup_finished = true
-func _on_shoot_out_timer_timeout() -> void:
+
+func _on_shoot_out_timer_timeout() -> void: #skjuter ut när timer är klar
 	shoot_out = true
-	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+
+func _on_area_2d_body_entered(body: Node2D) -> void: #skadar player
 	if body.is_in_group("player"):
-		body._take_damage(1,true)
+		body._take_damage(1)
+	

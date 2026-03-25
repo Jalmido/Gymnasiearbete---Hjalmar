@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bcdqy81ydnh2x" path="res://Assets/mountain_biome/The Fan-tasy Tileset (Free)/Art/Buildings/Well_Hay_1.png" id="2_gmd56"]
 [ext_resource type="AudioStream" uid="uid://kctg0vt88k1k" path="res://Audio/Music/3-13 The Isle of Songs.mp3" id="2_n2rin"]
 [ext_resource type="PackedScene" uid="uid://882ppmuvsrh3" path="res://Scenes/Characters/Player.tscn" id="3_wveus"]
-[ext_resource type="PackedScene" uid="uid://vldeabhcwt55" path="res://Scenes/Others/jump_area.tscn" id="6_n2rin"]
 [ext_resource type="PackedScene" uid="uid://beepnscn0oyw6" path="res://Scenes/Characters/enemy.tscn" id="7_n7l5a"]
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/Managers/room_change.tscn" id="8_dnchf"]
+[ext_resource type="PackedScene" uid="uid://l127mayfw4p3" path="res://Scenes/Characters/Orc.tscn" id="8_nqhsn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2rin"]
 texture = ExtResource("1_splun")
@@ -516,12 +516,14 @@ position = Vector2(-214, -156)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3.8, 3.8)
 
-[node name="JumpArea" parent="." instance=ExtResource("6_n2rin")]
-position = Vector2(566, -270)
-scale = Vector2(20.9679, 3.99803)
+[node name="Orc" parent="." instance=ExtResource("8_nqhsn")]
+position = Vector2(544, -256)
+
+[node name="Orc2" parent="." instance=ExtResource("8_nqhsn")]
+position = Vector2(92, -186)
 
 [node name="Enemy" parent="." instance=ExtResource("7_n7l5a")]
-position = Vector2(640, -253)
+position = Vector2(701, -281)
 
 [node name="RoomChange" parent="." instance=ExtResource("8_dnchf")]
 position = Vector2(920, -390)

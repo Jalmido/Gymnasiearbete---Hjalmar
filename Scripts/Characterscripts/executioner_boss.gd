@@ -10,7 +10,7 @@ enum { CHASE, ATTACK_1, ATTACK_2, SUMMON, DEAD }
 var state = CHASE
 
 
-var health = 30
+var health = 20
 var direction_name = "left"
 var target = null
 var player = null
@@ -22,7 +22,9 @@ var can_summon = true
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	target = player
-	_update_healthbar()
+	_update_healthbar() 
+	Globals.boss_room = true #Gör så att man respawnar m 3 hjärtan, för att göra det lite lättare
+	
 	
 func _physics_process(delta: float) -> void:
 	if not active:
@@ -55,7 +57,7 @@ func _chase_state(delta: float) -> void:
 	var distance_to_player = global_position.distance_to(target.global_position)
 	
 	
-	if health < 15 and can_summon: #När under 10 hp så summonar han sina småttingar
+	if health < 10 and can_summon: #När under 10 hp så summonar han sina småttingar
 		state = SUMMON
 		can_summon = false
 		anim.play("Summon")
@@ -76,12 +78,13 @@ func _chase_state(delta: float) -> void:
 		_enter_attack_state()
 
 func _dead_state(delta: float) -> void:
+	
 	$AnimatedSprite2D.play("Death")
 	await $AnimatedSprite2D.animation_finished
 	$"../../Boss_Arena_doors".enabled = false
 	$"../..".boss_alive = false
 	queue_free()
-	
+	Globals.boss_room = false #gör så man inte längre är i boss fight och därmed inte respawnar m 3 hjärtan
 	if Globals.boss_fight_mode: #Om boss fight mode är aktivt, så visas victory screen
 		Globals.victory_screen_requested.emit()
 		Globals.boss_fight_mode = false
@@ -140,4 +143,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body._take_damage(1,true)
+		body._take_damage(1)

@@ -9,7 +9,7 @@ var start_boss_fight = false
 var state = WALK
 var direction_name: String = "up"
 var player 
-var health: int = 1
+var health: int = 2
 var attacking: bool = false
 var prepared_for_boss = false
 var dash_direction: Vector2

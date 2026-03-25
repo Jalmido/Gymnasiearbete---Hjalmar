@@ -33,3 +33,14 @@ func _on_quit_button_pressed():
 
 func _on_h_slider_value_changed(value: float) -> void: #Master volume bar
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),linear_to_db(value))
+
+
+
+	
+
+
+func _on_toggle_fullscreen_toggled(toggled_on: bool) -> void: #fullscreen eller windowed
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else: 
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dr5d772mdxfli"]
+[gd_scene load_steps=19 format=4 uid="uid://dr5d772mdxfli"]
 
 [ext_resource type="Script" uid="uid://b238w3s65cx7w" path="res://Scripts/Helpscripts/save_checkpoint.gd" id="1_dy5uo"]
 [ext_resource type="AudioStream" uid="uid://kctg0vt88k1k" path="res://Audio/Music/3-13 The Isle of Songs.mp3" id="2_3e3s7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b21e8npxmyd3y" path="res://Scenes/Managers/room_change.tscn" id="8_3a00r"]
 [ext_resource type="PackedScene" uid="uid://c8d3fyx555ggw" path="res://Scenes/Items/health_potion.tscn" id="9_6t78n"]
 [ext_resource type="PackedScene" uid="uid://ikd4h7qnav88" path="res://Scenes/Items/item_cleaner.tscn" id="10_3t7pw"]
+[ext_resource type="Texture2D" uid="uid://b42mf7rgns2jo" path="res://Assets/mountain_biome/Snowy Asset Pack/Decoration/Log.png" id="11_3e3s7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dy5uo"]
 texture = ExtResource("4_64q8v")
@@ -482,6 +483,14 @@ size = Vector2(69, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy5uo"]
 size = Vector2(42, 174)
 
+[sub_resource type="Curve" id="Curve_q4271"]
+_data = [Vector2(0, 0.803328), 0.0, 0.0, 0, 0, Vector2(0.452663, 0.838035), 0.0, 0.0, 0, 0, Vector2(1, 0.300188), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_64q8v"]
+offsets = PackedFloat32Array(0, 0.584507, 0.996479)
+colors = PackedColorArray(1, 1, 0, 1, 0.922789, 3.24883e-06, 1.73271e-06, 1, 0, 0, 0, 1)
+
 [node name="Mountain_Village" type="Node2D"]
 script = ExtResource("1_dy5uo")
 level_music = ExtResource("2_3e3s7")
@@ -557,3 +566,27 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(11, 4)
 shape = SubResource("RectangleShape2D_dy5uo")
+
+[node name="Log" type="Sprite2D" parent="."]
+position = Vector2(230, -389)
+scale = Vector2(0.84375, 0.65625)
+texture = ExtResource("11_3e3s7")
+
+[node name="Log2" type="Sprite2D" parent="."]
+position = Vector2(240, -389)
+scale = Vector2(0.84375, 0.65625)
+texture = ExtResource("11_3e3s7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(234, -390)
+amount = 200
+randomness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, -10)
+initial_velocity_min = 21.05
+initial_velocity_max = 52.63
+angle_min = -28.0
+angle_max = 70.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_q4271")
+color_ramp = SubResource("Gradient_64q8v")

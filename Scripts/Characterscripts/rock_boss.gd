@@ -20,6 +20,7 @@ func _ready() -> void:
 	_update_healthbar()
 	player = get_tree().get_first_node_in_group("player")
 	anim.play("Idle_up")
+	Globals.boss_room = true #Gör så att man respawnar m 3 hjärtan, för att göra det lite lättare
 	
 func _physics_process(delta: float) -> void:
 	if not active: 
@@ -89,7 +90,7 @@ func _take_damage():
 	if health <= 10:
 		speed = 100
 		anim.modulate = Color(1.5,0.5,0.5)
-		$AfterIdleTimer.wait_time = 0.3
+		$AfterStompIdleTimer.wait_time = 0.3
 		$AfterSwipeIdleTimer.wait_time = 0.15
 
 	_update_healthbar()
@@ -133,7 +134,7 @@ func _dead_state(_delta:float) -> void:
 	emit_signal("dead", self)
 	queue_free() #tar bort fienden från spelet
 	active = false
-	
+	Globals.boss_room = false #gör så man inte längre ör i boss room och respawnar m 3 hjärtan
 	if Globals.boss_fight_mode:
 		Globals.victory_screen_requested.emit()
 		Globals.boss_fight_mode = false

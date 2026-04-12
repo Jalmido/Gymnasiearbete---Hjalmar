@@ -28,6 +28,9 @@ var cooldown_duration = 2
 
 
 func _physics_process(delta: float) -> void:
+	"
+	State machine för player. Hanterar alla states spelaren kan vara i
+	"
 	match state:
 		IDLE:
 			_idle_state(delta)
@@ -41,6 +44,9 @@ func _physics_process(delta: float) -> void:
 			_dead_state(delta)
 			
 func _process(delta: float) -> void:
+	"
+	Dash baren uppdateras varje frame
+	"
 	_update_dash_bar()
 
 
@@ -49,6 +55,10 @@ func _process(delta: float) -> void:
 # ------------------------------
 
 func _movement(delta: float, input_x: float, apply_gravity: bool = true) -> void:
+	"
+	Uppdaterar playerns movement baserat på ett flyttal mellan -1 och 1. Om 0 så står man still, annars rör man sig höger eller vänster. 
+	Om man inte är på golvet, appliceras gravitation per automatik och man flyttas ner
+	"
 	if input_x != 0:
 		velocity.x = move_toward(velocity.x, input_x * MAX_SPEED, ACC * delta)
 	else:
@@ -61,6 +71,9 @@ func _movement(delta: float, input_x: float, apply_gravity: bool = true) -> void
 	move_and_slide()
 
 func _update_direction(axis: float) -> void:
+	"
+	Tar in flyttal mellan -1 och 1 beroende på input från A och D. Används för animations
+	"
 	if axis > 0:
 		direction_name = "right"
 	elif axis < 0:
@@ -68,10 +81,15 @@ func _update_direction(axis: float) -> void:
 
 
 func _change_hotbar_item(item_name: String) -> void:
+	"
+	Här hanteras logiken för vilket item som är equipat. Hardcodeat eftersom jag har så pass få items. Denna anropas i Hotbar.gd scripten
+	varje gång man byter item. 
+	Ex: Om man selectar pistolen, så kommer det att vara det item_name som matas in från Hotbar.gd, då button noden för
+	pistolen heter Pistol och därmed kommer den if-satsen bli aktiv
+	I platformer player kan man ej slå. 
+	"
 	$Handgun.disable_weapon()
 
-	
-	
 	if item_name == "Pistol":
 		$Handgun.enable_weapon()
 		attacking = false
@@ -81,13 +99,18 @@ func _change_hotbar_item(item_name: String) -> void:
 		attacking = false
  
 func _drink_potion() -> void:
-	
+	"
+	Om man har en health_potion i sitt inventory, så kan man dricka den och få hp. Health potions lagras i Global variablar.
+	"
 	if Globals.health_potions_in_inv > 0 and Globals.lives < 4:
 		Globals.lives += 1
 		Globals.health_potions_in_inv -= 1
 
 
 func _take_damage(amount: int) -> void:
+	"
+	När spelaren tar skada (av bossen eller hans summons), så anropas denna. Man tappar hp beroende på vilken attack som man tog emot (parametern amount)
+	"
 	if not can_take_damage:
 		return
 	
@@ -100,10 +123,16 @@ func _take_damage(amount: int) -> void:
 			_enter_dead_state()
 
 func _start_dash_cooldown():
+	"
+	Cooldown för dashen börjas. Anropas när man har dashat klart.
+	"
 	progressbar.value = 0.0
 	cooldown_timer.start(cooldown_duration) 
 
 func _update_dash_bar():
+	"
+	Uppdaterar dash baren så att den fylls upp med tiden. Anropas i process.
+	"
 	if not can_dash:
 		var time_passed = cooldown_timer.wait_time - cooldown_timer.time_left
 		progressbar.value = time_passed

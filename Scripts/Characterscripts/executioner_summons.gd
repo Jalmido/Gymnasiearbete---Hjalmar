@@ -13,6 +13,11 @@ var summon_setup_finished = false
 
 
 func _process(delta: float) -> void:
+	"
+	Körs hela tiden. Kontrollerar när summonen blir summoned och när han blir det av bossen (när bossen blir 10 hp),
+	så anropas summoned() funktionen och summonen skjuts ut. Från _summoned() får varje summon en slumpad riktning att skjuta ut
+	Och när den studsar i väggen och den har bounces kvar, så reflekterar den. När den når 0 bounces spelas dödsanimation och den försvinner
+	"
 	if not has_been_summoned:
 		return
 	elif has_been_summoned and not summon_setup_finished:
@@ -31,7 +36,11 @@ func _process(delta: float) -> void:
 			anim.play("Death")
 			queue_free()
 
-func _summoned(): #Setar upp summons, och beräknar vinklar och slår på hitboxes så de kan skada fiende.
+func _summoned(): 
+	"
+	Setar upp summons, och slumpar vinklar och slår på hitboxes så de kan skada fiende. Definierar velocityn som den skjuts ut i.
+	"
+	
 	$Shoot_out_timer.start()
 	anim.play("Summoned")
 	
@@ -44,10 +53,16 @@ func _summoned(): #Setar upp summons, och beräknar vinklar och slår på hitbox
 	
 	summon_setup_finished = true
 
-func _on_shoot_out_timer_timeout() -> void: #skjuter ut när timer är klar
+func _on_shoot_out_timer_timeout() -> void: 
+	"
+	Skjuter ut när timer är klar
+	"
 	shoot_out = true
 
-func _on_area_2d_body_entered(body: Node2D) -> void: #skadar player
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	"
+	Skadar spelaren vid kollision
+	"
 	if body.is_in_group("player"):
 		body._take_damage(1)
 	

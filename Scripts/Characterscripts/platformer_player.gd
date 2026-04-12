@@ -143,6 +143,9 @@ func _update_dash_bar():
 # ------------------------------
 
 func _input(event: InputEvent) -> void:
+	"
+	Övriga inputs som inte är typ att simma eller gå hanteras här. Dash och attack (som inte bör heta attack, utan typ use) används här
+	"
 	if event.is_action_pressed("Shift"):
 		_enter_dash_state()
 	if event.is_action_pressed("Attack"):
@@ -152,6 +155,10 @@ func _input(event: InputEvent) -> void:
 			pass
 
 func _idle_state(delta: float) -> void:
+	"
+	När spelaren är i IDLE staten, står man still och Idle animation spelas. Om man börjar gå (input axis ökar eller minskar) anropas _enter_walk_state.
+	Om man trycker space anropas _enter_swim_state
+	"
 	anim.play("Idle_" + direction_name)
 
 	_movement(delta, 0)
@@ -164,6 +171,11 @@ func _idle_state(delta: float) -> void:
 		_enter_swim_state() 
 
 func _walk_state(delta: float) -> void:
+	"
+	När spelaren är i WALK staten. Hanterar Swim animationen. Uppdaterar kontinuerligt axis,
+	som används för animationer och movement.
+	"
+	
 	anim.play("Swim_" + direction_name)
 
 	var axis = Input.get_axis("Left", "Right")
@@ -181,6 +193,10 @@ func _walk_state(delta: float) -> void:
 		_enter_swim_state()
 
 func _swim_state(delta: float) -> void:
+	"
+	När man håller space anropas denna. Swim animationen spelas och movement höger och vänster kontrolleras via axis variabeln.
+	Ens velocity i y-led ökar när man håller space. 
+	"
 	anim.play("Swim_" + direction_name) 
 	var axis = Input.get_axis("Left", "Right")
 	_update_direction(axis)
@@ -200,6 +216,10 @@ func _swim_state(delta: float) -> void:
 			_enter_walk_state()
 
 func _dash_state(delta: float) -> void:
+	"
+	Om man trycker shift, så anropas _enter_dash_state vilket i sin tur anropar denna. 
+	Här uppdateras tiden dashen har körts mha delta. 
+	"
 	dash_timer -= delta
 	velocity = dash_direction * DASH_SPEED
 
@@ -210,6 +230,9 @@ func _dash_state(delta: float) -> void:
 		state = SWIM if not is_on_floor() else IDLE
 
 func _dead_state(delta: float) -> void:
+	"
+	Om HP = 0 anropas denna via _take_damage och _enter_dead_state och Death screen visas.
+	"
 	$Death_screen.show()
 	get_tree().paused = true
 # ------------------------------
@@ -217,16 +240,28 @@ func _dead_state(delta: float) -> void:
 # ------------------------------
 
 func _enter_idle_state():
+	"
+	Gör state till IDLE så man kommer in i _idle_state
+	"
 	state = IDLE
 
 func _enter_walk_state():
+	"
+	Gör state till WALK så man kommer in i _walk_state
+	"
 	state = WALK
 
 func _enter_swim_state():
+	"
+	Gör state till SWIM så man kommer in i _swim_state och bestämmer att velocity i y-led nu är SWIM_FORCE
+	"
 	state = SWIM
 	velocity.y = SWIM_FORCE
 
 func _enter_dash_state():
+	"
+	Återställer dash timern, och bestämmer i vilken riktning dashen kommer ske. 
+	"
 	if state == DASH or not can_dash: 
 		return
 	
@@ -241,22 +276,34 @@ func _enter_dash_state():
 		if direction_name == "right":
 			dash_direction = Vector2.RIGHT
 		else:
-			Vector2.LEFT
+			dash_direction = Vector2.LEFT
 	set_collision_mask_value(3, false)
-	anim.play("Dash_" + direction_name)
 	can_dash = false
 	_start_dash_cooldown()
+	
 func _enter_dead_state():
+	"
+	Gör state till DEAD så man kommer in i _dead_state
+	"
 	state = DEAD
 
 func _on_dash_area_body_entered(body: Node2D) -> void:
+	"
+	Skadar fiender om man dashar in i de
+	"
 	if state == DASH:
 		body._take_damage()
 
 
 func _on_damage_cooldown_timer_timeout() -> void:
+	"
+	Damage cooldown så man inte tar massa skada samtidigt
+	"
 	can_take_damage = true
 
 
 func _on_dash_cooldown_timer_timeout() -> void:
+	"
+	När dash cooldown är klar kan man dasha igen.
+	"
 	can_dash = true

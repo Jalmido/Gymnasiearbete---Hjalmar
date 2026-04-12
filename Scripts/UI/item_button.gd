@@ -5,6 +5,9 @@ class_name ItemButton
 
 
 func _process(_delta):
+	"
+	Denna funktion uppdaterar knapparnas utseende. Visar antalet health_potions i hotbaren, samt lägger till nyckeln i hotbaren när den blir upplockad.
+	"
 	if Globals.health_potions_in_inv > 0:
 		$"../HealthPotion/Healthpotionlabel".text = "x" + str(Globals.health_potions_in_inv)
 		$"../HealthPotion".icon = load("res://Assets/Items/game-potion-pixelated-free-png-2.png")

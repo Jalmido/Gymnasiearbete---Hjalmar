@@ -20,6 +20,9 @@ var can_summon = true
 @onready var summon_scenes = load("res://Scenes/Characters/Characterscripts/executioner_summons.tscn")
 
 func _ready() -> void:
+	"
+	Gör det till ett boss room, så man respawnar m 3 hp, definierar player för bossen.
+	"
 	player = get_tree().get_first_node_in_group("player")
 	target = player
 	_update_healthbar() 
@@ -27,6 +30,10 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	"
+	State machine för bossen. Hanterar alla states bossen kan vara i
+	När han attackerar/summonar är han still
+	"
 	if not active:
 		return
 	match state:
@@ -40,6 +47,9 @@ func _physics_process(delta: float) -> void:
 # Central rörelsefunktion
 # ------------------------------
 func _movement(delta: float, direction: Vector2) -> void:
+	"
+	Uppdaterar bossens movement baserat på riktning vectoren som är en riktning mot spelaren.
+	"
 	if direction != Vector2.ZERO:
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACC * delta)
 	else:
@@ -52,7 +62,12 @@ func _movement(delta: float, direction: Vector2) -> void:
 
 
 func _chase_state(delta: float) -> void:
-	if not target: return
+	"
+	Bossen beräknar riktning och avstånd till spelaren och jagar spelaren. Är han under 10 hp summonar han 3 summons.
+	Om avståndet till spelaren är nära nog kommer _enter_attack_state anropas
+	"
+	if not target: 
+		return
 	var direction_to_player = global_position.direction_to(target.global_position)
 	var distance_to_player = global_position.distance_to(target.global_position)
 	
@@ -70,7 +85,6 @@ func _chase_state(delta: float) -> void:
 
 	
 	_update_direction(direction_to_player)
-	anim.play("Walk_" + direction_name)
 	_movement(delta, direction_to_player)
 	
 
@@ -78,7 +92,9 @@ func _chase_state(delta: float) -> void:
 		_enter_attack_state()
 
 func _dead_state(delta: float) -> void:
-	
+	"
+	Om HP = 0 dör bossen och dödsanimationen spelas. Om boss_fight_mode är true kommer en victory screen upp.
+	"
 	$AnimatedSprite2D.play("Death")
 	await $AnimatedSprite2D.animation_finished
 	$"../../Boss_Arena_doors".enabled = false
@@ -95,6 +111,9 @@ func _dead_state(delta: float) -> void:
 # ------------------------------
 
 func _enter_attack_state():
+	"
+	Anropas när spelaren är inom 70 pixlar från bossen. Då randomizear bossen en attack.
+	"
 	var r = randf()
 	if r < 0.5:
 		state = ATTACK_1
@@ -106,6 +125,11 @@ func _enter_attack_state():
 	_enter_chase_state()
 
 func _enter_chase_state() -> void:
+
+	"
+	Gör state till CHASE så bossen kommer in i _chase_state
+	
+	"
 	state = CHASE
 
 
@@ -114,22 +138,34 @@ func _enter_chase_state() -> void:
 # ------------------------------
 
 func _take_damage():
+	"
+	Vid attack från player tar bossen skada. Healthbar uppdateras och om HP = 0 dör han
+	"
 	health -= 1
 	_update_healthbar()
 	if health <= 0:
 		_enter_dead_state()
 
 func _update_healthbar() -> void:
+	"
+	Uppdaterar healthbaren in game till hp värdet.
+	"
 	$Healthbar.value = health
 
 
 func _update_direction(direction: Vector2):
+	"
+	Ändrar direction_name till right eller left, beroende på riktning till spelaren, så spelas rätt animation. 
+	"
 	if direction.x > 0:
 		direction_name = "right"
 	elif direction.x <= 0:
 		direction_name = "left"
 
 func _enter_dead_state():
+	"
+	Gör state till DEAD så bossen kommer in i _dead_state
+	"
 	state = DEAD
 	anim.play("Death")
 
@@ -137,10 +173,16 @@ func _enter_dead_state():
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	"
+	När animation är färdigspelad anropas denna, och han börjar jaga igen.
+	"
 	if state in [ATTACK_1, ATTACK_2, SUMMON]:
 		state = CHASE
 
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
+	"
+	Om han attackerar spelaren, så anropas take_damage med ett amount i spelarent _take_damage funktion
+	"
 	if body.is_in_group("player"):
 		body._take_damage(1)

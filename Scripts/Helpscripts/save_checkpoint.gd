@@ -13,6 +13,9 @@ ANVÄNDS OCKSÅ FÖR ATT LADDA SCENENS MUSIC
 
 
 func _ready() -> void:
+	"
+	Sparar checkpoint och skickar in export variabeln level_music till MusicManager
+	"
 	Globals.save_checkpoint()
 	
 	if level_music:

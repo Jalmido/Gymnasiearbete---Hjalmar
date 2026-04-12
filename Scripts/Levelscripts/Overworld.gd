@@ -5,6 +5,10 @@ extends Node2D
 var first_time_entering_scene = true
 
 func _ready() -> void:
+	"
+	Checkpoint sparas och musik startas. Om det är första gången man kör denna scen, så körs en cutscene
+	Ens global_position ändras också beroende på om det är första gången du startar eller om du kommer ut ur ett hus.
+	"
 	Globals.save_checkpoint()
 	MusicManager.play_track(preload("res://Audio/Music/1-10 Skyloft.mp3"))
 	var scene_path = get_tree().current_scene.scene_file_path
@@ -26,6 +30,9 @@ func _ready() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	"
+	När cutscenen är klar kommer en popup upp och man kan röra sig.
+	"
 	$Player/Camera2D.make_current()
 	$Popup_UI.show()
 	$Player.set_physics_process(true)

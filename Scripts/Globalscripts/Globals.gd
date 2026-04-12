@@ -17,7 +17,7 @@ var ammo_in_mag: int = 18
 var ammo_in_inv: int = 8 
 var health_potions_in_inv = 0
 var saved_position: Vector2
-var lives: int = 4:
+var lives: int = 4: #skickar signal när liv ändras som kopplas i huden
 	set(value):
 		lives = value
 		emit_signal("lives_changed", lives)

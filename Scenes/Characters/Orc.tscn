@@ -1,6 +1,6 @@
 [gd_scene load_steps=88 format=3 uid="uid://l127mayfw4p3"]
 
-[ext_resource type="Script" uid="uid://bn5roncsak3d2" path="res://Scenes/Characters/orc.gd" id="1_kj3my"]
+[ext_resource type="Script" uid="uid://bn5roncsak3d2" path="res://Scripts/Characterscripts/orc.gd" id="1_kj3my"]
 [ext_resource type="Texture2D" uid="uid://cgqgxm4skpda2" path="res://Assets/Enemy/Free-Top-Down-Orc-Game-Character-Pixel-Art/PNG/Orc3/orc3_attack/orc3_attack_full.png" id="2_kyadx"]
 [ext_resource type="Texture2D" uid="uid://bl18nkmodx330" path="res://Assets/Enemy/Free-Top-Down-Orc-Game-Character-Pixel-Art/PNG/Orc3/orc3_idle/orc3_idle_full.png" id="3_tjfgd"]
 [ext_resource type="Texture2D" uid="uid://caiagx0w62xj3" path="res://Assets/Enemy/Free-Top-Down-Orc-Game-Character-Pixel-Art/PNG/Orc3/orc3_walk/orc3_walk_full.png" id="4_kkodm"]

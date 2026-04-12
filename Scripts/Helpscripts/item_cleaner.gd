@@ -3,6 +3,11 @@ extends Node2D
 #Item cleaner ser till att man inte kan plocka upp items flera gånger.
 
 func _ready() -> void:
+	"
+	Varje gång man plockar upp ett item läggs ett unikt id för det itemet till i en Global lista (picked_up_items)
+	När man går in i en scen kontrollerar item cleaner i denna funktion genom att skapa samma unika id som gjordes första gången
+	och om det redan finns, så tas itemet bort. (Alltså kan man inte duplicatea items)
+	"
 	await get_tree().process_frame
 	
 	var current_scene_name = get_tree().current_scene.name

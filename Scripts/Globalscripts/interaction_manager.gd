@@ -8,15 +8,25 @@ const default_text = "[E] to "
 var active_areas = [] #alla nuvarande areor som kan interageras med
 var can_interact = true #alla areor ska bli interagerbara när player är nära.
 
-func register_area(area: InteractionArea):
+func register_area(area: InteractionArea): 
+	"
+	arean som är en parameter kommer då playern går in i en interactionarean. Den läggs sen till i active_areas arrayen
+	"
 	active_areas.append(area)
 
 func unregister_area(area: InteractionArea):
+	"
+	arean som är en parameter kommer då playern går ut ur en interactionarea. Arean tas ut ur active_areas.
+	"
 	var index = active_areas.find(area) #Indexen för arean som ska ta bort ur nurvarande areor sparas i index variabeln
 	if index != -1: #inte -1 för det innebär att listan ör tom
 		active_areas.remove_at(index) #testade först erase(), men den tog bara bort första förekomsten, sen testade jag pop_at(), men den returnerade det borttagna värdet, vilket itn  behövs för dessa dörrar
 
 func _process(_delta: float):
+	"
+	Om det finns areor i active_areas arrayen (alltså att playern är i en interaction area) så visas en text ovanför
+	där det står typ [e] to interact
+	"
 	if active_areas.size() > 0 and can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player) #använder egna funktionnen där avståndet mellan spelarn och areorna jämförs och tar sedan första index
 		#fixa labeln snyggt över arean
@@ -30,11 +40,17 @@ func _process(_delta: float):
 		label.hide()
 		
 func _sort_by_distance_to_player(area1, area2):
+	"
+	Om flera aror är i varandra, så visas texten ovanför den som är närmast.
+	"
 	var area1_to_player = player.global_position.distance_to(area1.global_position)
 	var area2_to_player = player.global_position.distance_to(area2.global_position)
 	return area1_to_player < area2_to_player
 
 func _input(event: InputEvent):
+	"
+	Om man är i en interactionarea kan man interagera.
+	"
 	if event.is_action_pressed("interact") and can_interact:
 		if active_areas.size() > 0:
 			can_interact = false

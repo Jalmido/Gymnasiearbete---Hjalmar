@@ -3,6 +3,10 @@ extends Area2D
 @export var item_id: String = " "
 
 func _on_body_entered(body: Node2D) -> void:
+	"
+	När man plockar upp itemet (går in i health_potionens area) skapas ett unikt id i en Global lista, som item_cleaner jämför id med för att förhindra duplication.
+	Sedan läggs potionen antingen in i hotbaren, eller så healar man direkt om man har mindre än 4. 
+	"
 	if body.is_in_group("player"):
 		
 		#Samma unika ID som item cleanern letar efter skapas

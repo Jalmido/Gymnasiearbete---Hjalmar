@@ -6,6 +6,9 @@ class_name JumpArea
 @onready var tilemap: TileMapLayer = $"../Tilemaplayers/Ground"
 
 func _on_body_entered(body: Node2D) -> void:
+	"
+	Om man går in i jump_area så ändras det i playerscripten så att man är redo att hoppa
+	"
 	if body.is_in_group("player"):
 		player.can_jump = true
 		player._display_raycast()
@@ -13,6 +16,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
+	"
+	Om man går ut ur jump_arean, kan playern inte längre hoppa.
+	"
 	if body.is_in_group("player"):
 		player.can_jump = false
 		player._reset_raycast()

@@ -5,12 +5,17 @@ extends StaticBody2D
 @export var house_number: int = 1
 
 func _ready() -> void:
+	"
+	Callable definieras som _on_interact
+	"
 	interaction_area.interact = Callable(self, "_on_interact")
 
 
 func _on_interact():
+	"
+	När man interactar med huset, så fadear det til svart och timer startar
+	"
 	var player = get_tree().get_first_node_in_group("player")
-	LocationManager.last_scene = get_tree().current_scene.scene_file_path
 	LocationManager.last_exit_position = player.global_position
 	LocationManager._play_animation()
 	$EnterHouseTimer.start()
@@ -24,4 +29,7 @@ interaction_manager i samma group (player) som playern, och därmed tog den inte
 
 
 func _on_enter_house_timer_timeout() -> void:
+	"
+	När timern är klar byts scen till rätt interiör beroende på export varens värde
+	"
 	LocationManager.enter_house(house_number)

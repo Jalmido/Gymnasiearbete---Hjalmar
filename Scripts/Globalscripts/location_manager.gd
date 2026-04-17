@@ -48,7 +48,7 @@ func _enter_new_room(target_scene: String) -> void:
 	Byta rum underground till en scen som är en export var från room_change.tscn som den tillhör.
 	Anropas från room_change.gd scripts. Target_spawn_point_name är en export var från room_change.tscn
 	"
-	
+	get_tree().change_scene_to_file(target_scene)
 	await get_tree().process_frame
 	var player = get_tree().get_first_node_in_group("player")
 	if target_spawn_point_name != "":
